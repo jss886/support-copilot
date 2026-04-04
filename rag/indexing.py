@@ -1,7 +1,9 @@
 from pathlib import Path
 from typing import Iterable
 
+from rag.config import settings
 from rag.embeddings import DashScopeEmbeddingClient
+from rag.feishu_loader import load_feishu_document
 from rag.models import ChunkRecord
 from rag.storage import save_index
 
@@ -72,18 +74,18 @@ def build_records_for_text(
 def build_index(
     source_path: Path,
     output_path: Path,
-    chunk_size: int = 500,
-    chunk_overlap: int = 100,
-    batch_size: int = 8,
+    chunk_size: int | None = None,
+    chunk_overlap: int | None = None,
+    batch_size: int | None = None,
 ) -> list[ChunkRecord]:
     client = DashScopeEmbeddingClient()
     records = build_records_for_text(
         source=str(source_path),
         text=load_text(source_path),
         client=client,
-        chunk_size=chunk_size,
-        chunk_overlap=chunk_overlap,
-        batch_size=batch_size,
+        chunk_size=chunk_size or settings.rag.chunk_size,
+        chunk_overlap=chunk_overlap or settings.rag.chunk_overlap,
+        batch_size=batch_size or settings.rag.batch_size,
         chunk_id_prefix="chunk",
     )
     save_index(records, output_path)
@@ -93,9 +95,9 @@ def build_index(
 def build_index_for_directory(
     source_dir: Path,
     output_path: Path,
-    chunk_size: int = 500,
-    chunk_overlap: int = 100,
-    batch_size: int = 8,
+    chunk_size: int | None = None,
+    chunk_overlap: int | None = None,
+    batch_size: int | None = None,
 ) -> list[ChunkRecord]:
     if not source_dir.is_dir():
         raise ValueError(f"Source directory does not exist: {source_dir}")
@@ -113,12 +115,33 @@ def build_index_for_directory(
                 source=str(source_path),
                 text=load_text(source_path),
                 client=client,
-                chunk_size=chunk_size,
-                chunk_overlap=chunk_overlap,
-                batch_size=batch_size,
+                chunk_size=chunk_size or settings.rag.chunk_size,
+                chunk_overlap=chunk_overlap or settings.rag.chunk_overlap,
+                batch_size=batch_size or settings.rag.batch_size,
             )
         )
 
     save_index(all_records, output_path)
     return all_records
 
+
+def build_index_for_feishu_doc(
+    doc_id: str,
+    output_path: Path,
+    chunk_size: int | None = None,
+    chunk_overlap: int | None = None,
+    batch_size: int | None = None,
+) -> list[ChunkRecord]:
+    document = load_feishu_document(doc_id=doc_id)
+    client = DashScopeEmbeddingClient()
+    records = build_records_for_text(
+        source=f"feishu://docx/{doc_id}",
+        text=document.text,
+        client=client,
+        chunk_size=chunk_size or settings.rag.chunk_size,
+        chunk_overlap=chunk_overlap or settings.rag.chunk_overlap,
+        batch_size=batch_size or settings.rag.batch_size,
+        chunk_id_prefix=doc_id,
+    )
+    save_index(records, output_path)
+    return records

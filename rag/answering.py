@@ -1,13 +1,27 @@
-from pathlib import Path
-
 from langchain_classic.chat_models import init_chat_model
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from rag.retrieval import retrieve
 
 
-def answer_question(question: str, index_path: Path, top_k: int = 3) -> str:
-    retrieved = retrieve(query=question, index_path=index_path, top_k=top_k)
+def answer_question(
+    question: str,
+    top_k: int = 3,
+    jdbc_url: str | None = None,
+    db_user: str | None = None,
+    db_password: str | None = None,
+    source: str | None = None,
+    embedding_dimensions: int | None = None,
+) -> str:
+    retrieved = retrieve(
+        query=question,
+        top_k=top_k,
+        jdbc_url=jdbc_url,
+        db_user=db_user,
+        db_password=db_password,
+        source=source,
+        embedding_dimensions=embedding_dimensions,
+    )
     context_blocks = []
     for rank, (score, record) in enumerate(retrieved, start=1):
         context_blocks.append(
