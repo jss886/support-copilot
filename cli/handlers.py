@@ -2,15 +2,19 @@ from argparse import Namespace
 from pathlib import Path
 
 from rag.answering import answer_question
+from rag.hard_negative_data import seed_hard_negative_docs_to_db
 from rag.ingestion import (
     ingest_directory_to_db,
     ingest_feishu_doc_to_db,
+    ingest_feishu_wiki_subtree_to_db,
     ingest_file_to_db,
 )
 from rag.retrieval import retrieve
+from rag.synthetic_data import seed_synthetic_support_data
 
 
 def _normalize_source_filter(source: str | None) -> str | None:
+    """远程 source 保持原样，本地 source 统一转成路径字符串。"""
     if not source:
         return None
     if "://" in source:
@@ -75,6 +79,50 @@ def run_command(args: Namespace) -> None:
         print(f"Inserted document {document_id} with {chunk_count} chunks into PostgreSQL")
         return
 
+    if args.command == "index-feishu-space":
+        document_count, chunk_count = ingest_feishu_wiki_subtree_to_db(
+            space_id=args.space_id,
+            parent_node_token=args.parent_node_token,
+            jdbc_url=args.jdbc_url,
+            db_user=args.db_user,
+            db_password=args.db_password,
+            chunk_size=args.chunk_size,
+            chunk_overlap=args.chunk_overlap,
+            batch_size=args.batch_size,
+            embedding_dimensions=args.embedding_dimensions,
+        )
+        print(
+            f"Inserted {document_count} Feishu documents with {chunk_count} chunks into PostgreSQL"
+        )
+        return
+
+    if args.command == "seed-test-data":
+        document_count, chunk_count = seed_synthetic_support_data(
+            doc_count=args.doc_count,
+            chunks_per_doc=args.chunks_per_doc,
+            jdbc_url=args.jdbc_url,
+            db_user=args.db_user,
+            db_password=args.db_password,
+            embedding_dimensions=args.embedding_dimensions,
+        )
+        print(f"Inserted {document_count} synthetic documents with {chunk_count} chunks into PostgreSQL")
+        return
+
+    if args.command == "seed-hard-negatives":
+        document_count, chunk_count = seed_hard_negative_docs_to_db(
+            jdbc_url=args.jdbc_url,
+            db_user=args.db_user,
+            db_password=args.db_password,
+            chunk_size=args.chunk_size,
+            chunk_overlap=args.chunk_overlap,
+            batch_size=args.batch_size,
+            embedding_dimensions=args.embedding_dimensions,
+        )
+        print(
+            f"Inserted {document_count} hard negative documents with {chunk_count} chunks into PostgreSQL"
+        )
+        return
+
     if args.command == "query":
         results = retrieve(
             query=args.question,
@@ -108,4 +156,3 @@ def run_command(args: Namespace) -> None:
         return
 
     raise ValueError(f"Unsupported command: {args.command}")
-

@@ -1,0 +1,2462 @@
+[
+  {
+    "item_id": "rag-kb-001-harder-0",
+    "question": "知识库接入这块老出问题，我现在更像是碰到了“知试同步链路不稳定”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "知识同步链路不稳定"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-001-harder-1",
+    "question": "我想找那个讲将企业内部文当统一接入问答系统的文档，不确定是不是跟召回健康度一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "将企业内部文档统一接入问答系统"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-001-harder-2",
+    "question": "哪个资料里既提了知识同步成功率不低于 99.2%，又不是在讲RRF 融合窗口那一类话题？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "知识同步成功率不低于 99.2%"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-001-harder-3",
+    "question": "如果我只记得这篇东西和知识工程师有关，还提到过增量同步水位，应该搜到什么文档？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "增量同步水位",
+      "知识工程师"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-001-harder-4",
+    "question": "FS-KB-401 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "FS-KB-401"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-001-harder-5",
+    "question": "我在知识库里想找“怎么把知识同步链路不稳定压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "知识同步链路不稳定"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-001-harder-6",
+    "question": "如果问的是知识库接入相关，但描述里同时出现了召回健康度和增量同步水位，更应该命中哪篇？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "增量同步水位"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-001-harder-7",
+    "question": "有篇材料会把将企业内部文档统一接入问答系统、知识同步成功率不低于 99.2%和知识工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "将企业内部文档统一接入问答系统",
+      "知识同步成功率不低于 99.2%"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-001-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“将企业内部文当统一接入问答系统”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "将企业内部文档统一接入问答系统"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-001-harder-9",
+    "question": "哪篇文档更像是在回答“FS-KB-401出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "FS-KB-401"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-001-harder-10",
+    "question": "如果检索词里有增量同步水位，但用户真正想问的是知识同步成功率不低于 99.2%怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "知识同步成功率不低于 99.2%"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-001-harder-11",
+    "question": "我想找和知识工程师有关、同时又明确讲到知识同步链路不稳定的资料，不要混到RRF 融合窗口那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/XpVsd5edxouBhbxudjZczZDkn3v",
+    "expected_substrings": [
+      "知识工程师",
+      "知识同步链路不稳定"
+    ],
+    "doc_title": "RAG 接入飞书知识库的总体方案",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-0",
+    "question": "混检这块老出问题，我现在更像是碰到了“纯向量召回无法稳定命中精确术语”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "纯向量召回无法稳定命中精确术语"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-1",
+    "question": "我想找那个讲术语和自然语言问题同时存在的文档，不确定是不是跟增量同步水位一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "术语和自然语言问题同时存在"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-2",
+    "question": "哪个资料里既提了Top10 召回率提升到 0.86 以上，又不是在讲语义连续性那一类话题？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "Top10 召回率提升到 0.86 以上"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-3",
+    "question": "如果我只记得这篇东西和检索算法工程师有关，还提到过RRF 融合窗口，应该搜到什么文档？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "RRF 融合窗口",
+      "检索算法工程师"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-4",
+    "question": "RAG-RET-217 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "RAG-RET-217"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-5",
+    "question": "我在知识库里想找“怎么把纯向量召回无法稳定命中精确术语压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "纯向量召回无法稳定命中精确术语"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-6",
+    "question": "如果问的是混检相关，但描述里同时出现了增量同步水位和RRF 融合窗口，更应该命中哪篇？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "RRF 融合窗口"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-7",
+    "question": "有篇材料会把术语和自然语言问题同时存在、Top10 召回率提升到 0.86 以上和检索算法工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "术语和自然语言问题同时存在",
+      "Top10 召回率提升到 0.86 以上"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“术语和自然语言问题同时存在”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "术语和自然语言问题同时存在"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-9",
+    "question": "哪篇文档更像是在回答“RAG-RET-217出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "RAG-RET-217"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-10",
+    "question": "如果检索词里有RRF 融合窗口，但用户真正想问的是Top10 召回率提升到 0.86 以上怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "Top10 召回率提升到 0.86 以上"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-002-harder-11",
+    "question": "我想找和检索算法工程师有关、同时又明确讲到纯向量召回无法稳定命中精确术语的资料，不要混到语义连续性那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/OqJrdYU1hob1Pnx8YDqc1d8cntc",
+    "expected_substrings": [
+      "检索算法工程师",
+      "纯向量召回无法稳定命中精确术语"
+    ],
+    "doc_title": "向量召回与 BM25 融合策略说明",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-0",
+    "question": "切片这块老出问题，我现在更像是碰到了“chunk 过短导致上下文缺失”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "chunk 过短导致上下文缺失"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-1",
+    "question": "我想找那个讲长文当跨段落语义容易被切断的文档，不确定是不是跟RRF 融合窗口一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "长文档跨段落语义容易被切断"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-2",
+    "question": "哪个资料里既提了平均切片命中率提升 12%，又不是在讲版本主键那一类话题？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "平均切片命中率提升 12%"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-3",
+    "question": "如果我只记得这篇东西和数据平台工程师有关，还提到过语义连续性，应该搜到什么文档？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "语义连续性",
+      "数据平台工程师"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-4",
+    "question": "RAG-CHUNK-318 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "RAG-CHUNK-318"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-5",
+    "question": "我在知识库里想找“怎么把chunk 过短导致上下文缺失压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "chunk 过短导致上下文缺失"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-6",
+    "question": "如果问的是切片相关，但描述里同时出现了RRF 融合窗口和语义连续性，更应该命中哪篇？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "语义连续性"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-7",
+    "question": "有篇材料会把长文档跨段落语义容易被切断、平均切片命中率提升 12%和数据平台工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "长文档跨段落语义容易被切断",
+      "平均切片命中率提升 12%"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“长文当跨段落语义容易被切断”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "长文档跨段落语义容易被切断"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-9",
+    "question": "哪篇文档更像是在回答“RAG-CHUNK-318出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "RAG-CHUNK-318"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-10",
+    "question": "如果检索词里有语义连续性，但用户真正想问的是平均切片命中率提升 12%怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "平均切片命中率提升 12%"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-003-harder-11",
+    "question": "我想找和数据平台工程师有关、同时又明确讲到chunk 过短导致上下文缺失的资料，不要混到版本主键那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/PSF0d6XRuoeBWVxtZwIcKBQYn1c",
+    "expected_substrings": [
+      "数据平台工程师",
+      "chunk 过短导致上下文缺失"
+    ],
+    "doc_title": "飞书文档切片长度与重叠参数调优",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-0",
+    "question": "版本治理这块老出问题，我现在更像是碰到了“重复内容污染找回排序”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "重复内容污染召回排序"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-1",
+    "question": "我想找那个讲同一文当有多个修订版并发存在的文档，不确定是不是跟语义连续性一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "同一文档有多个修订版并发存在"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-2",
+    "question": "哪个资料里既提了重复来源占比压缩到 5% 以下，又不是在讲排障前置条件那一类话题？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "重复来源占比压缩到 5% 以下"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-3",
+    "question": "如果我只记得这篇东西和平台架构师有关，还提到过版本主键，应该搜到什么文档？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "版本主键",
+      "平台架构师"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-4",
+    "question": "RAG-VER-112 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "RAG-VER-112"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-5",
+    "question": "我在知识库里想找“怎么把重复内容污染召回排序压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "重复内容污染召回排序"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-6",
+    "question": "如果问的是版本治理相关，但描述里同时出现了语义连续性和版本主键，更应该命中哪篇？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "版本主键"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-7",
+    "question": "有篇材料会把同一文档有多个修订版并发存在、重复来源占比压缩到 5% 以下和平台架构师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "同一文档有多个修订版并发存在",
+      "重复来源占比压缩到 5% 以下"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“同一文当有多个修订版并发存在”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "同一文档有多个修订版并发存在"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-9",
+    "question": "哪篇文档更像是在回答“RAG-VER-112出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "RAG-VER-112"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-10",
+    "question": "如果检索词里有版本主键，但用户真正想问的是重复来源占比压缩到 5% 以下怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "重复来源占比压缩到 5% 以下"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-004-harder-11",
+    "question": "我想找和平台架构师有关、同时又明确讲到重复内容污染召回排序的资料，不要混到排障前置条件那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/N7RTd4J6CoJX3TxoaylcgmhxnUh",
+    "expected_substrings": [
+      "平台架构师",
+      "重复内容污染召回排序"
+    ],
+    "doc_title": "知识库多版本文档去重规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-0",
+    "question": "文档模板这块老出问题，我现在更像是碰到了“关键信息埋在自由文本中”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "关键信息埋在自由文本中"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-1",
+    "question": "我想找那个讲运维文当结构不统一的文档，不确定是不是跟版本主键一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "运维文档结构不统一"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-2",
+    "question": "哪个资料里既提了问题定位平均时长下降 18%，又不是在讲问法变体那一类话题？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "问题定位平均时长下降 18%"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-3",
+    "question": "如果我只记得这篇东西和SRE有关，还提到过排障前置条件，应该搜到什么文档？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "排障前置条件",
+      "SRE"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-4",
+    "question": "OPS-DOC-503 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "OPS-DOC-503"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-5",
+    "question": "我在知识库里想找“怎么把关键信息埋在自由文本中压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "关键信息埋在自由文本中"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-6",
+    "question": "如果问的是文档模板相关，但描述里同时出现了版本主键和排障前置条件，更应该命中哪篇？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "排障前置条件"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-7",
+    "question": "有篇材料会把运维文档结构不统一、问题定位平均时长下降 18%和SRE放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "运维文档结构不统一",
+      "问题定位平均时长下降 18%"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“运维文当结构不统一”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "运维文档结构不统一"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-9",
+    "question": "哪篇文档更像是在回答“OPS-DOC-503出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "OPS-DOC-503"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-10",
+    "question": "如果检索词里有排障前置条件，但用户真正想问的是问题定位平均时长下降 18%怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "问题定位平均时长下降 18%"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-005-harder-11",
+    "question": "我想找和SRE有关、同时又明确讲到关键信息埋在自由文本中的资料，不要混到问法变体那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/K6aud1khpoJA0UxR3WHc9g2vnvh",
+    "expected_substrings": [
+      "SRE",
+      "关键信息埋在自由文本中"
+    ],
+    "doc_title": "故障排查手册的标准化模板",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-0",
+    "question": "评测集这块老出问题，我现在更像是碰到了“问题表述与标准答案不一致”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "问题表述与标准答案不一致"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-1",
+    "question": "我想找那个讲历史工单要转成可量化问答的文档，不确定是不是跟排障前置条件一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "历史工单要转成可量化问答"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-2",
+    "question": "哪个资料里既提了有效样本覆盖 20 个高频主题，又不是在讲向量维度预算那一类话题？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "有效样本覆盖 20 个高频主题"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-3",
+    "question": "如果我只记得这篇东西和客服知识运营有关，还提到过问法变体，应该搜到什么文档？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "问法变体",
+      "客服知识运营"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-4",
+    "question": "EVAL-FAQ-228 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "EVAL-FAQ-228"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-5",
+    "question": "我在知识库里想找“怎么把问题表述与标准答案不一致压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "问题表述与标准答案不一致"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-6",
+    "question": "如果问的是评测集相关，但描述里同时出现了排障前置条件和问法变体，更应该命中哪篇？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "问法变体"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-7",
+    "question": "有篇材料会把历史工单要转成可量化问答、有效样本覆盖 20 个高频主题和客服知识运营放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "历史工单要转成可量化问答",
+      "有效样本覆盖 20 个高频主题"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“历史工单要转成可量化问答”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "历史工单要转成可量化问答"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-9",
+    "question": "哪篇文档更像是在回答“EVAL-FAQ-228出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "EVAL-FAQ-228"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-10",
+    "question": "如果检索词里有问法变体，但用户真正想问的是有效样本覆盖 20 个高频主题怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "有效样本覆盖 20 个高频主题"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-006-harder-11",
+    "question": "我想找和客服知识运营有关、同时又明确讲到问题表述与标准答案不一致的资料，不要混到向量维度预算那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/OGN5dsm0GovwyIxCOGfcSOWYnhe",
+    "expected_substrings": [
+      "客服知识运营",
+      "问题表述与标准答案不一致"
+    ],
+    "doc_title": "工单 FAQ 沉淀为评测样本的方法",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-0",
+    "question": "向量成本这块老出问题，我现在更像是碰到了“高维向量带来存储和查询压力”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "高维向量带来存储和查询压力"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-1",
+    "question": "我想找那个讲索引规模增长过快的文档，不确定是不是跟问法变体一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "索引规模增长过快"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-2",
+    "question": "哪个资料里既提了单次建库成本下降 25%，又不是在讲权限回收任务那一类话题？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "单次建库成本下降 25%"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-3",
+    "question": "如果我只记得这篇东西和AI 平台工程师有关，还提到过向量维度预算，应该搜到什么文档？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "向量维度预算",
+      "AI 平台工程师"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-4",
+    "question": "EMB-COST-604 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "EMB-COST-604"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-5",
+    "question": "我在知识库里想找“怎么把高维向量带来存储和查询压力压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "高维向量带来存储和查询压力"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-6",
+    "question": "如果问的是向量成本相关，但描述里同时出现了问法变体和向量维度预算，更应该命中哪篇？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "向量维度预算"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-7",
+    "question": "有篇材料会把索引规模增长过快、单次建库成本下降 25%和AI 平台工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "索引规模增长过快",
+      "单次建库成本下降 25%"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“索引规模增长过快”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "索引规模增长过快"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-9",
+    "question": "哪篇文档更像是在回答“EMB-COST-604出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "EMB-COST-604"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-10",
+    "question": "如果检索词里有向量维度预算，但用户真正想问的是单次建库成本下降 25%怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "单次建库成本下降 25%"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-007-harder-11",
+    "question": "我想找和AI 平台工程师有关、同时又明确讲到高维向量带来存储和查询压力的资料，不要混到权限回收任务那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/DOrrd7zfxoGNZYxOxaPcfZKZn8f",
+    "expected_substrings": [
+      "AI 平台工程师",
+      "高维向量带来存储和查询压力"
+    ],
+    "doc_title": "Embedding 维度与成本控制实践",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-0",
+    "question": "权限这块老出问题，我现在更像是碰到了“离职或转岗后遗留文当仍被检索”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "离职或转岗后遗留文档仍被检索"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-1",
+    "question": "我想找那个讲文当访问权限频繁变化的文档，不确定是不是跟向量维度预算一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "文档访问权限频繁变化"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-2",
+    "question": "哪个资料里既提了权限失效生效延迟控制在 10 分钟内，又不是在讲图像文本纠偏那一类话题？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "权限失效生效延迟控制在 10 分钟内"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-3",
+    "question": "如果我只记得这篇东西和安全工程师有关，还提到过权现回收任务，应该搜到什么文档？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "权限回收任务",
+      "安全工程师"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-4",
+    "question": "AUTH-KB-334 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "AUTH-KB-334"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-5",
+    "question": "我在知识库里想找“怎么把离职或转岗后遗留文档仍被检索压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "离职或转岗后遗留文档仍被检索"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-6",
+    "question": "如果问的是权限相关，但描述里同时出现了向量维度预算和权限回收任务，更应该命中哪篇？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "权限回收任务"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-7",
+    "question": "有篇材料会把文档访问权限频繁变化、权限失效生效延迟控制在 10 分钟内和安全工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "文档访问权限频繁变化",
+      "权限失效生效延迟控制在 10 分钟内"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“文当访问权限频繁变化”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "文档访问权限频繁变化"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-9",
+    "question": "哪篇文档更像是在回答“AUTH-KB-334出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "AUTH-KB-334"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-10",
+    "question": "如果检索词里有权限回收任务，但用户真正想问的是权限失效生效延迟控制在 10 分钟内怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "权限失效生效延迟控制在 10 分钟内"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-008-harder-11",
+    "question": "我想找和安全工程师有关、同时又明确讲到离职或转岗后遗留文档仍被检索的资料，不要混到图像文本纠偏那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/NyQidRDlLoHvbBx0WkucawYlnPh",
+    "expected_substrings": [
+      "安全工程师",
+      "离职或转岗后遗留文档仍被检索"
+    ],
+    "doc_title": "飞书知识库权限变更后的回收机制",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-0",
+    "question": "OCR这块老出问题，我现在更像是碰到了“乱码和错字影响找回与引用”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "乱码和错字影响召回与引用"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-1",
+    "question": "我想找那个讲截图和扫描件进入知试库的文档，不确定是不是跟权限回收任务一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "截图和扫描件进入知识库"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-2",
+    "question": "哪个资料里既提了噪声段落比例低于 8%，又不是在讲租户过滤标签那一类话题？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "噪声段落比例低于 8%"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-3",
+    "question": "如果我只记得这篇东西和信息治理工程师有关，还提到过图像文本纠偏，应该搜到什么文档？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "图像文本纠偏",
+      "信息治理工程师"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-4",
+    "question": "OCR-CLEAN-441 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "OCR-CLEAN-441"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-5",
+    "question": "我在知识库里想找“怎么把乱码和错字影响召回与引用压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "乱码和错字影响召回与引用"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-6",
+    "question": "如果问的是OCR相关，但描述里同时出现了权限回收任务和图像文本纠偏，更应该命中哪篇？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "图像文本纠偏"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-7",
+    "question": "有篇材料会把截图和扫描件进入知识库、噪声段落比例低于 8%和信息治理工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "截图和扫描件进入知识库",
+      "噪声段落比例低于 8%"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“截图和扫描件进入知试库”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "截图和扫描件进入知识库"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-9",
+    "question": "哪篇文档更像是在回答“OCR-CLEAN-441出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "OCR-CLEAN-441"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-10",
+    "question": "如果检索词里有图像文本纠偏，但用户真正想问的是噪声段落比例低于 8%怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "噪声段落比例低于 8%"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-009-harder-11",
+    "question": "我想找和信息治理工程师有关、同时又明确讲到乱码和错字影响召回与引用的资料，不要混到租户过滤标签那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/S1nQd7qvforJqKxlVQ9cu5E2n7d",
+    "expected_substrings": [
+      "信息治理工程师",
+      "乱码和错字影响召回与引用"
+    ],
+    "doc_title": "低质量 OCR 内容的清洗规则",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-0",
+    "question": "租户隔离这块老出问题，我现在更像是碰到了“找回结果存在跨租户污染风险”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "召回结果存在跨租户污染风险"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-1",
+    "question": "我想找那个讲不同业务线共用一套 RAG 基座的文档，不确定是不是跟图像文本纠偏一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "不同业务线共用一套 RAG 基座"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-2",
+    "question": "哪个资料里既提了跨租户误召回次数清零，又不是在讲引用窗口长度那一类话题？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "跨租户误召回次数清零"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-3",
+    "question": "如果我只记得这篇东西和后端工程师有关，还提到过租户过滤标签，应该搜到什么文档？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "租户过滤标签",
+      "后端工程师"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-4",
+    "question": "TENANT-RAG-714 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "TENANT-RAG-714"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-5",
+    "question": "我在知识库里想找“怎么把召回结果存在跨租户污染风险压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "召回结果存在跨租户污染风险"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-6",
+    "question": "如果问的是租户隔离相关，但描述里同时出现了图像文本纠偏和租户过滤标签，更应该命中哪篇？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "租户过滤标签"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-7",
+    "question": "有篇材料会把不同业务线共用一套 RAG 基座、跨租户误召回次数清零和后端工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "不同业务线共用一套 RAG 基座",
+      "跨租户误召回次数清零"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“不同业务线共用一套 RAG 基座”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "不同业务线共用一套 RAG 基座"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-9",
+    "question": "哪篇文档更像是在回答“TENANT-RAG-714出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "TENANT-RAG-714"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-10",
+    "question": "如果检索词里有租户过滤标签，但用户真正想问的是跨租户误召回次数清零怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "跨租户误召回次数清零"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-010-harder-11",
+    "question": "我想找和后端工程师有关、同时又明确讲到召回结果存在跨租户污染风险的资料，不要混到引用窗口长度那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/OhlodTOrmoqWdExxgr4ccmtBnCh",
+    "expected_substrings": [
+      "后端工程师",
+      "召回结果存在跨租户污染风险"
+    ],
+    "doc_title": "多租户支持场景下的知识隔离",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-0",
+    "question": "重排这块老出问题，我现在更像是碰到了“高分片段不一定最适合直接引用”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "高分片段不一定最适合直接引用"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-1",
+    "question": "我想找那个讲命中文当很多但用户只看前几条的文档，不确定是不是跟租户过滤标签一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "命中文档很多但用户只看前几条"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-2",
+    "question": "哪个资料里既提了首屏有效引用率提升 15%，又不是在讲表头继承那一类话题？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "首屏有效引用率提升 15%"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-3",
+    "question": "如果我只记得这篇东西和应用算法工程师有关，还提到过引用窗口长度，应该搜到什么文档？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "引用窗口长度",
+      "应用算法工程师"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-4",
+    "question": "RERANK-QUOTE-188 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "RERANK-QUOTE-188"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-5",
+    "question": "我在知识库里想找“怎么把高分片段不一定最适合直接引用压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "高分片段不一定最适合直接引用"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-6",
+    "question": "如果问的是重排相关，但描述里同时出现了租户过滤标签和引用窗口长度，更应该命中哪篇？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "引用窗口长度"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-7",
+    "question": "有篇材料会把命中文档很多但用户只看前几条、首屏有效引用率提升 15%和应用算法工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "命中文档很多但用户只看前几条",
+      "首屏有效引用率提升 15%"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“命中文当很多但用户只看前几条”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "命中文档很多但用户只看前几条"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-9",
+    "question": "哪篇文档更像是在回答“RERANK-QUOTE-188出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "RERANK-QUOTE-188"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-10",
+    "question": "如果检索词里有引用窗口长度，但用户真正想问的是首屏有效引用率提升 15%怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "首屏有效引用率提升 15%"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-011-harder-11",
+    "question": "我想找和应用算法工程师有关、同时又明确讲到高分片段不一定最适合直接引用的资料，不要混到表头继承那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/A1fbdFE5NofEZJxEpzncLLvlnXc",
+    "expected_substrings": [
+      "应用算法工程师",
+      "高分片段不一定最适合直接引用"
+    ],
+    "doc_title": "检索结果重排与引用片段截断策略",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-0",
+    "question": "表格入库这块老出问题，我现在更像是碰到了“表格标题丢失后语义不完整”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "表格标题丢失后语义不完整"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-1",
+    "question": "我想找那个讲制度和配置常以表格形式维护的文档，不确定是不是跟引用窗口长度一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "制度和配置常以表格形式维护"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-2",
+    "question": "哪个资料里既提了表格问答命中率提升到 0.78，又不是在讲可信度标签那一类话题？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "表格问答命中率提升到 0.78"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-3",
+    "question": "如果我只记得这篇东西和数据产品经理有关，还提到过表头继承，应该搜到什么文档？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "表头继承",
+      "数据产品经理"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-4",
+    "question": "TABLE-RAG-526 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "TABLE-RAG-526"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-5",
+    "question": "我在知识库里想找“怎么把表格标题丢失后语义不完整压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "表格标题丢失后语义不完整"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-6",
+    "question": "如果问的是表格入库相关，但描述里同时出现了引用窗口长度和表头继承，更应该命中哪篇？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "表头继承"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-7",
+    "question": "有篇材料会把制度和配置常以表格形式维护、表格问答命中率提升到 0.78和数据产品经理放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "制度和配置常以表格形式维护",
+      "表格问答命中率提升到 0.78"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“制度和配置常以表格形式维护”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "制度和配置常以表格形式维护"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-9",
+    "question": "哪篇文档更像是在回答“TABLE-RAG-526出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "TABLE-RAG-526"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-10",
+    "question": "如果检索词里有表头继承，但用户真正想问的是表格问答命中率提升到 0.78怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "表格问答命中率提升到 0.78"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-012-harder-11",
+    "question": "我想找和数据产品经理有关、同时又明确讲到表格标题丢失后语义不完整的资料，不要混到可信度标签那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/GNqUd4e4toIIuUxj0Tjc7BV4neg",
+    "expected_substrings": [
+      "数据产品经理",
+      "表格标题丢失后语义不完整"
+    ],
+    "doc_title": "结构化表格内容如何进入知识库",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-0",
+    "question": "可信度这块老出问题，我现在更像是碰到了“模型会把低置信信息说得过于确定”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "模型会把低置信信息说得过于确定"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-1",
+    "question": "我想找那个讲同一问题可能对应多种处理建议的文档，不确定是不是跟表头继承一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "同一问题可能对应多种处理建议"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-2",
+    "question": "哪个资料里既提了低置信回答占比控制在 12% 内，又不是在讲种子文档优先级那一类话题？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "低置信回答占比控制在 12% 内"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-3",
+    "question": "如果我只记得这篇东西和客服平台负责人有关，还提到过可信度标签，应该搜到什么文档？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "可信度标签",
+      "客服平台负责人"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-4",
+    "question": "ANS-CONF-355 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "ANS-CONF-355"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-5",
+    "question": "我在知识库里想找“怎么把模型会把低置信信息说得过于确定压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "模型会把低置信信息说得过于确定"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-6",
+    "question": "如果问的是可信度相关，但描述里同时出现了表头继承和可信度标签，更应该命中哪篇？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "可信度标签"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-7",
+    "question": "有篇材料会把同一问题可能对应多种处理建议、低置信回答占比控制在 12% 内和客服平台负责人放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "同一问题可能对应多种处理建议",
+      "低置信回答占比控制在 12% 内"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“同一问题可能对应多种处理建议”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "同一问题可能对应多种处理建议"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-9",
+    "question": "哪篇文档更像是在回答“ANS-CONF-355出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "ANS-CONF-355"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-10",
+    "question": "如果检索词里有可信度标签，但用户真正想问的是低置信回答占比控制在 12% 内怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "低置信回答占比控制在 12% 内"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-013-harder-11",
+    "question": "我想找和客服平台负责人有关、同时又明确讲到模型会把低置信信息说得过于确定的资料，不要混到种子文档优先级那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/X7hQdtP3LoqqIix3LfLcvVDQnGg",
+    "expected_substrings": [
+      "客服平台负责人",
+      "模型会把低置信信息说得过于确定"
+    ],
+    "doc_title": "客服支持 Copilot 的答案可信度分层",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-0",
+    "question": "冷启动这块老出问题，我现在更像是碰到了“少量文当导致召回偏科严重”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "少量文档导致召回偏科严重"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-1",
+    "question": "我想找那个讲系统刚上线时缺乏足够语料的文档，不确定是不是跟可信度标签一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "系统刚上线时缺乏足够语料"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-2",
+    "question": "哪个资料里既提了首周可用问题覆盖率达到 60%，又不是在讲错误码别名那一类话题？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "首周可用问题覆盖率达到 60%"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-3",
+    "question": "如果我只记得这篇东西和项目经理有关，还提到过种子文当优先级，应该搜到什么文档？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "种子文档优先级",
+      "项目经理"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-4",
+    "question": "COLDSTART-639 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "COLDSTART-639"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-5",
+    "question": "我在知识库里想找“怎么把少量文档导致召回偏科严重压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "少量文档导致召回偏科严重"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-6",
+    "question": "如果问的是冷启动相关，但描述里同时出现了可信度标签和种子文档优先级，更应该命中哪篇？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "种子文档优先级"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-7",
+    "question": "有篇材料会把系统刚上线时缺乏足够语料、首周可用问题覆盖率达到 60%和项目经理放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "系统刚上线时缺乏足够语料",
+      "首周可用问题覆盖率达到 60%"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“系统刚上线时缺乏足够语料”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "系统刚上线时缺乏足够语料"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-9",
+    "question": "哪篇文档更像是在回答“COLDSTART-639出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "COLDSTART-639"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-10",
+    "question": "如果检索词里有种子文档优先级，但用户真正想问的是首周可用问题覆盖率达到 60%怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "首周可用问题覆盖率达到 60%"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-014-harder-11",
+    "question": "我想找和项目经理有关、同时又明确讲到少量文档导致召回偏科严重的资料，不要混到错误码别名那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/J4HIdo6aIoTjfRxFrDQcM3ijn3b",
+    "expected_substrings": [
+      "项目经理",
+      "少量文档导致召回偏科严重"
+    ],
+    "doc_title": "知识库冷启动阶段的种子文档建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-0",
+    "question": "错误码这块老出问题，我现在更像是碰到了“自然语言问题难以命中精确码值”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "自然语言问题难以命中精确码值"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-1",
+    "question": "我想找那个讲研发文当里充满接口名和错误码的文档，不确定是不是跟种子文档优先级一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "研发文档里充满接口名和错误码"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-2",
+    "question": "哪个资料里既提了错误码类问题 Top5 命中率提升 20%，又不是在讲回归基线集那一类话题？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "错误码类问题 Top5 命中率提升 20%"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-3",
+    "question": "如果我只记得这篇东西和研发效能工程师有关，还提到过错码别名，应该搜到什么文档？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "错误码别名",
+      "研发效能工程师"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-4",
+    "question": "API-ERR-842 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "API-ERR-842"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-5",
+    "question": "我在知识库里想找“怎么把自然语言问题难以命中精确码值压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "自然语言问题难以命中精确码值"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-6",
+    "question": "如果问的是错误码相关，但描述里同时出现了种子文档优先级和错误码别名，更应该命中哪篇？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "错误码别名"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-7",
+    "question": "有篇材料会把研发文档里充满接口名和错误码、错误码类问题 Top5 命中率提升 20%和研发效能工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "研发文档里充满接口名和错误码",
+      "错误码类问题 Top5 命中率提升 20%"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“研发文当里充满接口名和错误码”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "研发文档里充满接口名和错误码"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-9",
+    "question": "哪篇文档更像是在回答“API-ERR-842出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "API-ERR-842"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-10",
+    "question": "如果检索词里有错误码别名，但用户真正想问的是错误码类问题 Top5 命中率提升 20%怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "错误码类问题 Top5 命中率提升 20%"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-015-harder-11",
+    "question": "我想找和研发效能工程师有关、同时又明确讲到自然语言问题难以命中精确码值的资料，不要混到回归基线集那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/ZptqdIqUYodjqOx2LzSch5dtnjf",
+    "expected_substrings": [
+      "研发效能工程师",
+      "自然语言问题难以命中精确码值"
+    ],
+    "doc_title": "接口错误码文档的可检索性增强",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-0",
+    "question": "评测闭环这块老出问题，我现在更像是碰到了“上线后缺少自动化回归验证”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "上线后缺少自动化回归验证"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-1",
+    "question": "我想找那个讲文当更新后效果变化不可见的文档，不确定是不是跟错误码别名一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "文档更新后效果变化不可见"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-2",
+    "question": "哪个资料里既提了每次发版都产出召回对比报告，又不是在讲意图裁决阈值那一类话题？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "每次发版都产出召回对比报告"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-3",
+    "question": "如果我只记得这篇东西和测试开发工程师有关，还提到过回归基线集，应该搜到什么文档？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "回归基线集",
+      "测试开发工程师"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-4",
+    "question": "EVAL-LOOP-295 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "EVAL-LOOP-295"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-5",
+    "question": "我在知识库里想找“怎么把上线后缺少自动化回归验证压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "上线后缺少自动化回归验证"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-6",
+    "question": "如果问的是评测闭环相关，但描述里同时出现了错误码别名和回归基线集，更应该命中哪篇？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "回归基线集"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-7",
+    "question": "有篇材料会把文档更新后效果变化不可见、每次发版都产出召回对比报告和测试开发工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "文档更新后效果变化不可见",
+      "每次发版都产出召回对比报告"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“文当更新后效果变化不可见”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "文档更新后效果变化不可见"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-9",
+    "question": "哪篇文档更像是在回答“EVAL-LOOP-295出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "EVAL-LOOP-295"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-10",
+    "question": "如果检索词里有回归基线集，但用户真正想问的是每次发版都产出召回对比报告怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "每次发版都产出召回对比报告"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-016-harder-11",
+    "question": "我想找和测试开发工程师有关、同时又明确讲到上线后缺少自动化回归验证的资料，不要混到意图裁决阈值那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/SA1rdWIMIog4qixWbcrcQt4inSd",
+    "expected_substrings": [
+      "测试开发工程师",
+      "上线后缺少自动化回归验证"
+    ],
+    "doc_title": "知识更新后的回灌评测闭环",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-0",
+    "question": "路由这块老出问题，我现在更像是碰到了“错误路由会吞掉真实检索需求”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "错误路由会吞掉真实检索需求"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-1",
+    "question": "我想找那个讲问答、工具调用和流程执行共存的文档，不确定是不是跟回归基线集一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "问答、工具调用和流程执行共存"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-2",
+    "question": "哪个资料里既提了检索误路由率低于 3%，又不是在讲标签表达式那一类话题？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "检索误路由率低于 3%"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-3",
+    "question": "如果我只记得这篇东西和Agent 平台工程师有关，还提到过意图裁决阈值，应该搜到什么文档？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "意图裁决阈值",
+      "Agent 平台工程师"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-4",
+    "question": "AGENT-ROUTE-467 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "AGENT-ROUTE-467"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-5",
+    "question": "我在知识库里想找“怎么把错误路由会吞掉真实检索需求压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "错误路由会吞掉真实检索需求"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-6",
+    "question": "如果问的是路由相关，但描述里同时出现了回归基线集和意图裁决阈值，更应该命中哪篇？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "意图裁决阈值"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-7",
+    "question": "有篇材料会把问答、工具调用和流程执行共存、检索误路由率低于 3%和Agent 平台工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "问答、工具调用和流程执行共存",
+      "检索误路由率低于 3%"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“问答、工具调用和流程执行共存”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "问答、工具调用和流程执行共存"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-9",
+    "question": "哪篇文档更像是在回答“AGENT-ROUTE-467出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "AGENT-ROUTE-467"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-10",
+    "question": "如果检索词里有意图裁决阈值，但用户真正想问的是检索误路由率低于 3%怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "检索误路由率低于 3%"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-017-harder-11",
+    "question": "我想找和Agent 平台工程师有关、同时又明确讲到错误路由会吞掉真实检索需求的资料，不要混到标签表达式那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/ReZ0d0JUzoaaIcxjI9xcFozsnuf",
+    "expected_substrings": [
+      "Agent 平台工程师",
+      "错误路由会吞掉真实检索需求"
+    ],
+    "doc_title": "多 Agent 支持场景中的检索路由",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-0",
+    "question": "元数据过滤这块老出问题，我现在更像是碰到了“过滤维度设计不足导致找回不稳”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "过滤维度设计不足导致召回不稳"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-1",
+    "question": "我想找那个讲同一篇文当包含多部门共用和专用内容的文档，不确定是不是跟意图裁决阈值一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "同一篇文档包含多部门共用和专用内容"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-2",
+    "question": "哪个资料里既提了过滤后准确率提升 14%，又不是在讲口语化改写那一类话题？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "过滤后准确率提升 14%"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-3",
+    "question": "如果我只记得这篇东西和数据治理经理有关，还提到过标签表达式，应该搜到什么文档？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "标签表达式",
+      "数据治理经理"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-4",
+    "question": "META-FILTER-582 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "META-FILTER-582"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-5",
+    "question": "我在知识库里想找“怎么把过滤维度设计不足导致召回不稳压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "过滤维度设计不足导致召回不稳"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-6",
+    "question": "如果问的是元数据过滤相关，但描述里同时出现了意图裁决阈值和标签表达式，更应该命中哪篇？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "标签表达式"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-7",
+    "question": "有篇材料会把同一篇文档包含多部门共用和专用内容、过滤后准确率提升 14%和数据治理经理放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "同一篇文档包含多部门共用和专用内容",
+      "过滤后准确率提升 14%"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“同一篇文当包含多部门共用和专用内容”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "同一篇文档包含多部门共用和专用内容"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-9",
+    "question": "哪篇文档更像是在回答“META-FILTER-582出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "META-FILTER-582"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-10",
+    "question": "如果检索词里有标签表达式，但用户真正想问的是过滤后准确率提升 14%怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "过滤后准确率提升 14%"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-018-harder-11",
+    "question": "我想找和数据治理经理有关、同时又明确讲到过滤维度设计不足导致召回不稳的资料，不要混到口语化改写那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/F8z6dwfJ8oOiAQxfYaWc76H2nLd",
+    "expected_substrings": [
+      "数据治理经理",
+      "过滤维度设计不足导致召回不稳"
+    ],
+    "doc_title": "知识片段元数据设计与过滤表达式",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-0",
+    "question": "问法扩展这块老出问题，我现在更像是碰到了“评策集太标准导致线上效果被高估”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "评测集太标准导致线上效果被高估"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-1",
+    "question": "我想找那个讲用户问法高度口语化的文档，不确定是不是跟标签表达式一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "用户问法高度口语化"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-2",
+    "question": "哪个资料里既提了每个事实至少覆盖 4 类问法，又不是在讲召回健康度那一类话题？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "每个事实至少覆盖 4 类问法"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-3",
+    "question": "如果我只记得这篇东西和NLP 工程师有关，还提到过口语化改写，应该搜到什么文档？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "口语化改写",
+      "NLP 工程师"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-4",
+    "question": "QUERY-VAR-731 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "QUERY-VAR-731"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-5",
+    "question": "我在知识库里想找“怎么把评测集太标准导致线上效果被高估压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "评测集太标准导致线上效果被高估"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-6",
+    "question": "如果问的是问法扩展相关，但描述里同时出现了标签表达式和口语化改写，更应该命中哪篇？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "口语化改写"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-7",
+    "question": "有篇材料会把用户问法高度口语化、每个事实至少覆盖 4 类问法和NLP 工程师放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "用户问法高度口语化",
+      "每个事实至少覆盖 4 类问法"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“用户问法高度口语化”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "用户问法高度口语化"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-9",
+    "question": "哪篇文档更像是在回答“QUERY-VAR-731出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "QUERY-VAR-731"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-10",
+    "question": "如果检索词里有口语化改写，但用户真正想问的是每个事实至少覆盖 4 类问法怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "每个事实至少覆盖 4 类问法"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-019-harder-11",
+    "question": "我想找和NLP 工程师有关、同时又明确讲到评测集太标准导致线上效果被高估的资料，不要混到召回健康度那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/HKlJdHom3oca7BxOX1Oc27xwnOd",
+    "expected_substrings": [
+      "NLP 工程师",
+      "评测集太标准导致线上效果被高估"
+    ],
+    "doc_title": "召回率量化时的问法多样性建设",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-0",
+    "question": "监控这块老出问题，我现在更像是碰到了“没有统一指标无法判断知试资产质量”，先看哪篇比较对？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "没有统一指标无法判断知识资产质量"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-1",
+    "question": "我想找那个讲RAG 建成后仍需持续运营的文档，不确定是不是跟口语化改写一类，应该命中哪篇？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "RAG 建成后仍需持续运营"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-2",
+    "question": "哪个资料里既提了周级异常发现时间缩短 50%，又不是在讲增量同步水位那一类话题？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "周级异常发现时间缩短 50%"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-3",
+    "question": "如果我只记得这篇东西和知识库运营经理有关，还提到过找回健康度，应该搜到什么文档？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "召回健康度",
+      "知识库运营经理"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-4",
+    "question": "OPS-METRIC-903 这个错码我在线上看到了，但我想找的是治理思路，不是纯错误码表，哪篇更像？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "OPS-METRIC-903"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-5",
+    "question": "我在知识库里想找“怎么把没有统一指标无法判断知识资产质量压下去”的资料，不想看泛泛介绍，应该是哪篇？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "没有统一指标无法判断知识资产质量"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-6",
+    "question": "如果问的是监控相关，但描述里同时出现了口语化改写和召回健康度，更应该命中哪篇？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "召回健康度"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-7",
+    "question": "有篇材料会把RAG 建成后仍需持续运营、周级异常发现时间缩短 50%和知识库运营经理放在一起讲，我现在只记得这几个点，它是哪篇？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "RAG 建成后仍需持续运营",
+      "周级异常发现时间缩短 50%"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-8",
+    "question": "我不是要查术语解释，我要找真正覆盖“RAG 建成后仍需持续运营”落地做法的那份文档，哪篇最对？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "RAG 建成后仍需持续运营"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-9",
+    "question": "哪篇文档更像是在回答“OPS-METRIC-903出现后该看什么治理资料”，而不是单看错误现象？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "OPS-METRIC-903"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-10",
+    "question": "如果检索词里有召回健康度，但用户真正想问的是周级异常发现时间缩短 50%怎么达成，应该回到哪篇？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "周级异常发现时间缩短 50%"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  },
+  {
+    "item_id": "rag-kb-020-harder-11",
+    "question": "我想找和知识库运营经理有关、同时又明确讲到没有统一指标无法判断知识资产质量的资料，不要混到增量同步水位那篇，应该是哪篇？",
+    "expected_source": "feishu://docx/FY0MdAbDQoK1SLxA640crZvmnHR",
+    "expected_substrings": [
+      "知识库运营经理",
+      "没有统一指标无法判断知识资产质量"
+    ],
+    "doc_title": "知识库运营看板与质量监控指标",
+    "section_title": null
+  }
+]

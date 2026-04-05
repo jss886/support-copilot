@@ -4,6 +4,7 @@ import requests
 from rapidocr_onnxruntime import RapidOCR
 
 from rag.config import settings
+from rag.models import SourceElement
 
 
 BLOCK_TYPE_NAMES = {
@@ -39,10 +40,24 @@ class FeishuDocument:
     doc_id: str
     title: str
     text: str
+    elements: list[SourceElement]
     revision_id: int | None = None
     image_ocr_count: int = 0
     table_count: int = 0
     attachment_count: int = 0
+
+
+@dataclass(frozen=True)
+class FeishuWikiNode:
+    """用于递归遍历知识库节点的最小元数据。"""
+    space_id: str
+    node_token: str
+    parent_node_token: str | None
+    title: str
+    obj_type: str | None
+    obj_token: str | None
+    has_child: bool
+    node_type: str | None = None
 
 
 _OCR_ENGINE: RapidOCR | None = None
@@ -86,6 +101,27 @@ def _request_feishu_json(url: str, token: str, params: dict | None = None) -> di
     if payload.get("code") != 0:
         raise ValueError(f"Feishu API request failed: {payload.get('msg')}")
     return payload["data"]
+
+
+def _paginate_feishu_json(url: str, token: str, params: dict | None = None) -> list[dict]:
+    """拉平飞书分页接口，返回完整的 items 列表。"""
+    items: list[dict] = []
+    page_token: str | None = None
+    base_params = dict(params or {})
+
+    while True:
+        request_params = dict(base_params)
+        if page_token:
+            request_params["page_token"] = page_token
+        data = _request_feishu_json(url, token=token, params=request_params)
+        items.extend(data.get("items", []))
+        if not data.get("has_more"):
+            break
+        page_token = data.get("page_token")
+        if not page_token:
+            break
+
+    return items
 
 
 def _request_feishu_bytes(url: str, token: str) -> bytes:
@@ -197,6 +233,24 @@ def _block_marker(block: dict, index: int) -> str:
     )
 
 
+def _element_type_for_block(block: dict) -> str:
+    block_type_name = _block_type_name(block)
+    if block_type_name.startswith("heading"):
+        return block_type_name
+    if block_type_name in {"bullet", "ordered", "quote", "code", "todo", "table", "image", "file"}:
+        return block_type_name
+    if block_type_name in {"bitable", "sheet"}:
+        return "table"
+    return "text"
+
+
+def _heading_level(element_type: str) -> int | None:
+    if not element_type.startswith("heading"):
+        return None
+    suffix = element_type.removeprefix("heading")
+    return int(suffix) if suffix.isdigit() else None
+
+
 def _fetch_media_download_url(file_token: str, token: str) -> str:
     data = _request_feishu_json(
         f"{settings.feishu.open_api_base}/drive/v1/medias/batch_get_tmp_download_url",
@@ -234,27 +288,98 @@ def _load_document_metadata(doc_id: str, token: str) -> tuple[str, int | None]:
 
 
 def _load_document_blocks(doc_id: str, token: str) -> list[dict]:
-    items: list[dict] = []
-    page_token: str | None = None
+    return _paginate_feishu_json(
+        f"{settings.feishu.open_api_base}/docx/v1/documents/{doc_id}/blocks",
+        token=token,
+        params={"page_size": 500},
+    )
 
-    while True:
-        params = {"page_size": 500}
-        if page_token:
-            params["page_token"] = page_token
 
-        data = _request_feishu_json(
-            f"{settings.feishu.open_api_base}/docx/v1/documents/{doc_id}/blocks",
-            token=token,
-            params=params,
+def list_feishu_wiki_nodes(
+    *,
+    space_id: str,
+    parent_node_token: str | None = None,
+    app_id: str | None = None,
+    app_secret: str | None = None,
+) -> list[FeishuWikiNode]:
+    """列出知识库根节点或指定父节点下的直接子节点。"""
+    token = get_tenant_access_token(app_id=app_id, app_secret=app_secret)
+    params: dict[str, str | int] = {"page_size": 50}
+    if parent_node_token:
+        params["parent_node_token"] = parent_node_token
+
+    items = _paginate_feishu_json(
+        f"{settings.feishu.open_api_base}/wiki/v2/spaces/{space_id}/nodes",
+        token=token,
+        params=params,
+    )
+    return [
+        FeishuWikiNode(
+            space_id=item.get("space_id", space_id),
+            node_token=item["node_token"],
+            parent_node_token=item.get("parent_node_token"),
+            title=item.get("title", ""),
+            obj_type=item.get("obj_type"),
+            obj_token=item.get("obj_token"),
+            has_child=bool(item.get("has_child")),
+            node_type=item.get("node_type"),
         )
-        items.extend(data.get("items", []))
-        if not data.get("has_more"):
-            break
-        page_token = data.get("page_token")
-        if not page_token:
-            break
+        for item in items
+    ]
 
-    return items
+
+def list_feishu_wiki_subtree_docx_nodes(
+    *,
+    space_id: str,
+    parent_node_token: str,
+    app_id: str | None = None,
+    app_secret: str | None = None,
+) -> list[FeishuWikiNode]:
+    """递归收集指定知识库父节点下的全部 docx 节点。"""
+    token = get_tenant_access_token(app_id=app_id, app_secret=app_secret)
+    discovered: list[FeishuWikiNode] = []
+    pending = [parent_node_token]
+    visited: set[str] = set()
+
+    while pending:
+        current_parent = pending.pop()
+        if current_parent in visited:
+            continue
+        visited.add(current_parent)
+
+        # 知识库节点接口一次只返回一层，所以这里通过持续展开子目录来完成递归。
+        items = _paginate_feishu_json(
+            f"{settings.feishu.open_api_base}/wiki/v2/spaces/{space_id}/nodes",
+            token=token,
+            params={"page_size": 50, "parent_node_token": current_parent},
+        )
+        for item in items:
+            node = FeishuWikiNode(
+                space_id=item.get("space_id", space_id),
+                node_token=item["node_token"],
+                parent_node_token=item.get("parent_node_token"),
+                title=item.get("title", ""),
+                obj_type=item.get("obj_type"),
+                obj_token=item.get("obj_token"),
+                has_child=bool(item.get("has_child")),
+                node_type=item.get("node_type"),
+            )
+            discovered.append(node)
+            if node.has_child:
+                pending.append(node.node_token)
+
+    deduped: list[FeishuWikiNode] = []
+    seen_obj_tokens: set[str] = set()
+    for node in discovered:
+        if node.obj_type != "docx" or not node.obj_token:
+            continue
+        # 同一篇云文档可能通过多个节点暴露出来，这里按 obj_token 去重，
+        # 避免后续重复切片和重复向量化。
+        if node.obj_token in seen_obj_tokens:
+            continue
+        seen_obj_tokens.add(node.obj_token)
+        deduped.append(node)
+    return deduped
 
 
 def _extract_table_block(block: dict, index: int) -> str:
@@ -337,28 +462,70 @@ def load_feishu_document(
     blocks = _load_document_blocks(doc_id, token)
 
     lines = [title]
+    elements = [
+        SourceElement(
+            text=title,
+            start=0,
+            end=len(title),
+            element_type="title",
+            title_path=[title],
+            metadata={"doc_id": doc_id, "position": 0},
+        )
+    ]
     image_ocr_count = 0
     table_count = 0
     attachment_count = 0
+    current_length = len(title)
+    title_path = [title]
 
     for index, block in enumerate(blocks, start=1):
         rich_text, counters = _extract_rich_block(block, index, token)
         if rich_text:
-            lines.append(rich_text)
+            element_text = rich_text
             image_ocr_count += counters["image_ocr_count"]
             table_count += counters["table_count"]
             attachment_count += counters["attachment_count"]
+        else:
+            element_text = _extract_block_text(block)
+
+        if not element_text:
             continue
 
-        text = _extract_block_text(block)
-        if text:
-            lines.append(text)
-            continue
+        element_type = _element_type_for_block(block)
+        block_title_path = list(title_path)
+        heading_level = _heading_level(element_type)
+        if heading_level is not None:
+            block_title_path = [title]
+            if heading_level > 1:
+                block_title_path.extend(title_path[1:heading_level])
+            block_title_path.append(element_text)
+            title_path = list(block_title_path)
+
+        start = current_length + 1
+        end = start + len(element_text)
+        lines.append(element_text)
+        current_length = end
+        elements.append(
+            SourceElement(
+                text=element_text,
+                start=start,
+                end=end,
+                element_type=element_type,
+                title_path=block_title_path,
+                metadata={
+                    "doc_id": doc_id,
+                    "block_id": block.get("block_id"),
+                    "block_type": _block_type_name(block),
+                    "position": index,
+                },
+            )
+        )
 
     return FeishuDocument(
         doc_id=doc_id,
         title=title,
         text="\n".join(lines),
+        elements=elements,
         revision_id=revision_id,
         image_ocr_count=image_ocr_count,
         table_count=table_count,

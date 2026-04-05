@@ -34,6 +34,7 @@ def _build_chunk_record(content: str, metadata: dict) -> ChunkRecord:
         start=metadata.get("start", 0),
         end=metadata.get("end", 0),
         embedding=[],
+        metadata=metadata,
     )
 
 
@@ -89,4 +90,3 @@ def retrieve(
         results.append((float(score), _build_chunk_record(content, resolved_metadata or {})))
 
     return results
-

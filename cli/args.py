@@ -122,6 +122,89 @@ def parse_args() -> argparse.Namespace:
         default=settings.dashscope.default_dimensions or 1536,
     )
 
+    index_feishu_space_parser = subparsers.add_parser(
+        "index-feishu-space",
+        help="Recursively load docx documents under a Feishu wiki parent node and write chunks into PostgreSQL.",
+    )
+    index_feishu_space_parser.add_argument(
+        "--space-id", required=True, help="Feishu wiki space id."
+    )
+    index_feishu_space_parser.add_argument(
+        "--parent-node-token", required=True, help="Feishu wiki parent node token."
+    )
+    index_feishu_space_parser.add_argument(
+        "--jdbc-url", default=settings.postgres.jdbc_url, help="JDBC PostgreSQL url."
+    )
+    index_feishu_space_parser.add_argument(
+        "--db-user", default=settings.postgres.user, help="Database user."
+    )
+    index_feishu_space_parser.add_argument(
+        "--db-password", default=settings.postgres.password, help="Database password."
+    )
+    index_feishu_space_parser.add_argument(
+        "--chunk-size", type=int, default=settings.rag.chunk_size
+    )
+    index_feishu_space_parser.add_argument(
+        "--chunk-overlap", type=int, default=settings.rag.chunk_overlap
+    )
+    index_feishu_space_parser.add_argument(
+        "--batch-size", type=int, default=settings.rag.batch_size
+    )
+    index_feishu_space_parser.add_argument(
+        "--embedding-dimensions",
+        type=int,
+        default=settings.dashscope.default_dimensions or 1536,
+    )
+
+    seed_parser = subparsers.add_parser(
+        "seed-test-data",
+        help="Generate synthetic support documents and write chunked data into PostgreSQL.",
+    )
+    seed_parser.add_argument("--doc-count", type=int, default=100)
+    seed_parser.add_argument("--chunks-per-doc", type=int, default=5)
+    seed_parser.add_argument(
+        "--jdbc-url", default=settings.postgres.jdbc_url, help="JDBC PostgreSQL url."
+    )
+    seed_parser.add_argument(
+        "--db-user", default=settings.postgres.user, help="Database user."
+    )
+    seed_parser.add_argument(
+        "--db-password", default=settings.postgres.password, help="Database password."
+    )
+    seed_parser.add_argument(
+        "--embedding-dimensions",
+        type=int,
+        default=settings.dashscope.default_dimensions or 1536,
+    )
+
+    seed_hard_negative_parser = subparsers.add_parser(
+        "seed-hard-negatives",
+        help="Generate similar-but-wrong distractor documents and write them into PostgreSQL.",
+    )
+    seed_hard_negative_parser.add_argument(
+        "--jdbc-url", default=settings.postgres.jdbc_url, help="JDBC PostgreSQL url."
+    )
+    seed_hard_negative_parser.add_argument(
+        "--db-user", default=settings.postgres.user, help="Database user."
+    )
+    seed_hard_negative_parser.add_argument(
+        "--db-password", default=settings.postgres.password, help="Database password."
+    )
+    seed_hard_negative_parser.add_argument(
+        "--chunk-size", type=int, default=settings.rag.chunk_size
+    )
+    seed_hard_negative_parser.add_argument(
+        "--chunk-overlap", type=int, default=settings.rag.chunk_overlap
+    )
+    seed_hard_negative_parser.add_argument(
+        "--batch-size", type=int, default=settings.rag.batch_size
+    )
+    seed_hard_negative_parser.add_argument(
+        "--embedding-dimensions",
+        type=int,
+        default=settings.dashscope.default_dimensions or 1536,
+    )
+
     query_parser = subparsers.add_parser("query", help="Query against PostgreSQL chunks.")
     query_parser.add_argument(
         "--question", required=True, help="User question for retrieval."
