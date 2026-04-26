@@ -1,11 +1,41 @@
-# Test your FastAPI endpoints
-
+# 作用：确认接口服务已经启动
 GET http://127.0.0.1:8000/
 Accept: application/json
 
 ###
 
-GET http://127.0.0.1:8000/hello/User
+# 作用：健康检查
+GET http://127.0.0.1:8000/health
 Accept: application/json
 
 ###
+
+# 作用：检索知识库中的相关切片
+POST http://127.0.0.1:8000/api/v1/retrieval/query
+Content-Type: application/json
+
+{
+  "question": "如何重置密码？",
+  "top_k": 3
+}
+
+###
+
+# 作用：执行完整问答流程
+POST http://127.0.0.1:8000/api/v1/answering/answer
+Content-Type: application/json
+
+{
+  "question": "如何重置密码？",
+  "top_k": 3
+}
+
+###
+
+# 作用：导入单个本地文件
+POST http://127.0.0.1:8000/api/v1/ingestion/file
+Content-Type: application/json
+
+{
+  "source": "E:/develop/py/project/support-copilot/resources/demo.md"
+}

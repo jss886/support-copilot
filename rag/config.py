@@ -32,6 +32,7 @@ USER_DEFAULTS = {
         "user": None,
         "password": None,
         "text_search_config": "simple",
+        "connect_timeout": 5,
     },
     "rag": {
         "index_file": str(ARTIFACTS_DIR / "basic_rag_index.json"),
@@ -69,6 +70,7 @@ class PostgresSettings:
     user: str | None
     password: str | None
     text_search_config: str
+    connect_timeout: int
 
 
 @dataclass(frozen=True)
@@ -148,6 +150,11 @@ def load_settings() -> AppSettings:
                 postgres_defaults["text_search_config"], "POSTGRES_TEXT_SEARCH_CONFIG"
             )
             or "simple",
+            connect_timeout=_prefer_config_int(
+                postgres_defaults["connect_timeout"],
+                "POSTGRES_CONNECT_TIMEOUT",
+            )
+            or 5,
         ),
         rag=RagSettings(
             index_file=_prefer_config(rag_defaults["index_file"], "RAG_INDEX_FILE")

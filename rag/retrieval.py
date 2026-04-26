@@ -14,7 +14,7 @@ def _resolve_db_config(
     jdbc_url: str | None,
     db_user: str | None,
     db_password: str | None,
-) -> tuple[str, str, str]:
+) -> tuple[str, str, str, int]:
     resolved_jdbc_url = jdbc_url or settings.postgres.jdbc_url
     resolved_db_user = db_user or settings.postgres.user
     resolved_db_password = db_password or settings.postgres.password
@@ -23,7 +23,12 @@ def _resolve_db_config(
             "Missing PostgreSQL config. Set jdbc_url/db_user/db_password via CLI, "
             "config_local.py, config.py, or environment variables."
         )
-    return resolved_jdbc_url, resolved_db_user, resolved_db_password
+    return (
+        resolved_jdbc_url,
+        resolved_db_user,
+        resolved_db_password,
+        settings.postgres.connect_timeout,
+    )
 
 
 def _build_chunk_record(content: str, metadata: dict) -> ChunkRecord:
@@ -47,7 +52,7 @@ def retrieve(
     source: str | None = None,
     embedding_dimensions: int | None = None,
 ) -> list[tuple[float, ChunkRecord]]:
-    resolved_jdbc_url, resolved_db_user, resolved_db_password = _resolve_db_config(
+    resolved_jdbc_url, resolved_db_user, resolved_db_password, connect_timeout = _resolve_db_config(
         jdbc_url, db_user, db_password
     )
     client = DashScopeEmbeddingClient(
@@ -58,6 +63,7 @@ def retrieve(
         resolved_jdbc_url,
         user=resolved_db_user,
         password=resolved_db_password,
+        connect_timeout=connect_timeout,
     )
 
     sql = """
