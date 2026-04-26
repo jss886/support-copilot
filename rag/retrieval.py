@@ -1,15 +1,17 @@
 import json
 
 from rag.config import settings
-from rag.db import connect_postgres, parse_jdbc_postgres_url
+from rag.db import PostgresConnectionParams, connect_postgres, parse_jdbc_postgres_url
 from rag.embeddings import DashScopeEmbeddingClient
 from rag.models import ChunkRecord
+from rag.text_search import build_segmented_search_text, extract_query_keywords
 
 
 def _vector_literal(values: list[float]) -> str:
     return "[" + ",".join(str(value) for value in values) + "]"
 
 
+# 作用：统一解析数据库配置，并补齐连接超时，避免检索阶段长时间阻塞。
 def _resolve_db_config(
     jdbc_url: str | None,
     db_user: str | None,
@@ -31,6 +33,7 @@ def _resolve_db_config(
     )
 
 
+# 作用：把数据库中的文本和元数据组装成统一的切片对象，方便上层复用。
 def _build_chunk_record(content: str, metadata: dict) -> ChunkRecord:
     return ChunkRecord(
         chunk_id=metadata.get("chunk_id", ""),
@@ -43,6 +46,133 @@ def _build_chunk_record(content: str, metadata: dict) -> ChunkRecord:
     )
 
 
+# 作用：统一解析数据库返回的 metadata，兼容 psycopg 直接返 dict 和字符串两种情况。
+def _normalize_metadata(metadata: dict | str | None) -> dict:
+    if metadata is None:
+        return {}
+    if isinstance(metadata, str):
+        return json.loads(metadata)
+    return metadata
+
+
+# 作用：生成来源过滤子句，避免向量检索和关键词检索重复拼接条件。
+def _build_source_filter_clause(source: str | None, sql_params: list[object]) -> str:
+    if not source:
+        return ""
+    sql_params.append(source)
+    return " WHERE d.source = %s"
+
+
+# 作用：执行向量召回，负责找出语义上最相近的切片。
+def _retrieve_vector(
+    query_embedding: list[float],
+    *,
+    top_k: int,
+    source: str | None,
+    params: PostgresConnectionParams,
+) -> list[tuple[float, ChunkRecord]]:
+    sql_params: list[object] = [_vector_literal(query_embedding)]
+    source_clause = _build_source_filter_clause(source, sql_params)
+    sql = f"""
+        SELECT
+            c.content,
+            c.metadata,
+            1 - (c.embedding <=> %s::vector) AS score
+        FROM kb_chunks c
+        JOIN kb_documents d ON d.id = c.document_id
+        {source_clause}
+        ORDER BY c.embedding <=> %s::vector ASC
+        LIMIT %s
+    """
+    sql_params.extend([_vector_literal(query_embedding), top_k])
+
+    with connect_postgres(params) as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, sql_params)
+            rows = cur.fetchall()
+
+    results: list[tuple[float, ChunkRecord]] = []
+    for content, metadata, score in rows:
+        resolved_metadata = _normalize_metadata(metadata)
+        results.append((float(score), _build_chunk_record(content, resolved_metadata)))
+    return results
+
+
+# 作用：执行关键词召回，先对查询做中文分词，再匹配分词后的 tsv。
+def _retrieve_keyword(
+    query: str,
+    *,
+    top_k: int,
+    source: str | None,
+    params: PostgresConnectionParams,
+) -> list[tuple[float, ChunkRecord]]:
+    query_keywords = extract_query_keywords(query)
+    if not query_keywords:
+        return []
+    tsquery = " | ".join(query_keywords)
+    if not tsquery:
+        return []
+
+    sql_params: list[object] = [tsquery]
+    source_clause = _build_source_filter_clause(source, sql_params)
+    if source_clause:
+        where_clause = f"{source_clause} AND c.tsv @@ to_tsquery(%s)"
+    else:
+        where_clause = " WHERE c.tsv @@ to_tsquery(%s)"
+
+    sql = f"""
+        SELECT
+            c.content,
+            c.metadata,
+            ts_rank_cd(c.tsv, to_tsquery(%s)) AS score
+        FROM kb_chunks c
+        JOIN kb_documents d ON d.id = c.document_id
+        {where_clause}
+        ORDER BY score DESC
+        LIMIT %s
+    """
+    sql_params.extend([tsquery, top_k])
+
+    with connect_postgres(params) as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, sql_params)
+            rows = cur.fetchall()
+
+    results: list[tuple[float, ChunkRecord]] = []
+    for content, metadata, score in rows:
+        resolved_metadata = _normalize_metadata(metadata)
+        results.append((float(score), _build_chunk_record(content, resolved_metadata)))
+    return results
+
+
+# 作用：用 RRF 融合两路召回结果，避免直接混加不同量纲的原始分数。
+def _fuse_with_rrf(
+    vector_results: list[tuple[float, ChunkRecord]],
+    keyword_results: list[tuple[float, ChunkRecord]],
+    *,
+    top_k: int,
+    rrf_k: int = 60,
+    vector_weight: float = 1.0,
+    keyword_weight: float = 0.5,
+) -> list[tuple[float, ChunkRecord]]:
+    merged_scores: dict[str, float] = {}
+    merged_records: dict[str, ChunkRecord] = {}
+
+    for rank, (_, record) in enumerate(vector_results, start=1):
+        key = record.chunk_id or f"{record.source}:{record.start}:{record.end}"
+        merged_scores[key] = merged_scores.get(key, 0.0) + vector_weight / (rrf_k + rank)
+        merged_records.setdefault(key, record)
+
+    for rank, (_, record) in enumerate(keyword_results, start=1):
+        key = record.chunk_id or f"{record.source}:{record.start}:{record.end}"
+        merged_scores[key] = merged_scores.get(key, 0.0) + keyword_weight / (rrf_k + rank)
+        merged_records.setdefault(key, record)
+
+    ranked_keys = sorted(merged_scores, key=lambda key: merged_scores[key], reverse=True)
+    return [(merged_scores[key], merged_records[key]) for key in ranked_keys[:top_k]]
+
+
+# 作用：执行混合检索，组合向量召回、关键词召回和 RRF 融合后的最终结果。
 def retrieve(
     query: str,
     top_k: int = 3,
@@ -66,33 +196,20 @@ def retrieve(
         connect_timeout=connect_timeout,
     )
 
-    sql = """
-        SELECT
-            c.content,
-            c.metadata,
-            1 - (c.embedding <=> %s::vector) AS score
-        FROM kb_chunks c
-        JOIN kb_documents d ON d.id = c.document_id
-    """
-    sql_params: list[object] = [_vector_literal(query_embedding)]
+    # 这里多取一批候选再融合，避免两路召回彼此挤掉有效结果。
+    candidate_top_k = max(top_k * 4, 10)
+    vector_results = _retrieve_vector(
+        query_embedding,
+        top_k=candidate_top_k,
+        source=source,
+        params=params,
+    )
+    keyword_results = _retrieve_keyword(
+        query,
+        top_k=candidate_top_k,
+        source=source,
+        params=params,
+    )
+    return _fuse_with_rrf(vector_results, keyword_results, top_k=top_k)
 
-    if source:
-        sql += " WHERE d.source = %s"
-        sql_params.append(source)
 
-    sql += " ORDER BY c.embedding <=> %s::vector ASC LIMIT %s"
-    sql_params.extend([_vector_literal(query_embedding), top_k])
-
-    with connect_postgres(params) as conn:
-        with conn.cursor() as cur:
-            cur.execute(sql, sql_params)
-            rows = cur.fetchall()
-
-    results: list[tuple[float, ChunkRecord]] = []
-    for content, metadata, score in rows:
-        resolved_metadata = metadata
-        if isinstance(resolved_metadata, str):
-            resolved_metadata = json.loads(resolved_metadata)
-        results.append((float(score), _build_chunk_record(content, resolved_metadata or {})))
-
-    return results

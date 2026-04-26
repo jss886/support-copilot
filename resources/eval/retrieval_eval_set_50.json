@@ -1,0 +1,502 @@
+[
+  {
+    "item_id": "01_project_overview-fact-0",
+    "question": "文档里如何描述“项目目标”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-1",
+    "question": "哪里提到了“项目目标”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-2",
+    "question": "我想查“项目目标”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-3",
+    "question": "关于“项目目标”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-section-4",
+    "question": "“项目目标”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-section-5",
+    "question": "哪里可以找到关于“项目目标”的说明？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-section-6",
+    "question": "知识库里哪篇文档覆盖了“项目目标”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-section-7",
+    "question": "如果要查看“项目目标”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-8",
+    "question": "文档里如何描述“本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-9",
+    "question": "哪里提到了“本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-10",
+    "question": "我想查“本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-11",
+    "question": "关于“本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-12",
+    "question": "文档里如何描述“除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-13",
+    "question": "哪里提到了“除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-14",
+    "question": "我想查“除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-15",
+    "question": "关于“除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-16",
+    "question": "文档里如何描述“典型使用场景”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-17",
+    "question": "哪里提到了“典型使用场景”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-18",
+    "question": "我想查“典型使用场景”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-19",
+    "question": "关于“典型使用场景”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-section-20",
+    "question": "“典型使用场景”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-section-21",
+    "question": "哪里可以找到关于“典型使用场景”的说明？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-section-22",
+    "question": "知识库里哪篇文档覆盖了“典型使用场景”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-section-23",
+    "question": "如果要查看“典型使用场景”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-24",
+    "question": "文档里如何描述“用户询问某个系统报错应该如何排查。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户询问某个系统报错应该如何排查。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-25",
+    "question": "哪里提到了“用户询问某个系统报错应该如何排查。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户询问某个系统报错应该如何排查。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-26",
+    "question": "我想查“用户询问某个系统报错应该如何排查。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户询问某个系统报错应该如何排查。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-27",
+    "question": "关于“用户询问某个系统报错应该如何排查。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户询问某个系统报错应该如何排查。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-28",
+    "question": "文档里如何描述“用户想确认某个接口的请求参数和返回字段。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户想确认某个接口的请求参数和返回字段。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-29",
+    "question": "哪里提到了“用户想确认某个接口的请求参数和返回字段。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户想确认某个接口的请求参数和返回字段。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-30",
+    "question": "我想查“用户想确认某个接口的请求参数和返回字段。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户想确认某个接口的请求参数和返回字段。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-31",
+    "question": "关于“用户想确认某个接口的请求参数和返回字段。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户想确认某个接口的请求参数和返回字段。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-32",
+    "question": "文档里如何描述“用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-33",
+    "question": "哪里提到了“用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-34",
+    "question": "我想查“用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-35",
+    "question": "关于“用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-36",
+    "question": "文档里如何描述“用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-37",
+    "question": "哪里提到了“用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-38",
+    "question": "我想查“用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-39",
+    "question": "关于“用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-40",
+    "question": "文档里如何描述“核心能力”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-fact-41",
+    "question": "哪里提到了“核心能力”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-fact-42",
+    "question": "我想查“核心能力”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-fact-43",
+    "question": "关于“核心能力”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-section-44",
+    "question": "“核心能力”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-section-45",
+    "question": "哪里可以找到关于“核心能力”的说明？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-section-46",
+    "question": "知识库里哪篇文档覆盖了“核心能力”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-section-47",
+    "question": "如果要查看“核心能力”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-fact-48",
+    "question": "文档里如何描述“1. 文档检索”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "1. 文档检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-fact-49",
+    "question": "哪里提到了“1. 文档检索”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "1. 文档检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  }
+]

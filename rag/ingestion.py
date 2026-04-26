@@ -8,12 +8,38 @@ from rag.embeddings import DashScopeEmbeddingClient
 from rag.feishu_loader import load_feishu_document, list_feishu_wiki_subtree_docx_nodes
 from rag.indexing import build_records_for_text, load_text
 from rag.models import ChunkRecord, SourceElement
+from rag.text_search import build_chunk_search_text, extract_search_keywords
 
 
 def _vector_literal(values: list[float]) -> str:
     return "[" + ",".join(str(value) for value in values) + "]"
 
 
+# 作用：构建切片写库时用于全文检索的分词文本，把标题、来源和标签等高价值字段一并纳入召回。
+def _build_chunk_search_payload(
+    *,
+    title: str,
+    source: str,
+    tags: dict,
+    record: ChunkRecord,
+) -> str:
+    return build_chunk_search_text(
+        title=title,
+        source=source,
+        content=record.text,
+        keywords=[],
+        tags=tags,
+        metadata={
+            "chunk_id": record.chunk_id,
+            "source": record.source,
+            "start": record.start,
+            "end": record.end,
+            **record.metadata,
+        },
+    )
+
+
+# 作用：覆盖同一 source 的旧文档，并把新切片连同向量和分词后的 tsv 一起写入数据库。
 def _insert_document(
     jdbc_url: str,
     db_user: str,
@@ -24,7 +50,6 @@ def _insert_document(
     tags: dict,
     records: list[ChunkRecord],
 ) -> tuple[str, int]:
-    """覆盖同 source 的旧文档，并写入新的切片记录。"""
     params = parse_jdbc_postgres_url(jdbc_url, user=db_user, password=db_password)
     document_id = str(uuid.uuid4())
 
@@ -48,6 +73,20 @@ def _insert_document(
             )
 
             for chunk_index, record in enumerate(records):
+                metadata = {
+                    "chunk_id": record.chunk_id,
+                    "source": record.source,
+                    "start": record.start,
+                    "end": record.end,
+                    **record.metadata,
+                }
+                segmented_search_text = _build_chunk_search_payload(
+                    title=title,
+                    source=source,
+                    tags=tags,
+                    record=record,
+                )
+                search_keywords = extract_search_keywords(segmented_search_text)
                 cur.execute(
                     """
                     INSERT INTO kb_chunks (
@@ -56,10 +95,12 @@ def _insert_document(
                         chunk_index,
                         content,
                         token_count,
+                        keywords,
                         tsv,
                         embedding,
                         metadata
                     ) VALUES (
+                        %s,
                         %s,
                         %s,
                         %s,
@@ -76,19 +117,11 @@ def _insert_document(
                         chunk_index,
                         record.text,
                         len(record.text),
+                        search_keywords,
                         settings.postgres.text_search_config,
-                        record.text,
+                        segmented_search_text,
                         _vector_literal(record.embedding),
-                        json.dumps(
-                            {
-                                "chunk_id": record.chunk_id,
-                                "source": record.source,
-                                "start": record.start,
-                                "end": record.end,
-                                **record.metadata,
-                            },
-                            ensure_ascii=False,
-                        ),
+                        json.dumps(metadata, ensure_ascii=False),
                     ),
                 )
 
@@ -97,6 +130,7 @@ def _insert_document(
     return document_id, len(records)
 
 
+# 作用：解析数据库连接配置，保证所有入库入口都复用同一套配置解析逻辑。
 def _resolve_db_config(
     jdbc_url: str | None,
     db_user: str | None,
@@ -113,6 +147,7 @@ def _resolve_db_config(
     return resolved_jdbc_url, resolved_db_user, resolved_db_password
 
 
+# 作用：解析切片和批处理配置，避免多处重复读取 settings。
 def _resolve_rag_config(
     chunk_size: int | None,
     chunk_overlap: int | None,
@@ -125,6 +160,7 @@ def _resolve_rag_config(
     )
 
 
+# 作用：对原始文本执行切片并补齐 embedding，作为统一的入库前处理步骤。
 def _build_records(
     source: str,
     text: str,
@@ -135,7 +171,6 @@ def _build_records(
     batch_size: int | None,
     elements: list[SourceElement] | None = None,
 ) -> list[ChunkRecord]:
-    """对文本切片，并为每个切片补齐 embedding。"""
     resolved_chunk_size, resolved_chunk_overlap, resolved_batch_size = _resolve_rag_config(
         chunk_size, chunk_overlap, batch_size
     )
@@ -152,6 +187,7 @@ def _build_records(
     )
 
 
+# 作用：把任意文本内容切片后写入 kb_documents 和 kb_chunks。
 def ingest_text_to_db(
     *,
     title: str,
@@ -169,7 +205,6 @@ def ingest_text_to_db(
     embedding_dimensions: int = 1536,
     elements: list[SourceElement] | None = None,
 ) -> tuple[str, int]:
-    """将任意文本内容入库到 kb_documents 和 kb_chunks。"""
     resolved_jdbc_url, resolved_db_user, resolved_db_password = _resolve_db_config(
         jdbc_url, db_user, db_password
     )
@@ -195,6 +230,7 @@ def ingest_text_to_db(
     )
 
 
+# 作用：把已经切好片并带 embedding 的记录直接写入数据库。
 def ingest_chunk_records_to_db(
     *,
     title: str,
@@ -221,6 +257,7 @@ def ingest_chunk_records_to_db(
     )
 
 
+# 作用：读取单个本地文件并完成切片、向量化和入库。
 def ingest_file_to_db(
     source_path: Path,
     jdbc_url: str | None = None,
@@ -231,7 +268,6 @@ def ingest_file_to_db(
     batch_size: int | None = None,
     embedding_dimensions: int = 1536,
 ) -> tuple[str, int]:
-    """读取本地文件，并完成切片、向量化和入库。"""
     source = str(source_path)
     return ingest_text_to_db(
         title=source_path.stem,
@@ -250,6 +286,7 @@ def ingest_file_to_db(
     )
 
 
+# 作用：批量导入目录下的 markdown 文件。
 def ingest_directory_to_db(
     source_dir: Path,
     jdbc_url: str | None = None,
@@ -260,7 +297,6 @@ def ingest_directory_to_db(
     batch_size: int | None = None,
     embedding_dimensions: int = 1536,
 ) -> tuple[int, int]:
-    """批量导入目录下的 markdown 文件。"""
     if not source_dir.is_dir():
         raise ValueError(f"Source directory does not exist: {source_dir}")
 
@@ -287,6 +323,7 @@ def ingest_directory_to_db(
     return document_count, chunk_count
 
 
+# 作用：读取单篇飞书文档并将切片写入 PostgreSQL。
 def ingest_feishu_doc_to_db(
     doc_id: str,
     jdbc_url: str | None = None,
@@ -297,7 +334,6 @@ def ingest_feishu_doc_to_db(
     batch_size: int | None = None,
     embedding_dimensions: int = 1536,
 ) -> tuple[str, int]:
-    """读取单篇飞书 docx 文档，并将切片写入 PostgreSQL。"""
     document = load_feishu_document(doc_id=doc_id)
     source = f"feishu://docx/{doc_id}"
     return ingest_text_to_db(
@@ -324,6 +360,7 @@ def ingest_feishu_doc_to_db(
     )
 
 
+# 作用：递归导入指定飞书知识库父节点下的全部 docx 文档。
 def ingest_feishu_wiki_subtree_to_db(
     *,
     space_id: str,
@@ -336,7 +373,6 @@ def ingest_feishu_wiki_subtree_to_db(
     batch_size: int | None = None,
     embedding_dimensions: int = 1536,
 ) -> tuple[int, int]:
-    """递归导入指定知识库父节点下的全部 docx 文档。"""
     nodes = list_feishu_wiki_subtree_docx_nodes(
         space_id=space_id,
         parent_node_token=parent_node_token,
@@ -351,8 +387,7 @@ def ingest_feishu_wiki_subtree_to_db(
     for node in nodes:
         if not node.obj_token:
             continue
-        # 复用单文档导入逻辑，保证批量导入与手动导入在解析、切片、
-        # 元数据和向量化行为上保持一致。
+        # 这里复用单文档导入逻辑，确保批量导入与手动导入在切片、元数据和检索文本构建上保持一致。
         _, inserted_chunks = ingest_feishu_doc_to_db(
             doc_id=node.obj_token,
             jdbc_url=jdbc_url,

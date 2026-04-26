@@ -84,6 +84,12 @@ def parse_args() -> argparse.Namespace:
         type=int,
         help="Optional embedding dimension override.",
     )
+    evaluate_parser.add_argument(
+        "--workers",
+        type=int,
+        default=6,
+        help="How many concurrent workers to use during retrieval evaluation.",
+    )
 
     ragas_parser = subparsers.add_parser(
         "evaluate-ragas",
@@ -151,6 +157,7 @@ def main() -> None:
             db_user=args.db_user,
             db_password=args.db_password,
             embedding_dimensions=args.embedding_dimensions,
+            workers=args.workers,
         )
         print(f"Total: {metrics.total}")
         print(f"Recall@1: {metrics.recall_at_1:.4f}")

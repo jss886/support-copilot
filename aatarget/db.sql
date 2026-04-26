@@ -108,3 +108,15 @@ CREATE TABLE module_dependencies (
     description TEXT,
     created_at TIMESTAMP DEFAULT NOW()
 );
+
+-- 作用：为已有 kb_chunks 数据回填全文检索字段，避免历史数据无法参与关键词召回。
+UPDATE kb_chunks
+SET tsv = to_tsvector('simple', COALESCE(content, ''))
+WHERE tsv IS NULL;
+
+-- 作用：为全文检索字段补充 GIN 索引，提升关键词召回性能。
+CREATE INDEX IF NOT EXISTS idx_kb_chunks_tsv
+ON kb_chunks
+USING GIN (tsv);
+
+

@@ -1,0 +1,5002 @@
+[
+  {
+    "item_id": "01_project_overview-fact-0",
+    "question": "文档里如何描述“项目目标”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-1",
+    "question": "哪里提到了“项目目标”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-2",
+    "question": "我想查“项目目标”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-3",
+    "question": "关于“项目目标”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-section-4",
+    "question": "“项目目标”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-section-5",
+    "question": "哪里可以找到关于“项目目标”的说明？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-section-6",
+    "question": "知识库里哪篇文档覆盖了“项目目标”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-section-7",
+    "question": "如果要查看“项目目标”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "项目目标"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-8",
+    "question": "文档里如何描述“本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-9",
+    "question": "哪里提到了“本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-10",
+    "question": "我想查“本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-11",
+    "question": "关于“本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "本项目目标是构建一个面向企业内部支持场景的 Copilot。系统需要接入飞书文档、知识库、FAQ、API 说明和历史故障案例，并通过 RAG 提供基于知识的问答能力。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-12",
+    "question": "文档里如何描述“除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-13",
+    "question": "哪里提到了“除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-14",
+    "question": "我想查“除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-15",
+    "question": "关于“除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "除了普通问答，本项目还希望在每次对话结束后提炼出可以复用的经验，并将这些经验沉淀到 task_memory，形成可持续增长的知识资产。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "项目目标"
+  },
+  {
+    "item_id": "01_project_overview-fact-16",
+    "question": "文档里如何描述“典型使用场景”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-17",
+    "question": "哪里提到了“典型使用场景”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-18",
+    "question": "我想查“典型使用场景”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-19",
+    "question": "关于“典型使用场景”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-section-20",
+    "question": "“典型使用场景”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-section-21",
+    "question": "哪里可以找到关于“典型使用场景”的说明？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-section-22",
+    "question": "知识库里哪篇文档覆盖了“典型使用场景”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-section-23",
+    "question": "如果要查看“典型使用场景”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "典型使用场景"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-24",
+    "question": "文档里如何描述“用户询问某个系统报错应该如何排查。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户询问某个系统报错应该如何排查。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-25",
+    "question": "哪里提到了“用户询问某个系统报错应该如何排查。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户询问某个系统报错应该如何排查。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-26",
+    "question": "我想查“用户询问某个系统报错应该如何排查。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户询问某个系统报错应该如何排查。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-27",
+    "question": "关于“用户询问某个系统报错应该如何排查。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户询问某个系统报错应该如何排查。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-28",
+    "question": "文档里如何描述“用户想确认某个接口的请求参数和返回字段。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户想确认某个接口的请求参数和返回字段。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-29",
+    "question": "哪里提到了“用户想确认某个接口的请求参数和返回字段。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户想确认某个接口的请求参数和返回字段。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-30",
+    "question": "我想查“用户想确认某个接口的请求参数和返回字段。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户想确认某个接口的请求参数和返回字段。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-31",
+    "question": "关于“用户想确认某个接口的请求参数和返回字段。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户想确认某个接口的请求参数和返回字段。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-32",
+    "question": "文档里如何描述“用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-33",
+    "question": "哪里提到了“用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-34",
+    "question": "我想查“用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-35",
+    "question": "关于“用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户咨询某个模块依赖关系，想知道问题可能由哪个上游系统引起。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-36",
+    "question": "文档里如何描述“用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-37",
+    "question": "哪里提到了“用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-38",
+    "question": "我想查“用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-39",
+    "question": "关于“用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "用户连续追问同一个问题，希望系统保留上下文并给出更完整的建议。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "典型使用场景"
+  },
+  {
+    "item_id": "01_project_overview-fact-40",
+    "question": "文档里如何描述“核心能力”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-fact-41",
+    "question": "哪里提到了“核心能力”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-fact-42",
+    "question": "我想查“核心能力”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-fact-43",
+    "question": "关于“核心能力”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-section-44",
+    "question": "“核心能力”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-section-45",
+    "question": "哪里可以找到关于“核心能力”的说明？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-section-46",
+    "question": "知识库里哪篇文档覆盖了“核心能力”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-section-47",
+    "question": "如果要查看“核心能力”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "核心能力"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "核心能力"
+  },
+  {
+    "item_id": "01_project_overview-fact-48",
+    "question": "文档里如何描述“1. 文档检索”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "1. 文档检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-fact-49",
+    "question": "哪里提到了“1. 文档检索”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "1. 文档检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-fact-50",
+    "question": "我想查“1. 文档检索”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "1. 文档检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-fact-51",
+    "question": "关于“1. 文档检索”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "1. 文档检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-section-52",
+    "question": "“1. 文档检索”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "1. 文档检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-section-53",
+    "question": "哪里可以找到关于“1. 文档检索”的说明？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "1. 文档检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-section-54",
+    "question": "知识库里哪篇文档覆盖了“1. 文档检索”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "1. 文档检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-section-55",
+    "question": "如果要查看“1. 文档检索”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "1. 文档检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-fact-56",
+    "question": "文档里如何描述“系统接入飞书文档、项目说明、接口手册和排障文档后，会对文档做切片、向量化，并存入 PostgreSQL 与 pgvector。检索时同时结合关键词召回和语义召回。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "系统接入飞书文档、项目说明、接口手册和排障文档后，会对文档做切片、向量化，并存入 PostgreSQL 与 pgvector。检索时同时结合关键词召回和语义召回。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-fact-57",
+    "question": "哪里提到了“系统接入飞书文档、项目说明、接口手册和排障文档后，会对文档做切片、向量化，并存入 PostgreSQL 与 pgvector。检索时同时结合关键词召回和语义召回。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "系统接入飞书文档、项目说明、接口手册和排障文档后，会对文档做切片、向量化，并存入 PostgreSQL 与 pgvector。检索时同时结合关键词召回和语义召回。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-fact-58",
+    "question": "我想查“系统接入飞书文档、项目说明、接口手册和排障文档后，会对文档做切片、向量化，并存入 PostgreSQL 与 pgvector。检索时同时结合关键词召回和语义召回。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "系统接入飞书文档、项目说明、接口手册和排障文档后，会对文档做切片、向量化，并存入 PostgreSQL 与 pgvector。检索时同时结合关键词召回和语义召回。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-fact-59",
+    "question": "关于“系统接入飞书文档、项目说明、接口手册和排障文档后，会对文档做切片、向量化，并存入 PostgreSQL 与 pgvector。检索时同时结合关键词召回和语义召回。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "系统接入飞书文档、项目说明、接口手册和排障文档后，会对文档做切片、向量化，并存入 PostgreSQL 与 pgvector。检索时同时结合关键词召回和语义召回。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "1. 文档检索"
+  },
+  {
+    "item_id": "01_project_overview-fact-60",
+    "question": "文档里如何描述“2. 多 Agent 协同”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "2. 多 Agent 协同"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-61",
+    "question": "哪里提到了“2. 多 Agent 协同”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "2. 多 Agent 协同"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-62",
+    "question": "我想查“2. 多 Agent 协同”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "2. 多 Agent 协同"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-63",
+    "question": "关于“2. 多 Agent 协同”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "2. 多 Agent 协同"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-section-64",
+    "question": "“2. 多 Agent 协同”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "2. 多 Agent 协同"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-section-65",
+    "question": "哪里可以找到关于“2. 多 Agent 协同”的说明？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "2. 多 Agent 协同"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-section-66",
+    "question": "知识库里哪篇文档覆盖了“2. 多 Agent 协同”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "2. 多 Agent 协同"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-section-67",
+    "question": "如果要查看“2. 多 Agent 协同”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "2. 多 Agent 协同"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-68",
+    "question": "文档里如何描述“系统内部可按任务类型拆分多个 Agent，例如：”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "系统内部可按任务类型拆分多个 Agent，例如："
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-69",
+    "question": "哪里提到了“系统内部可按任务类型拆分多个 Agent，例如：”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "系统内部可按任务类型拆分多个 Agent，例如："
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-70",
+    "question": "我想查“系统内部可按任务类型拆分多个 Agent，例如：”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "系统内部可按任务类型拆分多个 Agent，例如："
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-71",
+    "question": "关于“系统内部可按任务类型拆分多个 Agent，例如：”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "系统内部可按任务类型拆分多个 Agent，例如："
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-72",
+    "question": "文档里如何描述“routing_agent：识别问题类型并决定处理路径”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "routing_agent：识别问题类型并决定处理路径"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-73",
+    "question": "哪里提到了“routing_agent：识别问题类型并决定处理路径”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "routing_agent：识别问题类型并决定处理路径"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-74",
+    "question": "我想查“routing_agent：识别问题类型并决定处理路径”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "routing_agent：识别问题类型并决定处理路径"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-75",
+    "question": "关于“routing_agent：识别问题类型并决定处理路径”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "routing_agent：识别问题类型并决定处理路径"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-76",
+    "question": "文档里如何描述“retrieval_agent：执行知识检索”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "retrieval_agent：执行知识检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-77",
+    "question": "哪里提到了“retrieval_agent：执行知识检索”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "retrieval_agent：执行知识检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-78",
+    "question": "我想查“retrieval_agent：执行知识检索”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "retrieval_agent：执行知识检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-79",
+    "question": "关于“retrieval_agent：执行知识检索”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "retrieval_agent：执行知识检索"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-80",
+    "question": "文档里如何描述“action_agent：处理工具调用”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "action_agent：处理工具调用"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-81",
+    "question": "哪里提到了“action_agent：处理工具调用”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "action_agent：处理工具调用"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-82",
+    "question": "我想查“action_agent：处理工具调用”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "action_agent：处理工具调用"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-83",
+    "question": "关于“action_agent：处理工具调用”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "action_agent：处理工具调用"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-84",
+    "question": "文档里如何描述“answer_agent：基于上下文生成最终回答”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "answer_agent：基于上下文生成最终回答"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-85",
+    "question": "哪里提到了“answer_agent：基于上下文生成最终回答”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "answer_agent：基于上下文生成最终回答"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-86",
+    "question": "我想查“answer_agent：基于上下文生成最终回答”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "answer_agent：基于上下文生成最终回答"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-87",
+    "question": "关于“answer_agent：基于上下文生成最终回答”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "answer_agent：基于上下文生成最终回答"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-88",
+    "question": "文档里如何描述“memory_agent：从本轮会话中提取经验并写入记忆”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "memory_agent：从本轮会话中提取经验并写入记忆"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-89",
+    "question": "哪里提到了“memory_agent：从本轮会话中提取经验并写入记忆”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "memory_agent：从本轮会话中提取经验并写入记忆"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-90",
+    "question": "我想查“memory_agent：从本轮会话中提取经验并写入记忆”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "memory_agent：从本轮会话中提取经验并写入记忆"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-91",
+    "question": "关于“memory_agent：从本轮会话中提取经验并写入记忆”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "memory_agent：从本轮会话中提取经验并写入记忆"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "2. 多 Agent 协同"
+  },
+  {
+    "item_id": "01_project_overview-fact-92",
+    "question": "文档里如何描述“3. 经验沉淀”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "3. 经验沉淀"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-fact-93",
+    "question": "哪里提到了“3. 经验沉淀”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "3. 经验沉淀"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-fact-94",
+    "question": "我想查“3. 经验沉淀”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "3. 经验沉淀"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-fact-95",
+    "question": "关于“3. 经验沉淀”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "3. 经验沉淀"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-section-96",
+    "question": "“3. 经验沉淀”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "3. 经验沉淀"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-section-97",
+    "question": "哪里可以找到关于“3. 经验沉淀”的说明？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "3. 经验沉淀"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-section-98",
+    "question": "知识库里哪篇文档覆盖了“3. 经验沉淀”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "3. 经验沉淀"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-section-99",
+    "question": "如果要查看“3. 经验沉淀”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "3. 经验沉淀"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-fact-100",
+    "question": "文档里如何描述“如果一轮问答中出现了明确结论、可复用排查路径、典型故障经验或可抽象规则，系统应将其整理为结构化结论并写入 task_memory。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "如果一轮问答中出现了明确结论、可复用排查路径、典型故障经验或可抽象规则，系统应将其整理为结构化结论并写入 task_memory。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-fact-101",
+    "question": "哪里提到了“如果一轮问答中出现了明确结论、可复用排查路径、典型故障经验或可抽象规则，系统应将其整理为结构化结论并写入 task_memory。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "如果一轮问答中出现了明确结论、可复用排查路径、典型故障经验或可抽象规则，系统应将其整理为结构化结论并写入 task_memory。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-fact-102",
+    "question": "我想查“如果一轮问答中出现了明确结论、可复用排查路径、典型故障经验或可抽象规则，系统应将其整理为结构化结论并写入 task_memory。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "如果一轮问答中出现了明确结论、可复用排查路径、典型故障经验或可抽象规则，系统应将其整理为结构化结论并写入 task_memory。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-fact-103",
+    "question": "关于“如果一轮问答中出现了明确结论、可复用排查路径、典型故障经验或可抽象规则，系统应将其整理为结构化结论并写入 task_memory。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "如果一轮问答中出现了明确结论、可复用排查路径、典型故障经验或可抽象规则，系统应将其整理为结构化结论并写入 task_memory。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "3. 经验沉淀"
+  },
+  {
+    "item_id": "01_project_overview-fact-104",
+    "question": "文档里如何描述“RAG 的基本流程”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "RAG 的基本流程"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-105",
+    "question": "哪里提到了“RAG 的基本流程”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "RAG 的基本流程"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-106",
+    "question": "我想查“RAG 的基本流程”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "RAG 的基本流程"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-107",
+    "question": "关于“RAG 的基本流程”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "RAG 的基本流程"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-section-108",
+    "question": "“RAG 的基本流程”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "RAG 的基本流程"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-section-109",
+    "question": "哪里可以找到关于“RAG 的基本流程”的说明？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "RAG 的基本流程"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-section-110",
+    "question": "知识库里哪篇文档覆盖了“RAG 的基本流程”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "RAG 的基本流程"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-section-111",
+    "question": "如果要查看“RAG 的基本流程”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "RAG 的基本流程"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-112",
+    "question": "文档里如何描述“读取文档内容。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "读取文档内容。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-113",
+    "question": "哪里提到了“读取文档内容。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "读取文档内容。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-114",
+    "question": "我想查“读取文档内容。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "读取文档内容。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-115",
+    "question": "关于“读取文档内容。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "读取文档内容。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-116",
+    "question": "文档里如何描述“按固定大小进行切片，并设置一定重叠，避免语义被硬切断。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "按固定大小进行切片，并设置一定重叠，避免语义被硬切断。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-117",
+    "question": "哪里提到了“按固定大小进行切片，并设置一定重叠，避免语义被硬切断。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "按固定大小进行切片，并设置一定重叠，避免语义被硬切断。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-118",
+    "question": "我想查“按固定大小进行切片，并设置一定重叠，避免语义被硬切断。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "按固定大小进行切片，并设置一定重叠，避免语义被硬切断。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-119",
+    "question": "关于“按固定大小进行切片，并设置一定重叠，避免语义被硬切断。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "按固定大小进行切片，并设置一定重叠，避免语义被硬切断。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-120",
+    "question": "文档里如何描述“调用 embedding 模型生成向量。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "调用 embedding 模型生成向量。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-121",
+    "question": "哪里提到了“调用 embedding 模型生成向量。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "调用 embedding 模型生成向量。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-122",
+    "question": "我想查“调用 embedding 模型生成向量。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "调用 embedding 模型生成向量。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-123",
+    "question": "关于“调用 embedding 模型生成向量。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "调用 embedding 模型生成向量。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-124",
+    "question": "文档里如何描述“文本正文存入 PostgreSQL，向量写入 pgvector。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "文本正文存入 PostgreSQL，向量写入 pgvector。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-125",
+    "question": "哪里提到了“文本正文存入 PostgreSQL，向量写入 pgvector。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "文本正文存入 PostgreSQL，向量写入 pgvector。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-126",
+    "question": "我想查“文本正文存入 PostgreSQL，向量写入 pgvector。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "文本正文存入 PostgreSQL，向量写入 pgvector。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-127",
+    "question": "关于“文本正文存入 PostgreSQL，向量写入 pgvector。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "文本正文存入 PostgreSQL，向量写入 pgvector。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-128",
+    "question": "文档里如何描述“查询时同时执行语义检索与关键词检索。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "查询时同时执行语义检索与关键词检索。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-129",
+    "question": "哪里提到了“查询时同时执行语义检索与关键词检索。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "查询时同时执行语义检索与关键词检索。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-130",
+    "question": "我想查“查询时同时执行语义检索与关键词检索。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "查询时同时执行语义检索与关键词检索。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-131",
+    "question": "关于“查询时同时执行语义检索与关键词检索。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "查询时同时执行语义检索与关键词检索。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-132",
+    "question": "文档里如何描述“对检索结果做融合和重排。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "对检索结果做融合和重排。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-133",
+    "question": "哪里提到了“对检索结果做融合和重排。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "对检索结果做融合和重排。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-134",
+    "question": "我想查“对检索结果做融合和重排。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "对检索结果做融合和重排。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-135",
+    "question": "关于“对检索结果做融合和重排。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "对检索结果做融合和重排。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-136",
+    "question": "文档里如何描述“将最终上下文交给问答模型生成回答。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "将最终上下文交给问答模型生成回答。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-137",
+    "question": "哪里提到了“将最终上下文交给问答模型生成回答。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "将最终上下文交给问答模型生成回答。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-138",
+    "question": "我想查“将最终上下文交给问答模型生成回答。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "将最终上下文交给问答模型生成回答。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-139",
+    "question": "关于“将最终上下文交给问答模型生成回答。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "将最终上下文交给问答模型生成回答。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "RAG 的基本流程"
+  },
+  {
+    "item_id": "01_project_overview-fact-140",
+    "question": "文档里如何描述“当前基础版本”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前基础版本"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-fact-141",
+    "question": "哪里提到了“当前基础版本”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前基础版本"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-fact-142",
+    "question": "我想查“当前基础版本”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前基础版本"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-fact-143",
+    "question": "关于“当前基础版本”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前基础版本"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-section-144",
+    "question": "“当前基础版本”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前基础版本"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-section-145",
+    "question": "哪里可以找到关于“当前基础版本”的说明？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前基础版本"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-section-146",
+    "question": "知识库里哪篇文档覆盖了“当前基础版本”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前基础版本"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-section-147",
+    "question": "如果要查看“当前基础版本”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前基础版本"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-fact-148",
+    "question": "文档里如何描述“当前仓库中的 basic_rag.py 是一个最小可运行示例。它先对单个文档切片，再调用阿里百炼兼容接口生成 embedding，并将结果保存到本地 JSON 文件中。这个版本还没有真正接入数据库，但可以先用来验证切片、向量化和检索链路是否跑通。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前仓库中的 basic_rag.py 是一个最小可运行示例。它先对单个文档切片，再调用阿里百炼兼容接口生成 embedding，并将结果保存到本地 JSON 文件中。这个版本还没有真正接入数据库，但可以先用来验证切片、向量化和检索链路是否跑通。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-fact-149",
+    "question": "哪里提到了“当前仓库中的 basic_rag.py 是一个最小可运行示例。它先对单个文档切片，再调用阿里百炼兼容接口生成 embedding，并将结果保存到本地 JSON 文件中。这个版本还没有真正接入数据库，但可以先用来验证切片、向量化和检索链路是否跑通。”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前仓库中的 basic_rag.py 是一个最小可运行示例。它先对单个文档切片，再调用阿里百炼兼容接口生成 embedding，并将结果保存到本地 JSON 文件中。这个版本还没有真正接入数据库，但可以先用来验证切片、向量化和检索链路是否跑通。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-fact-150",
+    "question": "我想查“当前仓库中的 basic_rag.py 是一个最小可运行示例。它先对单个文档切片，再调用阿里百炼兼容接口生成 embedding，并将结果保存到本地 JSON 文件中。这个版本还没有真正接入数据库，但可以先用来验证切片、向量化和检索链路是否跑通。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前仓库中的 basic_rag.py 是一个最小可运行示例。它先对单个文档切片，再调用阿里百炼兼容接口生成 embedding，并将结果保存到本地 JSON 文件中。这个版本还没有真正接入数据库，但可以先用来验证切片、向量化和检索链路是否跑通。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-fact-151",
+    "question": "关于“当前仓库中的 basic_rag.py 是一个最小可运行示例。它先对单个文档切片，再调用阿里百炼兼容接口生成 embedding，并将结果保存到本地 JSON 文件中。这个版本还没有真正接入数据库，但可以先用来验证切片、向量化和检索链路是否跑通。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "当前仓库中的 basic_rag.py 是一个最小可运行示例。它先对单个文档切片，再调用阿里百炼兼容接口生成 embedding，并将结果保存到本地 JSON 文件中。这个版本还没有真正接入数据库，但可以先用来验证切片、向量化和检索链路是否跑通。"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": "当前基础版本"
+  },
+  {
+    "item_id": "01_project_overview-title-152",
+    "question": "哪篇文档介绍了“Multi-Agent Support Copilot 项目概览”？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "Multi-Agent Support Copilot 项目概览"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": null
+  },
+  {
+    "item_id": "01_project_overview-title-153",
+    "question": "我想看“Multi-Agent Support Copilot 项目概览”的内容，应该检索哪份文档？",
+    "expected_source": "resources\\doc\\01_project_overview.md",
+    "expected_substrings": [
+      "Multi-Agent Support Copilot 项目概览"
+    ],
+    "doc_title": "Multi-Agent Support Copilot 项目概览",
+    "section_title": null
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-0",
+    "question": "文档里如何描述“总体设计”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "总体设计"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-1",
+    "question": "哪里提到了“总体设计”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "总体设计"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-2",
+    "question": "我想查“总体设计”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "总体设计"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-3",
+    "question": "关于“总体设计”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "总体设计"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-4",
+    "question": "“总体设计”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "总体设计"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-5",
+    "question": "哪里可以找到关于“总体设计”的说明？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "总体设计"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-6",
+    "question": "知识库里哪篇文档覆盖了“总体设计”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "总体设计"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-7",
+    "question": "如果要查看“总体设计”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "总体设计"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-8",
+    "question": "文档里如何描述“项目当前使用 PostgreSQL 作为文本和结构化信息的主存储，同时使用 pgvector 保存向量字段。知识入库时，需要区分文档级信息和切片级信息。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "项目当前使用 PostgreSQL 作为文本和结构化信息的主存储，同时使用 pgvector 保存向量字段。知识入库时，需要区分文档级信息和切片级信息。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-9",
+    "question": "哪里提到了“项目当前使用 PostgreSQL 作为文本和结构化信息的主存储，同时使用 pgvector 保存向量字段。知识入库时，需要区分文档级信息和切片级信息。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "项目当前使用 PostgreSQL 作为文本和结构化信息的主存储，同时使用 pgvector 保存向量字段。知识入库时，需要区分文档级信息和切片级信息。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-10",
+    "question": "我想查“项目当前使用 PostgreSQL 作为文本和结构化信息的主存储，同时使用 pgvector 保存向量字段。知识入库时，需要区分文档级信息和切片级信息。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "项目当前使用 PostgreSQL 作为文本和结构化信息的主存储，同时使用 pgvector 保存向量字段。知识入库时，需要区分文档级信息和切片级信息。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-11",
+    "question": "关于“项目当前使用 PostgreSQL 作为文本和结构化信息的主存储，同时使用 pgvector 保存向量字段。知识入库时，需要区分文档级信息和切片级信息。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "项目当前使用 PostgreSQL 作为文本和结构化信息的主存储，同时使用 pgvector 保存向量字段。知识入库时，需要区分文档级信息和切片级信息。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "总体设计"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-12",
+    "question": "文档里如何描述“主要表”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "主要表"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "主要表"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-13",
+    "question": "哪里提到了“主要表”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "主要表"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "主要表"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-14",
+    "question": "我想查“主要表”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "主要表"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "主要表"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-15",
+    "question": "关于“主要表”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "主要表"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "主要表"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-16",
+    "question": "“主要表”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "主要表"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "主要表"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-17",
+    "question": "哪里可以找到关于“主要表”的说明？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "主要表"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "主要表"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-18",
+    "question": "知识库里哪篇文档覆盖了“主要表”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "主要表"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "主要表"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-19",
+    "question": "如果要查看“主要表”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "主要表"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "主要表"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-20",
+    "question": "文档里如何描述“kb_documents”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-21",
+    "question": "哪里提到了“kb_documents”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-22",
+    "question": "我想查“kb_documents”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-23",
+    "question": "关于“kb_documents”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-24",
+    "question": "“kb_documents”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-25",
+    "question": "哪里可以找到关于“kb_documents”的说明？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-26",
+    "question": "知识库里哪篇文档覆盖了“kb_documents”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-27",
+    "question": "如果要查看“kb_documents”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-28",
+    "question": "文档里如何描述“kb_documents 用于保存文档级元信息，例如文档标题、来源、所属仓库、模块名、作者、标签和版本号。每一篇文档在该表中对应一条记录。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents 用于保存文档级元信息，例如文档标题、来源、所属仓库、模块名、作者、标签和版本号。每一篇文档在该表中对应一条记录。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-29",
+    "question": "哪里提到了“kb_documents 用于保存文档级元信息，例如文档标题、来源、所属仓库、模块名、作者、标签和版本号。每一篇文档在该表中对应一条记录。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents 用于保存文档级元信息，例如文档标题、来源、所属仓库、模块名、作者、标签和版本号。每一篇文档在该表中对应一条记录。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-30",
+    "question": "我想查“kb_documents 用于保存文档级元信息，例如文档标题、来源、所属仓库、模块名、作者、标签和版本号。每一篇文档在该表中对应一条记录。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents 用于保存文档级元信息，例如文档标题、来源、所属仓库、模块名、作者、标签和版本号。每一篇文档在该表中对应一条记录。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-31",
+    "question": "关于“kb_documents 用于保存文档级元信息，例如文档标题、来源、所属仓库、模块名、作者、标签和版本号。每一篇文档在该表中对应一条记录。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_documents 用于保存文档级元信息，例如文档标题、来源、所属仓库、模块名、作者、标签和版本号。每一篇文档在该表中对应一条记录。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_documents"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-32",
+    "question": "文档里如何描述“kb_chunks”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-33",
+    "question": "哪里提到了“kb_chunks”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-34",
+    "question": "我想查“kb_chunks”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-35",
+    "question": "关于“kb_chunks”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-36",
+    "question": "“kb_chunks”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-37",
+    "question": "哪里可以找到关于“kb_chunks”的说明？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-38",
+    "question": "知识库里哪篇文档覆盖了“kb_chunks”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-39",
+    "question": "如果要查看“kb_chunks”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-40",
+    "question": "文档里如何描述“kb_chunks 用于保存文档切片。每个 chunk 应包含以下信息：”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks 用于保存文档切片。每个 chunk 应包含以下信息："
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-41",
+    "question": "哪里提到了“kb_chunks 用于保存文档切片。每个 chunk 应包含以下信息：”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks 用于保存文档切片。每个 chunk 应包含以下信息："
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-42",
+    "question": "我想查“kb_chunks 用于保存文档切片。每个 chunk 应包含以下信息：”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks 用于保存文档切片。每个 chunk 应包含以下信息："
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-43",
+    "question": "关于“kb_chunks 用于保存文档切片。每个 chunk 应包含以下信息：”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "kb_chunks 用于保存文档切片。每个 chunk 应包含以下信息："
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-44",
+    "question": "文档里如何描述“document_id：关联到 kb_documents”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "document_id：关联到 kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-45",
+    "question": "哪里提到了“document_id：关联到 kb_documents”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "document_id：关联到 kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-46",
+    "question": "我想查“document_id：关联到 kb_documents”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "document_id：关联到 kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-47",
+    "question": "关于“document_id：关联到 kb_documents”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "document_id：关联到 kb_documents"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-48",
+    "question": "文档里如何描述“chunk_index：切片顺序”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "chunk_index：切片顺序"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-49",
+    "question": "哪里提到了“chunk_index：切片顺序”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "chunk_index：切片顺序"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-50",
+    "question": "我想查“chunk_index：切片顺序”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "chunk_index：切片顺序"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-51",
+    "question": "关于“chunk_index：切片顺序”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "chunk_index：切片顺序"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-52",
+    "question": "文档里如何描述“content：切片原文”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "content：切片原文"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-53",
+    "question": "哪里提到了“content：切片原文”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "content：切片原文"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-54",
+    "question": "我想查“content：切片原文”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "content：切片原文"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-55",
+    "question": "关于“content：切片原文”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "content：切片原文"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-56",
+    "question": "文档里如何描述“content_summary：可选摘要”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "content_summary：可选摘要"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-57",
+    "question": "哪里提到了“content_summary：可选摘要”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "content_summary：可选摘要"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-58",
+    "question": "我想查“content_summary：可选摘要”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "content_summary：可选摘要"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-59",
+    "question": "关于“content_summary：可选摘要”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "content_summary：可选摘要"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-60",
+    "question": "文档里如何描述“token_count：文本长度或 token 数”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "token_count：文本长度或 token 数"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-61",
+    "question": "哪里提到了“token_count：文本长度或 token 数”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "token_count：文本长度或 token 数"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-62",
+    "question": "我想查“token_count：文本长度或 token 数”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "token_count：文本长度或 token 数"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-63",
+    "question": "关于“token_count：文本长度或 token 数”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "token_count：文本长度或 token 数"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-64",
+    "question": "文档里如何描述“keywords：关键词”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "keywords：关键词"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-65",
+    "question": "哪里提到了“keywords：关键词”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "keywords：关键词"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-66",
+    "question": "我想查“keywords：关键词”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "keywords：关键词"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-67",
+    "question": "关于“keywords：关键词”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "keywords：关键词"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-68",
+    "question": "文档里如何描述“tsv：全文检索字段”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "tsv：全文检索字段"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-69",
+    "question": "哪里提到了“tsv：全文检索字段”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "tsv：全文检索字段"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-70",
+    "question": "我想查“tsv：全文检索字段”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "tsv：全文检索字段"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-71",
+    "question": "关于“tsv：全文检索字段”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "tsv：全文检索字段"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-72",
+    "question": "文档里如何描述“embedding：1536 维向量”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "embedding：1536 维向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-73",
+    "question": "哪里提到了“embedding：1536 维向量”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "embedding：1536 维向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-74",
+    "question": "我想查“embedding：1536 维向量”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "embedding：1536 维向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-75",
+    "question": "关于“embedding：1536 维向量”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "embedding：1536 维向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-76",
+    "question": "文档里如何描述“metadata：扩展信息”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "metadata：扩展信息"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-77",
+    "question": "哪里提到了“metadata：扩展信息”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "metadata：扩展信息"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-78",
+    "question": "我想查“metadata：扩展信息”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "metadata：扩展信息"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-79",
+    "question": "关于“metadata：扩展信息”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "metadata：扩展信息"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "kb_chunks"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-80",
+    "question": "文档里如何描述“入库流程建议”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "入库流程建议"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-81",
+    "question": "哪里提到了“入库流程建议”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "入库流程建议"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-82",
+    "question": "我想查“入库流程建议”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "入库流程建议"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-83",
+    "question": "关于“入库流程建议”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "入库流程建议"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-84",
+    "question": "“入库流程建议”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "入库流程建议"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-85",
+    "question": "哪里可以找到关于“入库流程建议”的说明？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "入库流程建议"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-86",
+    "question": "知识库里哪篇文档覆盖了“入库流程建议”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "入库流程建议"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-87",
+    "question": "如果要查看“入库流程建议”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "入库流程建议"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-88",
+    "question": "文档里如何描述“先在 kb_documents 插入一条文档记录。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "先在 kb_documents 插入一条文档记录。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-89",
+    "question": "哪里提到了“先在 kb_documents 插入一条文档记录。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "先在 kb_documents 插入一条文档记录。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-90",
+    "question": "我想查“先在 kb_documents 插入一条文档记录。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "先在 kb_documents 插入一条文档记录。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-91",
+    "question": "关于“先在 kb_documents 插入一条文档记录。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "先在 kb_documents 插入一条文档记录。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-92",
+    "question": "文档里如何描述“对正文切片。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对正文切片。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-93",
+    "question": "哪里提到了“对正文切片。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对正文切片。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-94",
+    "question": "我想查“对正文切片。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对正文切片。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-95",
+    "question": "关于“对正文切片。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对正文切片。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-96",
+    "question": "文档里如何描述“为每个切片生成 embedding。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为每个切片生成 embedding。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-97",
+    "question": "哪里提到了“为每个切片生成 embedding。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为每个切片生成 embedding。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-98",
+    "question": "我想查“为每个切片生成 embedding。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为每个切片生成 embedding。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-99",
+    "question": "关于“为每个切片生成 embedding。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为每个切片生成 embedding。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-100",
+    "question": "文档里如何描述“将切片文本、元数据、embedding 一起写入 kb_chunks。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "将切片文本、元数据、embedding 一起写入 kb_chunks。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-101",
+    "question": "哪里提到了“将切片文本、元数据、embedding 一起写入 kb_chunks。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "将切片文本、元数据、embedding 一起写入 kb_chunks。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-102",
+    "question": "我想查“将切片文本、元数据、embedding 一起写入 kb_chunks。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "将切片文本、元数据、embedding 一起写入 kb_chunks。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-103",
+    "question": "关于“将切片文本、元数据、embedding 一起写入 kb_chunks。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "将切片文本、元数据、embedding 一起写入 kb_chunks。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "入库流程建议"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-104",
+    "question": "文档里如何描述“为什么要同时保存文本和向量”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为什么要同时保存文本和向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-105",
+    "question": "哪里提到了“为什么要同时保存文本和向量”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为什么要同时保存文本和向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-106",
+    "question": "我想查“为什么要同时保存文本和向量”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为什么要同时保存文本和向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-107",
+    "question": "关于“为什么要同时保存文本和向量”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为什么要同时保存文本和向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-108",
+    "question": "“为什么要同时保存文本和向量”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为什么要同时保存文本和向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-109",
+    "question": "哪里可以找到关于“为什么要同时保存文本和向量”的说明？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为什么要同时保存文本和向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-110",
+    "question": "知识库里哪篇文档覆盖了“为什么要同时保存文本和向量”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为什么要同时保存文本和向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-111",
+    "question": "如果要查看“为什么要同时保存文本和向量”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "为什么要同时保存文本和向量"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-112",
+    "question": "文档里如何描述“只保存向量无法支持 BM25、关键词过滤、片段展示和来源追踪，因此 content 必须保留。只保存文本又无法支持语义检索，因此还需要 embedding 字段。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "只保存向量无法支持 BM25、关键词过滤、片段展示和来源追踪，因此 content 必须保留。只保存文本又无法支持语义检索，因此还需要 embedding 字段。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-113",
+    "question": "哪里提到了“只保存向量无法支持 BM25、关键词过滤、片段展示和来源追踪，因此 content 必须保留。只保存文本又无法支持语义检索，因此还需要 embedding 字段。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "只保存向量无法支持 BM25、关键词过滤、片段展示和来源追踪，因此 content 必须保留。只保存文本又无法支持语义检索，因此还需要 embedding 字段。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-114",
+    "question": "我想查“只保存向量无法支持 BM25、关键词过滤、片段展示和来源追踪，因此 content 必须保留。只保存文本又无法支持语义检索，因此还需要 embedding 字段。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "只保存向量无法支持 BM25、关键词过滤、片段展示和来源追踪，因此 content 必须保留。只保存文本又无法支持语义检索，因此还需要 embedding 字段。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-115",
+    "question": "关于“只保存向量无法支持 BM25、关键词过滤、片段展示和来源追踪，因此 content 必须保留。只保存文本又无法支持语义检索，因此还需要 embedding 字段。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "只保存向量无法支持 BM25、关键词过滤、片段展示和来源追踪，因此 content 必须保留。只保存文本又无法支持语义检索，因此还需要 embedding 字段。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "为什么要同时保存文本和向量"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-116",
+    "question": "文档里如何描述“推荐的检索策略”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐的检索策略"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-117",
+    "question": "哪里提到了“推荐的检索策略”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐的检索策略"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-118",
+    "question": "我想查“推荐的检索策略”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐的检索策略"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-119",
+    "question": "关于“推荐的检索策略”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐的检索策略"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-120",
+    "question": "“推荐的检索策略”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐的检索策略"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-121",
+    "question": "哪里可以找到关于“推荐的检索策略”的说明？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐的检索策略"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-122",
+    "question": "知识库里哪篇文档覆盖了“推荐的检索策略”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐的检索策略"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-123",
+    "question": "如果要查看“推荐的检索策略”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐的检索策略"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-124",
+    "question": "文档里如何描述“推荐采用混合检索：”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐采用混合检索："
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-125",
+    "question": "哪里提到了“推荐采用混合检索：”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐采用混合检索："
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-126",
+    "question": "我想查“推荐采用混合检索：”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐采用混合检索："
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-127",
+    "question": "关于“推荐采用混合检索：”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "推荐采用混合检索："
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-128",
+    "question": "文档里如何描述“向量检索负责语义相似召回”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "向量检索负责语义相似召回"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-129",
+    "question": "哪里提到了“向量检索负责语义相似召回”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "向量检索负责语义相似召回"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-130",
+    "question": "我想查“向量检索负责语义相似召回”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "向量检索负责语义相似召回"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-131",
+    "question": "关于“向量检索负责语义相似召回”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "向量检索负责语义相似召回"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-132",
+    "question": "文档里如何描述“BM25 负责术语、接口名和错误码的精确召回”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "BM25 负责术语、接口名和错误码的精确召回"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-133",
+    "question": "哪里提到了“BM25 负责术语、接口名和错误码的精确召回”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "BM25 负责术语、接口名和错误码的精确召回"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-134",
+    "question": "我想查“BM25 负责术语、接口名和错误码的精确召回”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "BM25 负责术语、接口名和错误码的精确召回"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-135",
+    "question": "关于“BM25 负责术语、接口名和错误码的精确召回”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "BM25 负责术语、接口名和错误码的精确召回"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-136",
+    "question": "文档里如何描述“最终使用 RRF 融合两路结果”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "最终使用 RRF 融合两路结果"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-137",
+    "question": "哪里提到了“最终使用 RRF 融合两路结果”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "最终使用 RRF 融合两路结果"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-138",
+    "question": "我想查“最终使用 RRF 融合两路结果”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "最终使用 RRF 融合两路结果"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-139",
+    "question": "关于“最终使用 RRF 融合两路结果”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "最终使用 RRF 融合两路结果"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-140",
+    "question": "文档里如何描述“必要时增加 rerank 模型进行精排”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "必要时增加 rerank 模型进行精排"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-141",
+    "question": "哪里提到了“必要时增加 rerank 模型进行精排”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "必要时增加 rerank 模型进行精排"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-142",
+    "question": "我想查“必要时增加 rerank 模型进行精排”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "必要时增加 rerank 模型进行精排"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-143",
+    "question": "关于“必要时增加 rerank 模型进行精排”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "必要时增加 rerank 模型进行精排"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "推荐的检索策略"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-144",
+    "question": "文档里如何描述“对当前 Demo 的影响”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对当前 Demo 的影响"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-145",
+    "question": "哪里提到了“对当前 Demo 的影响”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对当前 Demo 的影响"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-146",
+    "question": "我想查“对当前 Demo 的影响”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对当前 Demo 的影响"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-147",
+    "question": "关于“对当前 Demo 的影响”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对当前 Demo 的影响"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-148",
+    "question": "“对当前 Demo 的影响”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对当前 Demo 的影响"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-149",
+    "question": "哪里可以找到关于“对当前 Demo 的影响”的说明？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对当前 Demo 的影响"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-150",
+    "question": "知识库里哪篇文档覆盖了“对当前 Demo 的影响”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对当前 Demo 的影响"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-section-151",
+    "question": "如果要查看“对当前 Demo 的影响”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "对当前 Demo 的影响"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-152",
+    "question": "文档里如何描述“basic_rag.py 当前先把 embedding 落到本地 JSON 文件中，目的是先验证 embedding 与检索效果。后续接入数据库时，ChunkRecord 中的 text 和 embedding 可以直接映射到 kb_chunks.content 与 kb_chunks.embedding。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "basic_rag.py 当前先把 embedding 落到本地 JSON 文件中，目的是先验证 embedding 与检索效果。后续接入数据库时，ChunkRecord 中的 text 和 embedding 可以直接映射到 kb_chunks.content 与 kb_chunks.embedding。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-153",
+    "question": "哪里提到了“basic_rag.py 当前先把 embedding 落到本地 JSON 文件中，目的是先验证 embedding 与检索效果。后续接入数据库时，ChunkRecord 中的 text 和 embedding 可以直接映射到 kb_chunks.content 与 kb_chunks.embedding。”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "basic_rag.py 当前先把 embedding 落到本地 JSON 文件中，目的是先验证 embedding 与检索效果。后续接入数据库时，ChunkRecord 中的 text 和 embedding 可以直接映射到 kb_chunks.content 与 kb_chunks.embedding。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-154",
+    "question": "我想查“basic_rag.py 当前先把 embedding 落到本地 JSON 文件中，目的是先验证 embedding 与检索效果。后续接入数据库时，ChunkRecord 中的 text 和 embedding 可以直接映射到 kb_chunks.content 与 kb_chunks.embedding。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "basic_rag.py 当前先把 embedding 落到本地 JSON 文件中，目的是先验证 embedding 与检索效果。后续接入数据库时，ChunkRecord 中的 text 和 embedding 可以直接映射到 kb_chunks.content 与 kb_chunks.embedding。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-fact-155",
+    "question": "关于“basic_rag.py 当前先把 embedding 落到本地 JSON 文件中，目的是先验证 embedding 与检索效果。后续接入数据库时，ChunkRecord 中的 text 和 embedding 可以直接映射到 kb_chunks.content 与 kb_chunks.embedding。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "basic_rag.py 当前先把 embedding 落到本地 JSON 文件中，目的是先验证 embedding 与检索效果。后续接入数据库时，ChunkRecord 中的 text 和 embedding 可以直接映射到 kb_chunks.content 与 kb_chunks.embedding。"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": "对当前 Demo 的影响"
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-title-156",
+    "question": "哪篇文档介绍了“知识库表结构与入库设计”？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "知识库表结构与入库设计"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": null
+  },
+  {
+    "item_id": "02_kb_schema_and_ingestion-title-157",
+    "question": "我想看“知识库表结构与入库设计”的内容，应该检索哪份文档？",
+    "expected_source": "resources\\doc\\02_kb_schema_and_ingestion.md",
+    "expected_substrings": [
+      "知识库表结构与入库设计"
+    ],
+    "doc_title": "知识库表结构与入库设计",
+    "section_title": null
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-0",
+    "question": "文档里如何描述“为什么需要会话状态”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "为什么需要会话状态"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-1",
+    "question": "哪里提到了“为什么需要会话状态”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "为什么需要会话状态"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-2",
+    "question": "我想查“为什么需要会话状态”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "为什么需要会话状态"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-3",
+    "question": "关于“为什么需要会话状态”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "为什么需要会话状态"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-4",
+    "question": "“为什么需要会话状态”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "为什么需要会话状态"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-5",
+    "question": "哪里可以找到关于“为什么需要会话状态”的说明？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "为什么需要会话状态"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-6",
+    "question": "知识库里哪篇文档覆盖了“为什么需要会话状态”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "为什么需要会话状态"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-7",
+    "question": "如果要查看“为什么需要会话状态”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "为什么需要会话状态"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-8",
+    "question": "文档里如何描述“用户在支持场景中经常连续追问。如果系统不能保留前文，就会丢失问题背景。例如用户先问订单接口超时，再问是否和库存服务有关，这第二个问题必须结合前文才能回答。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "用户在支持场景中经常连续追问。如果系统不能保留前文，就会丢失问题背景。例如用户先问订单接口超时，再问是否和库存服务有关，这第二个问题必须结合前文才能回答。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-9",
+    "question": "哪里提到了“用户在支持场景中经常连续追问。如果系统不能保留前文，就会丢失问题背景。例如用户先问订单接口超时，再问是否和库存服务有关，这第二个问题必须结合前文才能回答。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "用户在支持场景中经常连续追问。如果系统不能保留前文，就会丢失问题背景。例如用户先问订单接口超时，再问是否和库存服务有关，这第二个问题必须结合前文才能回答。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-10",
+    "question": "我想查“用户在支持场景中经常连续追问。如果系统不能保留前文，就会丢失问题背景。例如用户先问订单接口超时，再问是否和库存服务有关，这第二个问题必须结合前文才能回答。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "用户在支持场景中经常连续追问。如果系统不能保留前文，就会丢失问题背景。例如用户先问订单接口超时，再问是否和库存服务有关，这第二个问题必须结合前文才能回答。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-11",
+    "question": "关于“用户在支持场景中经常连续追问。如果系统不能保留前文，就会丢失问题背景。例如用户先问订单接口超时，再问是否和库存服务有关，这第二个问题必须结合前文才能回答。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "用户在支持场景中经常连续追问。如果系统不能保留前文，就会丢失问题背景。例如用户先问订单接口超时，再问是否和库存服务有关，这第二个问题必须结合前文才能回答。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-12",
+    "question": "文档里如何描述“因此项目设计中包含 sessions 表，用于保存用户当前会话的上下文状态。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "因此项目设计中包含 sessions 表，用于保存用户当前会话的上下文状态。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-13",
+    "question": "哪里提到了“因此项目设计中包含 sessions 表，用于保存用户当前会话的上下文状态。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "因此项目设计中包含 sessions 表，用于保存用户当前会话的上下文状态。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-14",
+    "question": "我想查“因此项目设计中包含 sessions 表，用于保存用户当前会话的上下文状态。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "因此项目设计中包含 sessions 表，用于保存用户当前会话的上下文状态。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-15",
+    "question": "关于“因此项目设计中包含 sessions 表，用于保存用户当前会话的上下文状态。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "因此项目设计中包含 sessions 表，用于保存用户当前会话的上下文状态。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "为什么需要会话状态"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-16",
+    "question": "文档里如何描述“sessions 表建议保存的内容”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "sessions 表建议保存的内容"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-17",
+    "question": "哪里提到了“sessions 表建议保存的内容”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "sessions 表建议保存的内容"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-18",
+    "question": "我想查“sessions 表建议保存的内容”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "sessions 表建议保存的内容"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-19",
+    "question": "关于“sessions 表建议保存的内容”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "sessions 表建议保存的内容"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-20",
+    "question": "“sessions 表建议保存的内容”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "sessions 表建议保存的内容"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-21",
+    "question": "哪里可以找到关于“sessions 表建议保存的内容”的说明？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "sessions 表建议保存的内容"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-22",
+    "question": "知识库里哪篇文档覆盖了“sessions 表建议保存的内容”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "sessions 表建议保存的内容"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-23",
+    "question": "如果要查看“sessions 表建议保存的内容”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "sessions 表建议保存的内容"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-24",
+    "question": "文档里如何描述“最近一次用户问题”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "最近一次用户问题"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-25",
+    "question": "哪里提到了“最近一次用户问题”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "最近一次用户问题"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-26",
+    "question": "我想查“最近一次用户问题”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "最近一次用户问题"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-27",
+    "question": "关于“最近一次用户问题”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "最近一次用户问题"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-28",
+    "question": "文档里如何描述“最近一次回答摘要”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "最近一次回答摘要"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-29",
+    "question": "哪里提到了“最近一次回答摘要”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "最近一次回答摘要"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-30",
+    "question": "我想查“最近一次回答摘要”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "最近一次回答摘要"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-31",
+    "question": "关于“最近一次回答摘要”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "最近一次回答摘要"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-32",
+    "question": "文档里如何描述“Agent 状态信息”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "Agent 状态信息"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-33",
+    "question": "哪里提到了“Agent 状态信息”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "Agent 状态信息"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-34",
+    "question": "我想查“Agent 状态信息”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "Agent 状态信息"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-35",
+    "question": "关于“Agent 状态信息”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "Agent 状态信息"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-36",
+    "question": "文档里如何描述“这些信息可以帮助 routing_agent 和 answer_agent 判断当前问题是否是追问，以及是否需要优先使用最近上下文。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "这些信息可以帮助 routing_agent 和 answer_agent 判断当前问题是否是追问，以及是否需要优先使用最近上下文。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-37",
+    "question": "哪里提到了“这些信息可以帮助 routing_agent 和 answer_agent 判断当前问题是否是追问，以及是否需要优先使用最近上下文。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "这些信息可以帮助 routing_agent 和 answer_agent 判断当前问题是否是追问，以及是否需要优先使用最近上下文。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-38",
+    "question": "我想查“这些信息可以帮助 routing_agent 和 answer_agent 判断当前问题是否是追问，以及是否需要优先使用最近上下文。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "这些信息可以帮助 routing_agent 和 answer_agent 判断当前问题是否是追问，以及是否需要优先使用最近上下文。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-39",
+    "question": "关于“这些信息可以帮助 routing_agent 和 answer_agent 判断当前问题是否是追问，以及是否需要优先使用最近上下文。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "这些信息可以帮助 routing_agent 和 answer_agent 判断当前问题是否是追问，以及是否需要优先使用最近上下文。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "sessions 表建议保存的内容"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-40",
+    "question": "文档里如何描述“task_memory 的定位”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 的定位"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-41",
+    "question": "哪里提到了“task_memory 的定位”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 的定位"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-42",
+    "question": "我想查“task_memory 的定位”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 的定位"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-43",
+    "question": "关于“task_memory 的定位”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 的定位"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-44",
+    "question": "“task_memory 的定位”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 的定位"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-45",
+    "question": "哪里可以找到关于“task_memory 的定位”的说明？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 的定位"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-46",
+    "question": "知识库里哪篇文档覆盖了“task_memory 的定位”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 的定位"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-47",
+    "question": "如果要查看“task_memory 的定位”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 的定位"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-48",
+    "question": "文档里如何描述“task_memory 不保存普通聊天记录，而是保存可复用经验。只有当一次问答满足以下特征时，才建议写入：”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 不保存普通聊天记录，而是保存可复用经验。只有当一次问答满足以下特征时，才建议写入："
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-49",
+    "question": "哪里提到了“task_memory 不保存普通聊天记录，而是保存可复用经验。只有当一次问答满足以下特征时，才建议写入：”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 不保存普通聊天记录，而是保存可复用经验。只有当一次问答满足以下特征时，才建议写入："
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-50",
+    "question": "我想查“task_memory 不保存普通聊天记录，而是保存可复用经验。只有当一次问答满足以下特征时，才建议写入：”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 不保存普通聊天记录，而是保存可复用经验。只有当一次问答满足以下特征时，才建议写入："
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-51",
+    "question": "关于“task_memory 不保存普通聊天记录，而是保存可复用经验。只有当一次问答满足以下特征时，才建议写入：”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "task_memory 不保存普通聊天记录，而是保存可复用经验。只有当一次问答满足以下特征时，才建议写入："
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-52",
+    "question": "文档里如何描述“未来可能复现”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "未来可能复现"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-53",
+    "question": "哪里提到了“未来可能复现”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "未来可能复现"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-54",
+    "question": "我想查“未来可能复现”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "未来可能复现"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-55",
+    "question": "关于“未来可能复现”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "未来可能复现"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-56",
+    "question": "文档里如何描述“包含排查路径或经验判断”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "包含排查路径或经验判断"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-57",
+    "question": "哪里提到了“包含排查路径或经验判断”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "包含排查路径或经验判断"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-58",
+    "question": "我想查“包含排查路径或经验判断”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "包含排查路径或经验判断"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-59",
+    "question": "关于“包含排查路径或经验判断”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "包含排查路径或经验判断"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-60",
+    "question": "文档里如何描述“可以抽象成规则”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "可以抽象成规则"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-61",
+    "question": "哪里提到了“可以抽象成规则”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "可以抽象成规则"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-62",
+    "question": "我想查“可以抽象成规则”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "可以抽象成规则"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-63",
+    "question": "关于“可以抽象成规则”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "可以抽象成规则"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-64",
+    "question": "文档里如何描述““遇到订单创建接口超时，优先检查库存服务是否发生线程池耗尽，再查看 Redis 热 key 是否导致库存扣减接口阻塞。””？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "“遇到订单创建接口超时，优先检查库存服务是否发生线程池耗尽，再查看 Redis 热 key 是否导致库存扣减接口阻塞。”"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-65",
+    "question": "哪里提到了““遇到订单创建接口超时，优先检查库存服务是否发生线程池耗尽，再查看 Redis 热 key 是否导致库存扣减接口阻塞。””？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "“遇到订单创建接口超时，优先检查库存服务是否发生线程池耗尽，再查看 Redis 热 key 是否导致库存扣减接口阻塞。”"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-66",
+    "question": "我想查““遇到订单创建接口超时，优先检查库存服务是否发生线程池耗尽，再查看 Redis 热 key 是否导致库存扣减接口阻塞。””相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "“遇到订单创建接口超时，优先检查库存服务是否发生线程池耗尽，再查看 Redis 热 key 是否导致库存扣减接口阻塞。”"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-67",
+    "question": "关于““遇到订单创建接口超时，优先检查库存服务是否发生线程池耗尽，再查看 Redis 热 key 是否导致库存扣减接口阻塞。””，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "“遇到订单创建接口超时，优先检查库存服务是否发生线程池耗尽，再查看 Redis 热 key 是否导致库存扣减接口阻塞。”"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-68",
+    "question": "文档里如何描述“这类结论就比普通对话更适合进入记忆库。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "这类结论就比普通对话更适合进入记忆库。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-69",
+    "question": "哪里提到了“这类结论就比普通对话更适合进入记忆库。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "这类结论就比普通对话更适合进入记忆库。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-70",
+    "question": "我想查“这类结论就比普通对话更适合进入记忆库。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "这类结论就比普通对话更适合进入记忆库。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-71",
+    "question": "关于“这类结论就比普通对话更适合进入记忆库。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "这类结论就比普通对话更适合进入记忆库。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "task_memory 的定位"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-72",
+    "question": "文档里如何描述“记忆写入时机”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "记忆写入时机"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-73",
+    "question": "哪里提到了“记忆写入时机”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "记忆写入时机"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-74",
+    "question": "我想查“记忆写入时机”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "记忆写入时机"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-75",
+    "question": "关于“记忆写入时机”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "记忆写入时机"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-76",
+    "question": "“记忆写入时机”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "记忆写入时机"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-77",
+    "question": "哪里可以找到关于“记忆写入时机”的说明？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "记忆写入时机"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-78",
+    "question": "知识库里哪篇文档覆盖了“记忆写入时机”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "记忆写入时机"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-79",
+    "question": "如果要查看“记忆写入时机”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "记忆写入时机"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-80",
+    "question": "文档里如何描述“建议在回答生成后，由 memory_agent 负责判断是否值得沉淀，再统一写库。不要让主问答链路直接写入记忆，否则容易把很多低质量内容塞进 task_memory。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "建议在回答生成后，由 memory_agent 负责判断是否值得沉淀，再统一写库。不要让主问答链路直接写入记忆，否则容易把很多低质量内容塞进 task_memory。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-81",
+    "question": "哪里提到了“建议在回答生成后，由 memory_agent 负责判断是否值得沉淀，再统一写库。不要让主问答链路直接写入记忆，否则容易把很多低质量内容塞进 task_memory。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "建议在回答生成后，由 memory_agent 负责判断是否值得沉淀，再统一写库。不要让主问答链路直接写入记忆，否则容易把很多低质量内容塞进 task_memory。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-82",
+    "question": "我想查“建议在回答生成后，由 memory_agent 负责判断是否值得沉淀，再统一写库。不要让主问答链路直接写入记忆，否则容易把很多低质量内容塞进 task_memory。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "建议在回答生成后，由 memory_agent 负责判断是否值得沉淀，再统一写库。不要让主问答链路直接写入记忆，否则容易把很多低质量内容塞进 task_memory。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-83",
+    "question": "关于“建议在回答生成后，由 memory_agent 负责判断是否值得沉淀，再统一写库。不要让主问答链路直接写入记忆，否则容易把很多低质量内容塞进 task_memory。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "建议在回答生成后，由 memory_agent 负责判断是否值得沉淀，再统一写库。不要让主问答链路直接写入记忆，否则容易把很多低质量内容塞进 task_memory。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "记忆写入时机"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-84",
+    "question": "文档里如何描述“检索优先级建议”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "检索优先级建议"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-85",
+    "question": "哪里提到了“检索优先级建议”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "检索优先级建议"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-86",
+    "question": "我想查“检索优先级建议”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "检索优先级建议"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-87",
+    "question": "关于“检索优先级建议”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "检索优先级建议"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-88",
+    "question": "“检索优先级建议”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "检索优先级建议"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-89",
+    "question": "哪里可以找到关于“检索优先级建议”的说明？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "检索优先级建议"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-90",
+    "question": "知识库里哪篇文档覆盖了“检索优先级建议”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "检索优先级建议"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-section-91",
+    "question": "如果要查看“检索优先级建议”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "检索优先级建议"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-92",
+    "question": "文档里如何描述“当用户问题与近期会话强相关时，应优先参考 sessions 中的上下文；当用户问题明显是在问可复用经验时，应优先检索 task_memory 和 incident_cases。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "当用户问题与近期会话强相关时，应优先参考 sessions 中的上下文；当用户问题明显是在问可复用经验时，应优先检索 task_memory 和 incident_cases。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-93",
+    "question": "哪里提到了“当用户问题与近期会话强相关时，应优先参考 sessions 中的上下文；当用户问题明显是在问可复用经验时，应优先检索 task_memory 和 incident_cases。”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "当用户问题与近期会话强相关时，应优先参考 sessions 中的上下文；当用户问题明显是在问可复用经验时，应优先检索 task_memory 和 incident_cases。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-94",
+    "question": "我想查“当用户问题与近期会话强相关时，应优先参考 sessions 中的上下文；当用户问题明显是在问可复用经验时，应优先检索 task_memory 和 incident_cases。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "当用户问题与近期会话强相关时，应优先参考 sessions 中的上下文；当用户问题明显是在问可复用经验时，应优先检索 task_memory 和 incident_cases。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-fact-95",
+    "question": "关于“当用户问题与近期会话强相关时，应优先参考 sessions 中的上下文；当用户问题明显是在问可复用经验时，应优先检索 task_memory 和 incident_cases。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "当用户问题与近期会话强相关时，应优先参考 sessions 中的上下文；当用户问题明显是在问可复用经验时，应优先检索 task_memory 和 incident_cases。"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": "检索优先级建议"
+  },
+  {
+    "item_id": "03_session_memory_strategy-title-96",
+    "question": "哪篇文档介绍了“会话状态与记忆策略”？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "会话状态与记忆策略"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": null
+  },
+  {
+    "item_id": "03_session_memory_strategy-title-97",
+    "question": "我想看“会话状态与记忆策略”的内容，应该检索哪份文档？",
+    "expected_source": "resources\\doc\\03_session_memory_strategy.md",
+    "expected_substrings": [
+      "会话状态与记忆策略"
+    ],
+    "doc_title": "会话状态与记忆策略",
+    "section_title": null
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-0",
+    "question": "文档里如何描述“现象”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "现象"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-1",
+    "question": "哪里提到了“现象”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "现象"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-2",
+    "question": "我想查“现象”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "现象"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-3",
+    "question": "关于“现象”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "现象"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-4",
+    "question": "“现象”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "现象"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-5",
+    "question": "哪里可以找到关于“现象”的说明？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "现象"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-6",
+    "question": "知识库里哪篇文档覆盖了“现象”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "现象"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-7",
+    "question": "如果要查看“现象”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "现象"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-8",
+    "question": "文档里如何描述“用户反馈订单创建接口在高峰期频繁超时，接口平均响应时间从 300ms 升高到 8 秒以上。前端偶尔出现“系统繁忙，请稍后再试”的提示。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "用户反馈订单创建接口在高峰期频繁超时，接口平均响应时间从 300ms 升高到 8 秒以上。前端偶尔出现“系统繁忙，请稍后再试”的提示。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-9",
+    "question": "哪里提到了“用户反馈订单创建接口在高峰期频繁超时，接口平均响应时间从 300ms 升高到 8 秒以上。前端偶尔出现“系统繁忙，请稍后再试”的提示。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "用户反馈订单创建接口在高峰期频繁超时，接口平均响应时间从 300ms 升高到 8 秒以上。前端偶尔出现“系统繁忙，请稍后再试”的提示。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-10",
+    "question": "我想查“用户反馈订单创建接口在高峰期频繁超时，接口平均响应时间从 300ms 升高到 8 秒以上。前端偶尔出现“系统繁忙，请稍后再试”的提示。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "用户反馈订单创建接口在高峰期频繁超时，接口平均响应时间从 300ms 升高到 8 秒以上。前端偶尔出现“系统繁忙，请稍后再试”的提示。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-11",
+    "question": "关于“用户反馈订单创建接口在高峰期频繁超时，接口平均响应时间从 300ms 升高到 8 秒以上。前端偶尔出现“系统繁忙，请稍后再试”的提示。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "用户反馈订单创建接口在高峰期频繁超时，接口平均响应时间从 300ms 升高到 8 秒以上。前端偶尔出现“系统繁忙，请稍后再试”的提示。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "现象"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-12",
+    "question": "文档里如何描述“初步判断”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "初步判断"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-13",
+    "question": "哪里提到了“初步判断”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "初步判断"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-14",
+    "question": "我想查“初步判断”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "初步判断"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-15",
+    "question": "关于“初步判断”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "初步判断"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-16",
+    "question": "“初步判断”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "初步判断"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-17",
+    "question": "哪里可以找到关于“初步判断”的说明？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "初步判断"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-18",
+    "question": "知识库里哪篇文档覆盖了“初步判断”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "初步判断"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-19",
+    "question": "如果要查看“初步判断”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "初步判断"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-20",
+    "question": "文档里如何描述“订单创建涉及库存校验、优惠计算、用户画像查询和异步消息发送，链路较长。历史经验表明，这类问题优先检查库存服务与 Redis。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "订单创建涉及库存校验、优惠计算、用户画像查询和异步消息发送，链路较长。历史经验表明，这类问题优先检查库存服务与 Redis。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-21",
+    "question": "哪里提到了“订单创建涉及库存校验、优惠计算、用户画像查询和异步消息发送，链路较长。历史经验表明，这类问题优先检查库存服务与 Redis。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "订单创建涉及库存校验、优惠计算、用户画像查询和异步消息发送，链路较长。历史经验表明，这类问题优先检查库存服务与 Redis。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-22",
+    "question": "我想查“订单创建涉及库存校验、优惠计算、用户画像查询和异步消息发送，链路较长。历史经验表明，这类问题优先检查库存服务与 Redis。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "订单创建涉及库存校验、优惠计算、用户画像查询和异步消息发送，链路较长。历史经验表明，这类问题优先检查库存服务与 Redis。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-23",
+    "question": "关于“订单创建涉及库存校验、优惠计算、用户画像查询和异步消息发送，链路较长。历史经验表明，这类问题优先检查库存服务与 Redis。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "订单创建涉及库存校验、优惠计算、用户画像查询和异步消息发送，链路较长。历史经验表明，这类问题优先检查库存服务与 Redis。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "初步判断"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-24",
+    "question": "文档里如何描述“排查路径”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "排查路径"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-25",
+    "question": "哪里提到了“排查路径”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "排查路径"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-26",
+    "question": "我想查“排查路径”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "排查路径"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-27",
+    "question": "关于“排查路径”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "排查路径"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-28",
+    "question": "“排查路径”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "排查路径"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-29",
+    "question": "哪里可以找到关于“排查路径”的说明？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "排查路径"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-30",
+    "question": "知识库里哪篇文档覆盖了“排查路径”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "排查路径"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-31",
+    "question": "如果要查看“排查路径”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "排查路径"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-32",
+    "question": "文档里如何描述“查看订单服务线程池与 Tomcat 工作线程是否打满。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "查看订单服务线程池与 Tomcat 工作线程是否打满。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-33",
+    "question": "哪里提到了“查看订单服务线程池与 Tomcat 工作线程是否打满。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "查看订单服务线程池与 Tomcat 工作线程是否打满。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-34",
+    "question": "我想查“查看订单服务线程池与 Tomcat 工作线程是否打满。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "查看订单服务线程池与 Tomcat 工作线程是否打满。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-35",
+    "question": "关于“查看订单服务线程池与 Tomcat 工作线程是否打满。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "查看订单服务线程池与 Tomcat 工作线程是否打满。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-36",
+    "question": "文档里如何描述“查看库存服务的 RT 和错误率。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "查看库存服务的 RT 和错误率。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-37",
+    "question": "哪里提到了“查看库存服务的 RT 和错误率。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "查看库存服务的 RT 和错误率。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-38",
+    "question": "我想查“查看库存服务的 RT 和错误率。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "查看库存服务的 RT 和错误率。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-39",
+    "question": "关于“查看库存服务的 RT 和错误率。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "查看库存服务的 RT 和错误率。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-40",
+    "question": "文档里如何描述“检查 Redis 是否出现热 key，特别是热门商品库存扣减场景。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "检查 Redis 是否出现热 key，特别是热门商品库存扣减场景。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-41",
+    "question": "哪里提到了“检查 Redis 是否出现热 key，特别是热门商品库存扣减场景。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "检查 Redis 是否出现热 key，特别是热门商品库存扣减场景。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-42",
+    "question": "我想查“检查 Redis 是否出现热 key，特别是热门商品库存扣减场景。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "检查 Redis 是否出现热 key，特别是热门商品库存扣减场景。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-43",
+    "question": "关于“检查 Redis 是否出现热 key，特别是热门商品库存扣减场景。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "检查 Redis 是否出现热 key，特别是热门商品库存扣减场景。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-44",
+    "question": "文档里如何描述“确认数据库是否存在锁等待，尤其是订单表和库存表。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "确认数据库是否存在锁等待，尤其是订单表和库存表。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-45",
+    "question": "哪里提到了“确认数据库是否存在锁等待，尤其是订单表和库存表。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "确认数据库是否存在锁等待，尤其是订单表和库存表。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-46",
+    "question": "我想查“确认数据库是否存在锁等待，尤其是订单表和库存表。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "确认数据库是否存在锁等待，尤其是订单表和库存表。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-47",
+    "question": "关于“确认数据库是否存在锁等待，尤其是订单表和库存表。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "确认数据库是否存在锁等待，尤其是订单表和库存表。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-48",
+    "question": "文档里如何描述“检查 MQ 发送是否阻塞主链路。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "检查 MQ 发送是否阻塞主链路。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-49",
+    "question": "哪里提到了“检查 MQ 发送是否阻塞主链路。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "检查 MQ 发送是否阻塞主链路。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-50",
+    "question": "我想查“检查 MQ 发送是否阻塞主链路。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "检查 MQ 发送是否阻塞主链路。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-51",
+    "question": "关于“检查 MQ 发送是否阻塞主链路。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "检查 MQ 发送是否阻塞主链路。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "排查路径"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-52",
+    "question": "文档里如何描述“根因”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "根因"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-53",
+    "question": "哪里提到了“根因”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "根因"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-54",
+    "question": "我想查“根因”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "根因"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-55",
+    "question": "关于“根因”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "根因"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-56",
+    "question": "“根因”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "根因"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-57",
+    "question": "哪里可以找到关于“根因”的说明？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "根因"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-58",
+    "question": "知识库里哪篇文档覆盖了“根因”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "根因"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-59",
+    "question": "如果要查看“根因”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "根因"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-60",
+    "question": "文档里如何描述“最终确认是库存服务在促销期间出现线程池耗尽，导致库存扣减请求积压。同时某热门商品的库存 key 在 Redis 中请求过于集中，进一步放大了接口 RT。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "最终确认是库存服务在促销期间出现线程池耗尽，导致库存扣减请求积压。同时某热门商品的库存 key 在 Redis 中请求过于集中，进一步放大了接口 RT。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-61",
+    "question": "哪里提到了“最终确认是库存服务在促销期间出现线程池耗尽，导致库存扣减请求积压。同时某热门商品的库存 key 在 Redis 中请求过于集中，进一步放大了接口 RT。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "最终确认是库存服务在促销期间出现线程池耗尽，导致库存扣减请求积压。同时某热门商品的库存 key 在 Redis 中请求过于集中，进一步放大了接口 RT。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-62",
+    "question": "我想查“最终确认是库存服务在促销期间出现线程池耗尽，导致库存扣减请求积压。同时某热门商品的库存 key 在 Redis 中请求过于集中，进一步放大了接口 RT。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "最终确认是库存服务在促销期间出现线程池耗尽，导致库存扣减请求积压。同时某热门商品的库存 key 在 Redis 中请求过于集中，进一步放大了接口 RT。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-63",
+    "question": "关于“最终确认是库存服务在促销期间出现线程池耗尽，导致库存扣减请求积压。同时某热门商品的库存 key 在 Redis 中请求过于集中，进一步放大了接口 RT。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "最终确认是库存服务在促销期间出现线程池耗尽，导致库存扣减请求积压。同时某热门商品的库存 key 在 Redis 中请求过于集中，进一步放大了接口 RT。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "根因"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-64",
+    "question": "文档里如何描述“解决方案”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "解决方案"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-65",
+    "question": "哪里提到了“解决方案”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "解决方案"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-66",
+    "question": "我想查“解决方案”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "解决方案"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-67",
+    "question": "关于“解决方案”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "解决方案"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-68",
+    "question": "“解决方案”这一节主要讲什么？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "解决方案"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-69",
+    "question": "哪里可以找到关于“解决方案”的说明？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "解决方案"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-70",
+    "question": "知识库里哪篇文档覆盖了“解决方案”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "解决方案"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-section-71",
+    "question": "如果要查看“解决方案”，应该检索什么文档？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "解决方案"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-72",
+    "question": "文档里如何描述“扩大库存服务核心线程池和队列容量。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "扩大库存服务核心线程池和队列容量。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-73",
+    "question": "哪里提到了“扩大库存服务核心线程池和队列容量。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "扩大库存服务核心线程池和队列容量。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-74",
+    "question": "我想查“扩大库存服务核心线程池和队列容量。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "扩大库存服务核心线程池和队列容量。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-75",
+    "question": "关于“扩大库存服务核心线程池和队列容量。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "扩大库存服务核心线程池和队列容量。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-76",
+    "question": "文档里如何描述“对热点商品库存查询增加本地缓存与限流。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "对热点商品库存查询增加本地缓存与限流。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-77",
+    "question": "哪里提到了“对热点商品库存查询增加本地缓存与限流。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "对热点商品库存查询增加本地缓存与限流。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-78",
+    "question": "我想查“对热点商品库存查询增加本地缓存与限流。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "对热点商品库存查询增加本地缓存与限流。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-79",
+    "question": "关于“对热点商品库存查询增加本地缓存与限流。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "对热点商品库存查询增加本地缓存与限流。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-80",
+    "question": "文档里如何描述“将部分非关键逻辑异步化，避免阻塞订单主流程。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "将部分非关键逻辑异步化，避免阻塞订单主流程。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-81",
+    "question": "哪里提到了“将部分非关键逻辑异步化，避免阻塞订单主流程。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "将部分非关键逻辑异步化，避免阻塞订单主流程。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-82",
+    "question": "我想查“将部分非关键逻辑异步化，避免阻塞订单主流程。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "将部分非关键逻辑异步化，避免阻塞订单主流程。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-83",
+    "question": "关于“将部分非关键逻辑异步化，避免阻塞订单主流程。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "将部分非关键逻辑异步化，避免阻塞订单主流程。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-84",
+    "question": "文档里如何描述“对库存扣减链路增加熔断与降级策略。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "对库存扣减链路增加熔断与降级策略。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-85",
+    "question": "哪里提到了“对库存扣减链路增加熔断与降级策略。”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "对库存扣减链路增加熔断与降级策略。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-86",
+    "question": "我想查“对库存扣减链路增加熔断与降级策略。”相关内容，应该看哪份资料？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "对库存扣减链路增加熔断与降级策略。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-87",
+    "question": "关于“对库存扣减链路增加熔断与降级策略。”，知识库里是怎么说明的？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "对库存扣减链路增加熔断与降级策略。"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "解决方案"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-88",
+    "question": "文档里如何描述“可复用经验”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "可复用经验"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "可复用经验"
+  },
+  {
+    "item_id": "04_incident_case_order_timeout-fact-89",
+    "question": "哪里提到了“可复用经验”？",
+    "expected_source": "resources\\doc\\04_incident_case_order_timeout.md",
+    "expected_substrings": [
+      "可复用经验"
+    ],
+    "doc_title": "故障案例：订单创建接口超时",
+    "section_title": "可复用经验"
+  }
+]
