@@ -10,6 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "fastapi>=0.115.0",
+    "FlagEmbedding>=1.4.0",
     "langchain>=0.3.27",
     "langchain-classic>=1.0.0",
     "langchain-community>=0.3.27",
@@ -43,6 +44,7 @@ dependencies = [
     "setuptools>=80.9.0",
     "stockstats>=0.6.5",
     "tqdm>=4.67.1",
+    "transformers<5",
     "typing-extensions>=4.14.0",
     "uvicorn>=0.32.0",
     "yfinance>=0.2.63",

@@ -18,7 +18,7 @@ class RetrievalMetrics:
     mrr: float
 
 
-# 作用：判断召回结果是否命中预期文档，并用关键片段兜底校验命中质量。
+# 作用：判断召回结果是否命中预期文档，并用关键片段兜底校验质量。
 def _match_item(expected_source: str, expected_substrings: list[str], source: str, text: str) -> bool:
     if source != expected_source:
         return False
@@ -27,7 +27,7 @@ def _match_item(expected_source: str, expected_substrings: list[str], source: st
     return any(snippet in text for snippet in expected_substrings)
 
 
-# 作用：评估单条样本在当前检索链路中的首个命中排名，便于在线程池中并发执行。
+# 作用：评估单条样本在当前检索链路中的首个命中排名。
 def _evaluate_item(
     item: EvalItem,
     *,
@@ -36,6 +36,9 @@ def _evaluate_item(
     db_user: str | None,
     db_password: str | None,
     embedding_dimensions: int | None,
+    candidate_top_k: int | None,
+    use_rerank: bool | None,
+    use_query_rewrite: bool | None,
 ) -> int | None:
     results = retrieve(
         query=item.question,
@@ -44,6 +47,9 @@ def _evaluate_item(
         db_user=db_user,
         db_password=db_password,
         embedding_dimensions=embedding_dimensions,
+        candidate_top_k=candidate_top_k,
+        use_rerank=use_rerank,
+        use_query_rewrite=use_query_rewrite,
     )
 
     for rank, (_, record) in enumerate(results, start=1):
@@ -57,7 +63,7 @@ def _evaluate_item(
     return None
 
 
-# 作用：评估当前检索链路的 Recall@K 和 MRR，默认直接复用线上混合检索逻辑。
+# 作用：评估当前检索链路的 Recall@K 和 MRR，默认复用线上检索逻辑。
 def evaluate_retrieval(
     dataset_path: Path = DEFAULT_EVAL_DATASET,
     jdbc_url: str | None = None,
@@ -65,6 +71,9 @@ def evaluate_retrieval(
     db_password: str | None = None,
     embedding_dimensions: int | None = None,
     workers: int = 6,
+    candidate_top_k: int | None = None,
+    use_rerank: bool | None = None,
+    use_query_rewrite: bool | None = None,
 ) -> RetrievalMetrics:
     items = load_eval_dataset(dataset_path)
     max_k = 10
@@ -82,6 +91,9 @@ def evaluate_retrieval(
                     db_user=db_user,
                     db_password=db_password,
                     embedding_dimensions=embedding_dimensions,
+                    candidate_top_k=candidate_top_k,
+                    use_rerank=use_rerank,
+                    use_query_rewrite=use_query_rewrite,
                 ),
                 items,
             )

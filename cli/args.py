@@ -209,7 +209,23 @@ def parse_args() -> argparse.Namespace:
     query_parser.add_argument(
         "--question", required=True, help="User question for retrieval."
     )
-    query_parser.add_argument("--top-k", type=int, default=3)
+    query_parser.add_argument("--top-k", type=int, default=settings.rag.retrieval_final_top_k)
+    query_parser.add_argument(
+        "--candidate-top-k",
+        type=int,
+        default=settings.rag.retrieval_candidate_top_k,
+        help="Candidate count kept after hybrid retrieval before rerank.",
+    )
+    query_parser.add_argument(
+        "--disable-rerank",
+        action="store_true",
+        help="Disable local rerank and return hybrid retrieval results directly.",
+    )
+    query_parser.add_argument(
+        "--disable-query-rewrite",
+        action="store_true",
+        help="Disable query rewrite and only use the original query for retrieval.",
+    )
     query_parser.add_argument(
         "--jdbc-url", default=settings.postgres.jdbc_url, help="JDBC PostgreSQL url."
     )
@@ -219,18 +235,39 @@ def parse_args() -> argparse.Namespace:
     query_parser.add_argument(
         "--db-password", default=settings.postgres.password, help="Database password."
     )
-    query_parser.add_argument("--source", help="Optional source filter, for example feishu://docx/<doc_id>.")
+    query_parser.add_argument(
+        "--source",
+        help="Optional source filter, for example feishu://docx/<doc_id>.",
+    )
     query_parser.add_argument(
         "--embedding-dimensions",
         type=int,
         default=settings.dashscope.default_dimensions or 1536,
     )
 
-    answer_parser = subparsers.add_parser("answer", help="Retrieve PostgreSQL chunks and generate a final answer.")
+    answer_parser = subparsers.add_parser(
+        "answer", help="Retrieve PostgreSQL chunks and generate a final answer."
+    )
     answer_parser.add_argument(
         "--question", required=True, help="User question for RAG answering."
     )
-    answer_parser.add_argument("--top-k", type=int, default=3)
+    answer_parser.add_argument("--top-k", type=int, default=settings.rag.retrieval_final_top_k)
+    answer_parser.add_argument(
+        "--candidate-top-k",
+        type=int,
+        default=settings.rag.retrieval_candidate_top_k,
+        help="Candidate count kept after hybrid retrieval before rerank.",
+    )
+    answer_parser.add_argument(
+        "--disable-rerank",
+        action="store_true",
+        help="Disable local rerank and return hybrid retrieval results directly.",
+    )
+    answer_parser.add_argument(
+        "--disable-query-rewrite",
+        action="store_true",
+        help="Disable query rewrite and only use the original query for retrieval.",
+    )
     answer_parser.add_argument(
         "--jdbc-url", default=settings.postgres.jdbc_url, help="JDBC PostgreSQL url."
     )
@@ -240,7 +277,10 @@ def parse_args() -> argparse.Namespace:
     answer_parser.add_argument(
         "--db-password", default=settings.postgres.password, help="Database password."
     )
-    answer_parser.add_argument("--source", help="Optional source filter, for example feishu://docx/<doc_id>.")
+    answer_parser.add_argument(
+        "--source",
+        help="Optional source filter, for example feishu://docx/<doc_id>.",
+    )
     answer_parser.add_argument(
         "--embedding-dimensions",
         type=int,

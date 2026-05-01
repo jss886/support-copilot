@@ -1,4 +1,5 @@
 """Minimal RAG utilities for the support-copilot project."""
+
 from rag.answering import answer_question
 from rag.db import PostgresConnectionParams, connect_postgres, parse_jdbc_postgres_url
 from rag.embeddings import DashScopeEmbeddingClient
@@ -23,7 +24,8 @@ from rag.indexing import (
     split_text,
 )
 from rag.models import ChunkRecord
-from rag.retrieval import retrieve
+from rag.reranking import rerank_chunks
+from rag.retrieval import retrieve, retrieve_hybrid_candidates
 
 __all__ = [
     "ChunkRecord",
@@ -45,7 +47,9 @@ __all__ = [
     "list_feishu_wiki_subtree_docx_nodes",
     "load_feishu_document",
     "parse_jdbc_postgres_url",
+    "rerank_chunks",
     "retrieve",
+    "retrieve_hybrid_candidates",
     "seed_hard_negative_docs_to_db",
     "split_text",
 ]

@@ -4,6 +4,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from scalar_fastapi import get_scalar_api_reference
 
 from api.routers.answering import router as answering_router
+from api.routers.evaluation import router as evaluation_router
 from api.routers.health import router as health_router
 from api.routers.ingestion import router as ingestion_router
 from api.routers.retrieval import router as retrieval_router
@@ -23,6 +24,7 @@ def create_app() -> FastAPI:
     app.include_router(seeding_router)
     app.include_router(retrieval_router)
     app.include_router(answering_router)
+    app.include_router(evaluation_router)
 
     # 这里补一个 Scalar 文档入口，保留 Swagger 的同时提供更现代的调试体验。
     # 这里统一生成 Scalar 页面，并显式关闭缓存，避免浏览器继续展示旧页面。

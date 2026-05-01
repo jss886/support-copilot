@@ -90,6 +90,22 @@ def parse_args() -> argparse.Namespace:
         default=6,
         help="How many concurrent workers to use during retrieval evaluation.",
     )
+    evaluate_parser.add_argument(
+        "--candidate-top-k",
+        type=int,
+        default=20,
+        help="How many hybrid candidates to keep before rerank.",
+    )
+    evaluate_parser.add_argument(
+        "--disable-rerank",
+        action="store_true",
+        help="Disable rerank and evaluate hybrid retrieval directly.",
+    )
+    evaluate_parser.add_argument(
+        "--disable-query-rewrite",
+        action="store_true",
+        help="Disable query rewrite and evaluate only the original query.",
+    )
 
     ragas_parser = subparsers.add_parser(
         "evaluate-ragas",
@@ -158,6 +174,9 @@ def main() -> None:
             db_password=args.db_password,
             embedding_dimensions=args.embedding_dimensions,
             workers=args.workers,
+            candidate_top_k=args.candidate_top_k,
+            use_rerank=not args.disable_rerank,
+            use_query_rewrite=not args.disable_query_rewrite,
         )
         print(f"Total: {metrics.total}")
         print(f"Recall@1: {metrics.recall_at_1:.4f}")
@@ -183,6 +202,7 @@ def main() -> None:
         print(f"- 排序层：MRR = {retrieval_metrics.mrr:.4f}")
         print(f"- 回答层：Faithfulness = {result['faithfulness']:.4f}")
         print(f"- 回答相关性：Response Relevancy = {result['response_relevancy']:.4f}")
+        print(f"- 检索覆盖度：Context Recall = {result['context_recall']:.4f}")
         print(f"- RAGAS 结果文件：{resolved_output_path}")
         return
 

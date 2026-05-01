@@ -7,13 +7,17 @@ from rag.retrieval import retrieve
 router = APIRouter(prefix="/api/v1/retrieval", tags=["检索"])
 
 
-# 作用：执行向量检索并返回命中的文本切片，便于单独验证召回效果。
+# 作用：执行混合检索，并按配置决定是否再做 rerank 精排。
 @router.post("/query", response_model=RetrievalResponse, summary="检索相关文本切片")
 def query(request: QueryRequest) -> RetrievalResponse:
     try:
         results = retrieve(
             query=request.question,
             top_k=request.top_k,
+            source=request.source,
+            candidate_top_k=request.candidate_top_k,
+            use_rerank=request.use_rerank,
+            use_query_rewrite=request.use_query_rewrite,
         )
     except Exception as exc:
         raise translate_exception(exc) from exc

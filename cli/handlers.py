@@ -14,7 +14,7 @@ from rag.synthetic_data import seed_synthetic_support_data
 
 
 def _normalize_source_filter(source: str | None) -> str | None:
-    """远程 source 保持原样，本地 source 统一转成路径字符串。"""
+    """作用：远程 source 保持原样，本地 source 统一转成绝对路径字符串。"""
     if not source:
         return None
     if "://" in source:
@@ -132,6 +132,9 @@ def run_command(args: Namespace) -> None:
             db_password=args.db_password,
             source=_normalize_source_filter(args.source),
             embedding_dimensions=args.embedding_dimensions,
+            candidate_top_k=args.candidate_top_k,
+            use_rerank=not args.disable_rerank,
+            use_query_rewrite=not args.disable_query_rewrite,
         )
         for rank, (score, record) in enumerate(results, start=1):
             print(
@@ -151,6 +154,9 @@ def run_command(args: Namespace) -> None:
             db_password=args.db_password,
             source=_normalize_source_filter(args.source),
             embedding_dimensions=args.embedding_dimensions,
+            candidate_top_k=args.candidate_top_k,
+            use_rerank=not args.disable_rerank,
+            use_query_rewrite=not args.disable_query_rewrite,
         )
         print(answer)
         return

@@ -4,16 +4,16 @@ from pathlib import Path
 from rag.env_utils import read_env_var
 
 
-# Configuration precedence:
+# 配置优先级：
+# 1. CLI 参数
+# 2. USER_DEFAULTS 中的默认值
+# 3. 环境变量，仅在配置项为空时兜底使用
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 RESOURCES_DIR = PROJECT_ROOT / "resources"
 ARTIFACTS_DIR = RESOURCES_DIR / "artifacts"
 DOCS_DIR = RESOURCES_DIR / "doc"
 
 
-# 1. CLI arguments
-# 2. Values defined in USER_DEFAULTS below
-# 3. Environment variables, used only as fallback when config.py leaves a value empty
 USER_DEFAULTS = {
     "dashscope": {
         "api_key": None,
@@ -39,6 +39,18 @@ USER_DEFAULTS = {
         "chunk_size": 500,
         "chunk_overlap": 100,
         "batch_size": 8,
+        "retrieval_candidate_top_k": 20,
+        "retrieval_final_top_k": 5,
+        "enable_query_rewrite": True,
+        "query_rewrite_mode": "fast",
+        "query_rewrite_normalized_weight": 0.6,
+        "enable_llm_query_rewrite": True,
+        "query_rewrite_model": "deepseek-chat",
+        "query_rewrite_max_queries": 2,
+        "enable_rerank": True,
+        "reranker_model_path": str(RESOURCES_DIR / "models" / "bge-reranker-v2-m3"),
+        "reranker_batch_size": 32,
+        "reranker_max_length": 512,
     },
 }
 
@@ -79,6 +91,18 @@ class RagSettings:
     chunk_size: int
     chunk_overlap: int
     batch_size: int
+    retrieval_candidate_top_k: int
+    retrieval_final_top_k: int
+    enable_query_rewrite: bool
+    query_rewrite_mode: str
+    query_rewrite_normalized_weight: float
+    enable_llm_query_rewrite: bool
+    query_rewrite_model: str
+    query_rewrite_max_queries: int
+    enable_rerank: bool
+    reranker_model_path: str
+    reranker_batch_size: int
+    reranker_max_length: int
 
 
 @dataclass(frozen=True)
@@ -108,10 +132,32 @@ def _prefer_config_int(value: int | None, env_name: str) -> int | None:
     return _read_int_env(env_name, None)
 
 
+def _read_float_env(name: str, default: float | None) -> float | None:
+    value = read_env_var(name)
+    if value is None or value == "":
+        return default
+    return float(value)
+
+
+def _prefer_config_bool(value: bool | None, env_name: str) -> bool | None:
+    if value is not None:
+        return value
+    env_value = read_env_var(env_name)
+    if env_value is None or env_value == "":
+        return None
+    return env_value.lower() in {"1", "true", "yes", "on"}
+
+
 def _merge_section(section_name: str) -> dict:
     merged = dict(USER_DEFAULTS[section_name])
     merged.update(LOCAL_OVERRIDES.get(section_name, {}))
     return merged
+
+
+def _prefer_config_float(value: float | None, env_name: str) -> float | None:
+    if value is not None:
+        return value
+    return _read_float_env(env_name, None)
 
 
 def load_settings() -> AppSettings:
@@ -119,6 +165,18 @@ def load_settings() -> AppSettings:
     feishu_defaults = _merge_section("feishu")
     postgres_defaults = _merge_section("postgres")
     rag_defaults = _merge_section("rag")
+    resolved_enable_rerank = _prefer_config_bool(
+        rag_defaults["enable_rerank"],
+        "RAG_ENABLE_RERANK",
+    )
+    resolved_enable_query_rewrite = _prefer_config_bool(
+        rag_defaults["enable_query_rewrite"],
+        "RAG_ENABLE_QUERY_REWRITE",
+    )
+    resolved_enable_llm_query_rewrite = _prefer_config_bool(
+        rag_defaults["enable_llm_query_rewrite"],
+        "RAG_ENABLE_LLM_QUERY_REWRITE",
+    )
 
     return AppSettings(
         dashscope=DashScopeSettings(
@@ -167,6 +225,60 @@ def load_settings() -> AppSettings:
             or 100,
             batch_size=_prefer_config_int(rag_defaults["batch_size"], "RAG_BATCH_SIZE")
             or 8,
+            retrieval_candidate_top_k=_prefer_config_int(
+                rag_defaults["retrieval_candidate_top_k"],
+                "RAG_RETRIEVAL_CANDIDATE_TOP_K",
+            )
+            or 20,
+            retrieval_final_top_k=_prefer_config_int(
+                rag_defaults["retrieval_final_top_k"],
+                "RAG_RETRIEVAL_FINAL_TOP_K",
+            )
+            or 5,
+            enable_query_rewrite=(
+                True if resolved_enable_query_rewrite is None else resolved_enable_query_rewrite
+            ),
+            query_rewrite_mode=_prefer_config(
+                rag_defaults["query_rewrite_mode"],
+                "RAG_QUERY_REWRITE_MODE",
+            )
+            or "fast",
+            query_rewrite_normalized_weight=_prefer_config_float(
+                rag_defaults["query_rewrite_normalized_weight"],
+                "RAG_QUERY_REWRITE_NORMALIZED_WEIGHT",
+            )
+            or 0.6,
+            enable_llm_query_rewrite=(
+                True
+                if resolved_enable_llm_query_rewrite is None
+                else resolved_enable_llm_query_rewrite
+            ),
+            query_rewrite_model=_prefer_config(
+                rag_defaults["query_rewrite_model"],
+                "RAG_QUERY_REWRITE_MODEL",
+            )
+            or "deepseek-chat",
+            query_rewrite_max_queries=_prefer_config_int(
+                rag_defaults["query_rewrite_max_queries"],
+                "RAG_QUERY_REWRITE_MAX_QUERIES",
+            )
+            or 2,
+            enable_rerank=True if resolved_enable_rerank is None else resolved_enable_rerank,
+            reranker_model_path=_prefer_config(
+                rag_defaults["reranker_model_path"],
+                "RAG_RERANKER_MODEL_PATH",
+            )
+            or str(RESOURCES_DIR / "models" / "bge-reranker-v2-m3"),
+            reranker_batch_size=_prefer_config_int(
+                rag_defaults["reranker_batch_size"],
+                "RAG_RERANKER_BATCH_SIZE",
+            )
+            or 32,
+            reranker_max_length=_prefer_config_int(
+                rag_defaults["reranker_max_length"],
+                "RAG_RERANKER_MAX_LENGTH",
+            )
+            or 512,
         ),
     )
 

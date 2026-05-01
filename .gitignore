@@ -6,3 +6,6 @@ __pycache__/
 rag/config_local.py
 *.env
 .env
+
+# 本地模型文件体积过大，不进入版本库
+resources/models/

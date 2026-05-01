@@ -2,6 +2,8 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 
+from rag.config import settings
+
 
 class DatabaseOptions(BaseModel):
     # 作用：承载数据库连接参数，未显式传入时走项目默认配置。
@@ -27,8 +29,25 @@ class IngestionOptions(BaseModel):
 
 
 class RetrievalOptions(BaseModel):
-    # 作用：承载检索请求的通用参数。
-    top_k: int = Field(default=3, ge=1, description="返回的召回结果数量。")
+    # 作用：承载检索请求的通用参数，区分候选召回数量和最终返回数量。
+    top_k: int = Field(
+        default=settings.rag.retrieval_final_top_k,
+        ge=1,
+        description="最终返回给上层的结果数量。",
+    )
+    candidate_top_k: int | None = Field(
+        default=None,
+        ge=1,
+        description="混合召回阶段保留的候选数量，不传时使用系统默认值。",
+    )
+    use_rerank: bool | None = Field(
+        default=None,
+        description="是否启用本地 rerank 精排，不传时使用系统默认值。",
+    )
+    use_query_rewrite: bool | None = Field(
+        default=None,
+        description="是否启用 query rewrite 多路召回，不传时使用系统默认值。",
+    )
     source: str | None = Field(
         default=None,
         description="可选来源过滤，例如 feishu://docx/<doc_id> 或本地文件路径。",
@@ -67,16 +86,14 @@ class SeedHardNegativesRequest(DatabaseOptions, EmbeddingOptions, IngestionOptio
     pass
 
 
-class QueryRequest(BaseModel):
-    # 作用：描述检索接口所需的最小请求参数，对外只暴露问题和召回数量。
+class QueryRequest(RetrievalOptions):
+    # 作用：描述检索接口所需的请求参数。
     question: str = Field(description="用户检索问题。")
-    top_k: int = Field(default=3, ge=1, description="返回的召回结果数量。")
 
 
-class AnswerRequest(BaseModel):
-    # 作用：描述问答接口所需的最小请求参数，对外只暴露问题和召回数量。
+class AnswerRequest(RetrievalOptions):
+    # 作用：描述问答接口所需的请求参数。
     question: str = Field(description="用户问答问题。")
-    top_k: int = Field(default=3, ge=1, description="参与回答生成的召回结果数量。")
 
 
 class IngestionResult(BaseModel):
@@ -87,8 +104,8 @@ class IngestionResult(BaseModel):
 
 
 class RetrievalItem(BaseModel):
-    # 作用：描述单条召回结果，便于 Swagger 中直接查看字段结构。
-    score: float = Field(description="向量召回得分。")
+    # 作用：描述单条召回结果，便于 Swagger 直接查看结构。
+    score: float = Field(description="当前排序分数。")
     source: str = Field(description="切片来源。")
     start: int = Field(description="切片起始位置。")
     end: int = Field(description="切片结束位置。")
@@ -99,6 +116,28 @@ class RetrievalItem(BaseModel):
 class AnswerResult(BaseModel):
     # 作用：描述问答接口返回的最终答案。
     answer: str = Field(description="基于召回上下文生成的答案。")
+
+
+class RetrievalEvaluationResult(BaseModel):
+    # 作用：统一承载检索评测的聚合指标。
+    dataset_path: str = Field(description="本次评测实际使用的数据集路径。")
+    total: int = Field(description="参与评测的样本总数。")
+    recall_at_1: float = Field(description="Recall@1 指标。")
+    recall_at_3: float = Field(description="Recall@3 指标。")
+    recall_at_5: float = Field(description="Recall@5 指标。")
+    recall_at_10: float = Field(description="Recall@10 指标。")
+    mrr: float = Field(description="平均倒数排名 MRR 指标。")
+
+
+class RagasEvaluationResult(BaseModel):
+    # 作用：统一承载 RAGAS 评测的聚合指标。
+    dataset_path: str = Field(description="本次评测实际使用的数据集路径。")
+    sample_count: int = Field(description="参与 RAGAS 评测的样本总数。")
+    top_k: int = Field(description="每条问题参与回答生成的结果数量。")
+    faithfulness: float = Field(description="回答忠实度指标。")
+    response_relevancy: float = Field(description="回答相关性指标。")
+    context_recall: float = Field(description="上下文覆盖率指标。")
+    output_path: str = Field(description="RAGAS 结果文件落盘路径。")
 
 
 class RootInfo(BaseModel):
@@ -142,3 +181,13 @@ class RetrievalResponse(ApiResponse):
 class AnswerResponse(ApiResponse):
     # 作用：描述问答接口的响应结构。
     data: AnswerResult
+
+
+class RetrievalEvaluationResponse(ApiResponse):
+    # 作用：描述检索评测接口的响应结构。
+    data: RetrievalEvaluationResult
+
+
+class RagasEvaluationResponse(ApiResponse):
+    # 作用：描述 RAGAS 评测接口的响应结构。
+    data: RagasEvaluationResult

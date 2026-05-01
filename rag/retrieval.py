@@ -4,14 +4,16 @@ from rag.config import settings
 from rag.db import PostgresConnectionParams, connect_postgres, parse_jdbc_postgres_url
 from rag.embeddings import DashScopeEmbeddingClient
 from rag.models import ChunkRecord
-from rag.text_search import build_segmented_search_text, extract_query_keywords
+from rag.query_rewrite import RewriteQueryVariant, build_query_rewrite_result
+from rag.reranking import rerank_chunks
+from rag.text_search import extract_query_keywords
 
 
 def _vector_literal(values: list[float]) -> str:
     return "[" + ",".join(str(value) for value in values) + "]"
 
 
-# 作用：统一解析数据库配置，并补齐连接超时，避免检索阶段长时间阻塞。
+# 作用：统一解析数据库连接配置，并补齐连接超时参数。
 def _resolve_db_config(
     jdbc_url: str | None,
     db_user: str | None,
@@ -46,7 +48,7 @@ def _build_chunk_record(content: str, metadata: dict) -> ChunkRecord:
     )
 
 
-# 作用：统一解析数据库返回的 metadata，兼容 psycopg 直接返 dict 和字符串两种情况。
+# 作用：统一解析数据库返回的 metadata，兼容 dict 和 JSON 字符串两种格式。
 def _normalize_metadata(metadata: dict | str | None) -> dict:
     if metadata is None:
         return {}
@@ -55,7 +57,7 @@ def _normalize_metadata(metadata: dict | str | None) -> dict:
     return metadata
 
 
-# 作用：生成来源过滤子句，避免向量检索和关键词检索重复拼接条件。
+# 作用：生成来源过滤子句，避免向量检索和关键词检索重复拼接过滤条件。
 def _build_source_filter_clause(source: str | None, sql_params: list[object]) -> str:
     if not source:
         return ""
@@ -63,7 +65,7 @@ def _build_source_filter_clause(source: str | None, sql_params: list[object]) ->
     return " WHERE d.source = %s"
 
 
-# 作用：执行向量召回，负责找出语义上最相近的切片。
+# 作用：执行向量召回，找出语义上最接近的候选切片。
 def _retrieve_vector(
     query_embedding: list[float],
     *,
@@ -98,7 +100,7 @@ def _retrieve_vector(
     return results
 
 
-# 作用：执行关键词召回，先对查询做中文分词，再匹配分词后的 tsv。
+# 作用：执行 BM25 关键词召回，补足术语、错码和路径等精确匹配能力。
 def _retrieve_keyword(
     query: str,
     *,
@@ -145,6 +147,11 @@ def _retrieve_keyword(
     return results
 
 
+# 作用：统一生成结果去重键，保证多路召回融合时相同切片能聚合到一起。
+def _build_result_key(record: ChunkRecord) -> str:
+    return record.chunk_id or f"{record.source}:{record.start}:{record.end}"
+
+
 # 作用：用 RRF 融合两路召回结果，避免直接混加不同量纲的原始分数。
 def _fuse_with_rrf(
     vector_results: list[tuple[float, ChunkRecord]],
@@ -159,12 +166,12 @@ def _fuse_with_rrf(
     merged_records: dict[str, ChunkRecord] = {}
 
     for rank, (_, record) in enumerate(vector_results, start=1):
-        key = record.chunk_id or f"{record.source}:{record.start}:{record.end}"
+        key = _build_result_key(record)
         merged_scores[key] = merged_scores.get(key, 0.0) + vector_weight / (rrf_k + rank)
         merged_records.setdefault(key, record)
 
     for rank, (_, record) in enumerate(keyword_results, start=1):
-        key = record.chunk_id or f"{record.source}:{record.start}:{record.end}"
+        key = _build_result_key(record)
         merged_scores[key] = merged_scores.get(key, 0.0) + keyword_weight / (rrf_k + rank)
         merged_records.setdefault(key, record)
 
@@ -172,23 +179,70 @@ def _fuse_with_rrf(
     return [(merged_scores[key], merged_records[key]) for key in ranked_keys[:top_k]]
 
 
-# 作用：执行混合检索，组合向量召回、关键词召回和 RRF 融合后的最终结果。
-def retrieve(
+# 作用：把多条查询变体的召回结果再次做 RRF 融合，保留原问题同时吸收 rewrite 增益。
+def _fuse_branch_results(
+    branch_results: list[tuple[RewriteQueryVariant, list[tuple[float, ChunkRecord]]]],
+    *,
+    top_k: int,
+    rrf_k: int = 60,
+) -> list[tuple[float, ChunkRecord]]:
+    merged_scores: dict[str, float] = {}
+    merged_records: dict[str, ChunkRecord] = {}
+
+    for variant, results in branch_results:
+        for rank, (_, record) in enumerate(results, start=1):
+            key = _build_result_key(record)
+            merged_scores[key] = merged_scores.get(key, 0.0) + variant.weight / (rrf_k + rank)
+            merged_records.setdefault(key, record)
+
+    ranked_keys = sorted(merged_scores, key=lambda key: merged_scores[key], reverse=True)
+    return [(merged_scores[key], merged_records[key]) for key in ranked_keys[:top_k]]
+
+
+# 作用：执行单条查询变体的混合召回，先拿到用于全局融合的候选集合。
+def _retrieve_single_query_candidates(
     query: str,
-    top_k: int = 3,
+    *,
+    candidate_top_k: int,
+    source: str | None,
+    params: PostgresConnectionParams,
+    embedding_client: DashScopeEmbeddingClient,
+) -> list[tuple[float, ChunkRecord]]:
+    per_branch_top_k = max(candidate_top_k * 2, 20)
+    query_embedding = embedding_client.embed_texts([query])[0]
+    vector_results = _retrieve_vector(
+        query_embedding,
+        top_k=per_branch_top_k,
+        source=source,
+        params=params,
+    )
+    keyword_results = _retrieve_keyword(
+        query,
+        top_k=per_branch_top_k,
+        source=source,
+        params=params,
+    )
+    return _fuse_with_rrf(vector_results, keyword_results, top_k=per_branch_top_k)
+
+
+# 作用：执行混合召回，必要时叠加 rewrite 多路查询，再统一做候选融合。
+def retrieve_hybrid_candidates(
+    query: str,
+    *,
+    candidate_top_k: int,
     jdbc_url: str | None = None,
     db_user: str | None = None,
     db_password: str | None = None,
     source: str | None = None,
     embedding_dimensions: int | None = None,
+    use_query_rewrite: bool | None = None,
 ) -> list[tuple[float, ChunkRecord]]:
     resolved_jdbc_url, resolved_db_user, resolved_db_password, connect_timeout = _resolve_db_config(
         jdbc_url, db_user, db_password
     )
-    client = DashScopeEmbeddingClient(
+    embedding_client = DashScopeEmbeddingClient(
         dimensions=embedding_dimensions or settings.dashscope.default_dimensions or 1536
     )
-    query_embedding = client.embed_texts([query])[0]
     params = parse_jdbc_postgres_url(
         resolved_jdbc_url,
         user=resolved_db_user,
@@ -196,20 +250,57 @@ def retrieve(
         connect_timeout=connect_timeout,
     )
 
-    # 这里多取一批候选再融合，避免两路召回彼此挤掉有效结果。
-    candidate_top_k = max(top_k * 4, 10)
-    vector_results = _retrieve_vector(
-        query_embedding,
-        top_k=candidate_top_k,
-        source=source,
-        params=params,
-    )
-    keyword_results = _retrieve_keyword(
+    rewrite_result = build_query_rewrite_result(
         query,
-        top_k=candidate_top_k,
-        source=source,
-        params=params,
+        use_query_rewrite=use_query_rewrite,
     )
-    return _fuse_with_rrf(vector_results, keyword_results, top_k=top_k)
+    branch_results: list[tuple[RewriteQueryVariant, list[tuple[float, ChunkRecord]]]] = []
+    for variant in rewrite_result.variants:
+        results = _retrieve_single_query_candidates(
+            variant.text,
+            candidate_top_k=candidate_top_k,
+            source=source,
+            params=params,
+            embedding_client=embedding_client,
+        )
+        if results:
+            branch_results.append((variant, results))
+
+    if not branch_results:
+        return []
+    return _fuse_branch_results(branch_results, top_k=candidate_top_k)
 
 
+# 作用：执行完整检索链路，按需在混合召回后接入本地 rerank 精排。
+def retrieve(
+    query: str,
+    top_k: int | None = None,
+    jdbc_url: str | None = None,
+    db_user: str | None = None,
+    db_password: str | None = None,
+    source: str | None = None,
+    embedding_dimensions: int | None = None,
+    candidate_top_k: int | None = None,
+    use_rerank: bool | None = None,
+    use_query_rewrite: bool | None = None,
+) -> list[tuple[float, ChunkRecord]]:
+    resolved_top_k = top_k or settings.rag.retrieval_final_top_k
+    resolved_candidate_top_k = max(
+        candidate_top_k or settings.rag.retrieval_candidate_top_k,
+        resolved_top_k,
+    )
+    resolved_use_rerank = settings.rag.enable_rerank if use_rerank is None else use_rerank
+
+    candidates = retrieve_hybrid_candidates(
+        query=query,
+        candidate_top_k=resolved_candidate_top_k,
+        jdbc_url=jdbc_url,
+        db_user=db_user,
+        db_password=db_password,
+        source=source,
+        embedding_dimensions=embedding_dimensions,
+        use_query_rewrite=use_query_rewrite,
+    )
+    if not resolved_use_rerank:
+        return candidates[:resolved_top_k]
+    return rerank_chunks(query, candidates, top_k=resolved_top_k)
