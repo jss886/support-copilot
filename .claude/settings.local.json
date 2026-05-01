@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell *)",
+      "Bash(.venv/Scripts/python scripts/debug_graph.py --dry \"什么是 Redis\")",
+      "Bash(.venv/Scripts/python scripts/debug_graph.py --dry --mode direct \"什么是 Redis，它有什么特点\")",
+      "Bash(.venv/Scripts/python scripts/debug_graph.py --dry --mode rag \"什么是 Redis\")",
+      "Bash(.venv/Scripts/python scripts/debug_graph.py --dry --mode auto \"什么是 Redis\")"
+    ]
+  }
+}

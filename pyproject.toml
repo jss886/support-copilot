@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tradingagents"
+name = "support-copilot"
 version = "0.2.0"
-description = "TradingAgents: Multi-Agents LLM Financial Trading Framework"
+description = "Support Copilot: Multi-Agent RAG Framework for Enterprise Knowledge Q&A"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -51,7 +51,7 @@ dependencies = [
 ]
 
 [project.scripts]
-tradingagents = "cli.main:main"
+support-copilot = "cli.main:main"
 
 [tool.setuptools.packages.find]
-include = ["tradingagents*", "cli*", "api*"]
+include = ["api*", "cli*", "rag*", "supportAgents*"]
