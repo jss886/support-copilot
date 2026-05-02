@@ -5,7 +5,26 @@
       "Bash(.venv/Scripts/python scripts/debug_graph.py --dry \"什么是 Redis\")",
       "Bash(.venv/Scripts/python scripts/debug_graph.py --dry --mode direct \"什么是 Redis，它有什么特点\")",
       "Bash(.venv/Scripts/python scripts/debug_graph.py --dry --mode rag \"什么是 Redis\")",
-      "Bash(.venv/Scripts/python scripts/debug_graph.py --dry --mode auto \"什么是 Redis\")"
+      "Bash(.venv/Scripts/python scripts/debug_graph.py --dry --mode auto \"什么是 Redis\")",
+      "Bash(.venv/Scripts/python.exe -c \"from rag.config import settings; print\\('gemini model:', settings.gemini.model\\); print\\('gemini api_key:', settings.gemini.api_key[:8] + '...' if settings.gemini.api_key else 'None'\\)\")",
+      "Bash(.venv/Scripts/python.exe -c \"from rag.image_caption import caption_image; print\\('image_caption module OK'\\)\")",
+      "Bash(.venv/Scripts/python.exe -c \"from rag.feishu_loader import _extract_image_block, _ocr_bytes, _ocr_image; print\\('feishu_loader refactored functions OK'\\)\")",
+      "Bash(.venv/Scripts/python.exe -c \"from rag.feishu_loader import BLOCK_TYPE_NAMES; print\\('type 27:', BLOCK_TYPE_NAMES.get\\(27, 'missing'\\)\\); print\\('type 20:', BLOCK_TYPE_NAMES.get\\(20, 'missing'\\)\\)\")",
+      "Bash(.venv/Scripts/python.exe -c \"import os; print\\('HTTPS_PROXY:', os.getenv\\('HTTPS_PROXY', '\\(未设置\\)'\\)\\); print\\('HTTP_PROXY:', os.getenv\\('HTTP_PROXY', '\\(未设置\\)'\\)\\)\")",
+      "Bash(netstat -ano)",
+      "Bash(reg query *)",
+      "Bash(.venv/Scripts/python.exe scripts/debug_image_caption.py JMZww2Vj5inn1IkznH0ch86LnCc)",
+      "Bash(.venv/Scripts/python.exe -c \"from rag.image_caption import caption_image; print\\('import OK'\\)\")",
+      "Bash(curl *)",
+      "Bash(.venv/Scripts/python.exe scripts/debug_graph.py --dry \"如何排查Kafka消息堆积问题\")",
+      "Bash(.venv/Scripts/python.exe scripts/debug_graph.py --dry \"你好\")",
+      "Bash(.venv/Scripts/python.exe scripts/debug_graph.py --dry \"这个SQL查询为什么这么慢 SELECT * FROM orders WHERE status=1\")",
+      "Bash(.venv/Scripts/python.exe scripts/debug_graph.py --dry \"帮我查一下线上服务器的CPU使用率\")",
+      "Bash(.venv/Scripts/python.exe scripts/debug_graph.py --dry \"阿巴阿巴\")",
+      "Bash(.venv/Scripts/python.exe -c ' *)",
+      "Bash(.venv/Scripts/python.exe scripts/debug_graph.py --step \"如何排查Kafka消息堆积\")",
+      "Bash(.venv/Scripts/python.exe scripts/debug_graph.py \"Kafka消息堆积怎么排查\")",
+      "Bash(.venv/Scripts/python.exe -c \"from supportAgents.agents import run_quality_gate; print\\('import OK'\\)\")"
     ]
   }
 }

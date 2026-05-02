@@ -50,6 +50,16 @@ def format_state(state: dict, mode: str = "text") -> str:
     lines.append(f"  user_query : {state.get('user_query', '')}")
     lines.append(f"  intent     : {state.get('intent', '(待定)')}")
     lines.append(f"  route_reason: {state.get('route_reason', '(待定)')}")
+    quality = state.get("quality", "")
+    if quality:
+        quality_label = {
+            "passed": "通过",
+            "degraded_empty": "降级(零结果)",
+            "degraded_low_score": "降级(低分)",
+        }.get(quality, quality)
+        lines.append(f"  quality    : {quality_label}")
+    else:
+        lines.append(f"  quality    : (未评估)")
 
     retrieval = state.get("retrieval") or {}
     if retrieval:
@@ -120,6 +130,15 @@ def run_step_by_step(user_query: str, mode: str = "auto", json_mode: bool = Fals
                 print("  ? 提示: 检查 PostgreSQL 是否运行、数据是否已入库")
             print(format_state(state, mode="json" if json_mode else "text"))
         _wait_for_next_step("retrieval", json_mode)
+
+        # ── 第 2.5 步: quality_gate — 检索质量评估 ──
+        if not json_mode:
+            print("\n[步骤 2.5] quality_gate — 检索质量评估\n")
+        from supportAgents.agents import run_quality_gate
+
+        state = run_quality_gate(state)
+        print(format_state(state, mode="json" if json_mode else "text"))
+        _wait_for_next_step("quality_gate", json_mode)
     else:
         if not json_mode:
             print(f"\n[步骤 2] retrieval — 跳过 (intent={intent}，不需要检索)\n")

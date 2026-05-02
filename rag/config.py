@@ -27,6 +27,11 @@ USER_DEFAULTS = {
         "app_secret": None,
         "open_api_base": "https://open.feishu.cn/open-apis",
     },
+    "gemini": {
+        "api_key": None,
+        "model": "gemini-2.5-flash",
+        "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    },
     "postgres": {
         "jdbc_url": None,
         "user": None,
@@ -77,6 +82,13 @@ class FeishuSettings:
 
 
 @dataclass(frozen=True)
+class GeminiSettings:
+    api_key: str | None
+    model: str
+    base_url: str
+
+
+@dataclass(frozen=True)
 class PostgresSettings:
     jdbc_url: str | None
     user: str | None
@@ -109,6 +121,7 @@ class RagSettings:
 class AppSettings:
     dashscope: DashScopeSettings
     feishu: FeishuSettings
+    gemini: GeminiSettings
     postgres: PostgresSettings
     rag: RagSettings
 
@@ -163,6 +176,7 @@ def _prefer_config_float(value: float | None, env_name: str) -> float | None:
 def load_settings() -> AppSettings:
     dashscope_defaults = _merge_section("dashscope")
     feishu_defaults = _merge_section("feishu")
+    gemini_defaults = _merge_section("gemini")
     postgres_defaults = _merge_section("postgres")
     rag_defaults = _merge_section("rag")
     resolved_enable_rerank = _prefer_config_bool(
@@ -199,6 +213,13 @@ def load_settings() -> AppSettings:
                 feishu_defaults["open_api_base"], "FEISHU_OPEN_API_BASE"
             )
             or "https://open.feishu.cn/open-apis",
+        ),
+        gemini=GeminiSettings(
+            api_key=_prefer_config(gemini_defaults["api_key"], "GEMINI_API_KEY"),
+            model=_prefer_config(gemini_defaults["model"], "GEMINI_MODEL")
+            or "gemini-2.5-flash",
+            base_url=_prefer_config(gemini_defaults["base_url"], "GEMINI_BASE_URL")
+            or "https://generativelanguage.googleapis.com/v1beta",
         ),
         postgres=PostgresSettings(
             jdbc_url=_prefer_config(postgres_defaults["jdbc_url"], "POSTGRES_JDBC_URL"),

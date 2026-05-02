@@ -1,57 +1,83 @@
+import json
+import os
+import re
 from dataclasses import dataclass
 from typing import Literal
 
-from supportAgents.graph.state import IntentType, SupportAgentState
+from langchain_core.messages import HumanMessage, SystemMessage
 
+from supportAgents.agents.prompts import ORCHESTRATOR_SYSTEM_PROMPT
+from supportAgents.graph.state import IntentType, SupportAgentState
+from supportAgents.llm_clients import create_llm_client
 
 RouteCategory = Literal["doc_qa", "code_qa", "tool_only", "direct_answer", "fallback"]
 
+_VALID_INTENTS = {"doc_qa", "code_qa", "tool_only", "direct_answer", "fallback"}
+
 _CODE_KEYWORDS = {
-    "代码",
-    "code",
-    "bug",
-    "报错",
-    "异常",
-    "接口",
-    "函数",
-    "类",
-    "traceback",
-    "sql",
+    "代码", "code", "bug", "报错", "异常", "接口", "函数", "类", "traceback", "sql",
 }
 _TOOL_KEYWORDS = {
-    "调用",
-    "执行",
-    "运行",
-    "检查",
-    "查询",
-    "tool",
-    "curl",
-    "脚本",
-    "命令",
+    "调用", "执行", "运行", "检查", "查询", "tool", "curl", "脚本", "命令",
 }
 _DIRECT_ANSWER_KEYWORDS = {
-    "你好",
-    "hi",
-    "hello",
-    "谢谢",
-    "是什么",
-    "什么意思",
+    "你好", "hi", "hello", "谢谢", "是什么", "什么意思",
 }
 
 
 @dataclass(frozen=True)
 class IntentDecision:
-    # 作用：承载一次路由判断结果，方便 graph 节点只消费结构化输出。
     intent: IntentType
     reason: str
 
 
-# 作用：把用户问题归一成便于规则判断的文本，先满足第一版轻量路由需求。
+# 作用：构造 orchestrator 专用模型实例，用 DeepSeek V4 Flash 保证低延迟和低成本。
+def _build_orchestrator_llm():
+    model = os.environ.get("SUPPORT_ORCHESTRATOR_MODEL", "deepseek-v4-flash")
+    client = create_llm_client("deepseek", model, timeout=15, max_retries=1, temperature=0)
+    return client.get_llm()
+
+
+# 作用：把 LLM 输出的 JSON 解析为结构化的路由决策，解析失败时返回 None。
+def _parse_intent_json(content: str) -> IntentDecision | None:
+    if not content:
+        return None
+    try:
+        payload = json.loads(content)
+    except json.JSONDecodeError:
+        match = re.search(r"\{.*\}", content, flags=re.DOTALL)
+        if not match:
+            return None
+        try:
+            payload = json.loads(match.group(0))
+        except json.JSONDecodeError:
+            return None
+
+    intent = payload.get("intent", "").strip().lower()
+    reason = payload.get("reason", "").strip()
+    if intent not in _VALID_INTENTS:
+        return None
+    return IntentDecision(intent=intent, reason=reason or "llm_routed")
+
+
+# 作用：用 LLM 判断用户意图，返回结构化路由决策。
+def _decide_intent_with_llm(query: str) -> IntentDecision | None:
+    llm = _build_orchestrator_llm()
+    response = llm.invoke(
+        [
+            SystemMessage(content=ORCHESTRATOR_SYSTEM_PROMPT),
+            HumanMessage(content=f"用户问题：{query}"),
+        ]
+    )
+    return _parse_intent_json(getattr(response, "content", "") or "")
+
+
+# 作用：把用户问题归一成便于规则判断的文本。
 def _normalize_query(query: str) -> str:
     return " ".join(query.strip().lower().split())
 
 
-# 作用：用可解释的轻量规则做第一版路由，后续再替换成 LLM router 也不影响上层协议。
+# 作用：关键词规则路由，作为 LLM 路由失败时的兜底方案。
 def decide_intent(query: str) -> IntentDecision:
     normalized_query = _normalize_query(query)
     if not normalized_query:
@@ -74,7 +100,9 @@ def decide_intent(query: str) -> IntentDecision:
     return IntentDecision(intent="doc_qa", reason="default_to_retrieval")
 
 
-# 作用：执行总控路由节点，根据用户选择的 mode 决定是跳过关键词路由还是走自动判断。
+# 作用：执行总控路由节点。
+# auto 模式优先用 LLM 路由，失败时自动降级为关键词规则；
+# direct/rag 模式直接跳过路由判断。
 def run_orchestrator(state: SupportAgentState) -> SupportAgentState:
     query = state.get("user_query", "")
     mode = state.get("mode", "auto")
@@ -82,20 +110,27 @@ def run_orchestrator(state: SupportAgentState) -> SupportAgentState:
     next_state: SupportAgentState = dict(state)
     next_state["normalized_query"] = _normalize_query(query)
 
-    # direct 模式：跳过检索，直接回答，不再匹配关键词
     if mode == "direct":
         next_state["intent"] = "direct_answer"
         next_state["route_reason"] = "user_selected_direct_mode"
         return next_state
 
-    # rag 模式：强制走检索，不再匹配关键词
     if mode == "rag":
         next_state["intent"] = "doc_qa"
         next_state["route_reason"] = "user_selected_rag_mode"
         return next_state
 
-    # auto 模式：走原有关键词规则路由
+    # auto 模式：优先 LLM 路由，失败时降级为关键词规则。
+    try:
+        decision = _decide_intent_with_llm(query)
+        if decision is not None:
+            next_state["intent"] = decision.intent
+            next_state["route_reason"] = f"llm: {decision.reason}"
+            return next_state
+    except Exception:
+        pass
+
     decision = decide_intent(query)
     next_state["intent"] = decision.intent
-    next_state["route_reason"] = decision.reason
+    next_state["route_reason"] = f"keyword_fallback: {decision.reason}"
     return next_state

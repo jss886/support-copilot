@@ -13,16 +13,28 @@ BLOCK_TYPE_NAMES = {
     3: "heading1",
     4: "heading2",
     5: "heading3",
+    6: "heading4",
+    7: "heading5",
+    8: "heading6",
+    9: "heading7",
+    10: "heading8",
+    11: "heading9",
     12: "bullet",
     13: "ordered",
     14: "code",
     15: "quote",
+    16: "callout",
     17: "todo",
     18: "bitable",
     19: "table",
     20: "image",
     21: "file",
     22: "sheet",
+    23: "gallery",
+    24: "column",
+    25: "column_list",
+    26: "divider",
+    27: "image",
 }
 TOKEN_KEYS = (
     "token",
@@ -267,15 +279,20 @@ def _fetch_media_download_url(file_token: str, token: str) -> str:
     return download_url
 
 
-def _ocr_image(file_token: str, token: str) -> str:
-    download_url = _fetch_media_download_url(file_token=file_token, token=token)
-    image_bytes = _request_feishu_bytes(download_url, token=token)
+# 作用：对内存中的图片字节执行 OCR 识别，返回所有识别到的文本行。
+def _ocr_bytes(image_bytes: bytes) -> str:
     result, _ = _get_ocr_engine()(image_bytes)
     if not result:
         return ""
 
     lines = [item[1] for item in result if len(item) > 1 and item[1]]
     return "\n".join(line.strip() for line in lines if line.strip())
+
+
+def _ocr_image(file_token: str, token: str) -> str:
+    download_url = _fetch_media_download_url(file_token=file_token, token=token)
+    image_bytes = _request_feishu_bytes(download_url, token=token)
+    return _ocr_bytes(image_bytes)
 
 
 def _load_document_metadata(doc_id: str, token: str) -> tuple[str, int | None]:
@@ -419,14 +436,38 @@ def _extract_image_block(block: dict, index: int, token: str) -> str:
     if not file_token:
         return f"[图片 {marker}]"
 
+    # 先下载图片字节，后续 OCR 和 Gemini caption 共用同一份数据。
     try:
-        ocr_text = _ocr_image(file_token=file_token, token=token)
+        download_url = _fetch_media_download_url(file_token=file_token, token=token)
+        image_bytes = _request_feishu_bytes(download_url, token=token)
+    except Exception:
+        return f"[图片 {marker}]"
+
+    ocr_text = ""
+    try:
+        ocr_text = _ocr_bytes(image_bytes)
     except Exception:
         ocr_text = ""
 
-    if not ocr_text:
-        return f"[图片 {marker}]"
-    return f"[图片OCR {marker}]\n{ocr_text}"
+    caption = ""
+    caption_error = ""
+    try:
+        from rag.image_caption import caption_image
+
+        caption = caption_image(image_bytes)
+    except Exception as exc:
+        caption_error = str(exc)
+
+    parts = [f"[图片 {marker}]"]
+    if caption:
+        parts.append(f"[图片描述] {caption}")
+    elif caption_error:
+        # Gemini 调用失败时显式记录原因，方便排查网络/鉴权问题。
+        parts.append(f"[图片描述失败: {caption_error}]")
+    if ocr_text:
+        parts.append(f"[图片文字] {ocr_text}")
+
+    return "\n".join(parts)
 
 
 def _extract_rich_block(

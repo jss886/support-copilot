@@ -1,6 +1,11 @@
 from langgraph.graph import END, START, StateGraph
 
-from supportAgents.agents import run_answer_agent, run_orchestrator, run_retrieval_agent
+from supportAgents.agents import (
+    run_answer_agent,
+    run_orchestrator,
+    run_quality_gate,
+    run_retrieval_agent,
+)
 from supportAgents.graph.state import SupportAgentState
 
 
@@ -12,11 +17,11 @@ def _route_after_orchestrator(state: SupportAgentState) -> str:
     return "answer"
 
 
-# 作用：构建第一版最小 Support Graph，先打通 orchestrator、retrieval、answer 三个核心节点。
 def build_support_graph():
     builder = StateGraph(SupportAgentState)
     builder.add_node("orchestrator", run_orchestrator)
     builder.add_node("retrieval", run_retrieval_agent)
+    builder.add_node("quality_gate", run_quality_gate)
     builder.add_node("answer", run_answer_agent)
 
     builder.add_edge(START, "orchestrator")
@@ -28,7 +33,9 @@ def build_support_graph():
             "answer": "answer",
         },
     )
-    builder.add_edge("retrieval", "answer")
+    # retrieval → quality_gate → answer：检索结果先过质量检查，再统一进入回答节点。
+    builder.add_edge("retrieval", "quality_gate")
+    builder.add_edge("quality_gate", "answer")
     builder.add_edge("answer", END)
     return builder.compile()
 

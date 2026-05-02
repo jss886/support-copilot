@@ -30,9 +30,10 @@ def run_answer_agent(state: SupportAgentState) -> SupportAgentState:
 
     llm = _build_answer_llm()
     intent = next_state.get("intent", "direct_answer")
+    quality = next_state.get("quality", "")
     response = llm.invoke(
         [
-            SystemMessage(content=build_answer_system_prompt(intent)),
+            SystemMessage(content=build_answer_system_prompt(intent, quality=quality)),
             HumanMessage(content=build_answer_user_prompt(next_state)),
         ]
     )

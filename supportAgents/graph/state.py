@@ -3,6 +3,9 @@ from typing import Any, Literal, TypedDict
 
 IntentType = Literal["doc_qa", "code_qa", "tool_only", "direct_answer", "fallback"]
 ModeType = Literal["auto", "direct", "rag"]
+# quality: 检索质量标记，quality_gate 节点写入，answer 节点读取。
+# passed=检索有效走RAG，degraded_empty=零结果降级，degraded_low_score=低分降级
+QualityType = Literal["passed", "degraded_empty", "degraded_low_score"]
 
 
 class RetrievalItem(TypedDict):
@@ -49,6 +52,7 @@ class SupportAgentState(TypedDict, total=False):
     retrieval: RetrievalPayload
     action: ActionPayload
     mode: ModeType
+    quality: QualityType
     answer: str
     memory: MemoryPayload
     error: str

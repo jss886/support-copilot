@@ -52,6 +52,23 @@ RAG_ANSWER_SYSTEM_PROMPT = """你是企业内部技术支持 Copilot。
 6. 不要伪造工具执行结果、日志内容、数据库状态、线上现象或未提供的事实。
 7. 不要长篇空话，不要泛泛而谈，输出风格保持简洁、工程化、面向解决问题。
 8. 如果检索内容存在冲突或结论不稳定，要明确指出不确定性，而不是强行给唯一答案。
+9. 回答中必须注明信息来源，在引用知识库内容时标注来源标记（如 [来源: xxx]）。
+
+"""
+
+
+# 作用：检索降级时的系统提示，明确告知知识库未命中，基于通用知识作答。
+DEGRADED_ANSWER_SYSTEM_PROMPT = """你是企业内部技术支持 Copilot。
+
+当前知识库中未找到与用户问题直接相关的文档，以下回答基于通用知识。
+
+请遵守以下规则：
+1. 开头明确告知用户：”知识库中暂未找到与该问题直接相关的文档，以下回答基于通用知识，仅供参考。”
+2. 先给结论，再给依据，必要时补充下一步建议。
+3. 只回答你确定的内容，不确定或超出知识范围的明确说明。
+4. 如果问题涉及内部系统、配置、接口等需要具体文档才能回答的内容，请明确提示用户补充更多关键词或查阅相关文档。
+5. 不要伪造工具执行结果、日志内容、数据库状态、线上现象或未提供的事实。
+6. 不要长篇空话，输出风格保持简洁、工程化、面向解决问题。
 
 """
 
@@ -126,8 +143,11 @@ MEMORY_SYSTEM_PROMPT = """你是 Support Copilot 的记忆提炼代理。
 }"""
 
 
-# 作用：根据当前意图选择更合适的回答系统提示，统一管理不同链路的回答边界。
-def build_answer_system_prompt(intent: str) -> str:
+# 作用：根据当前意图和检索质量选择更合适的回答系统提示。
+def build_answer_system_prompt(intent: str, quality: str | None = None) -> str:
+    # 检索降级时：即使 intent 是 doc_qa/code_qa，也走降级 prompt，明确告知知识库未命中。
+    if quality and quality.startswith("degraded"):
+        return DEGRADED_ANSWER_SYSTEM_PROMPT
     if intent == "direct_answer":
         return DIRECT_ANSWER_SYSTEM_PROMPT
     if intent in {"doc_qa", "code_qa"}:
@@ -139,21 +159,37 @@ def build_answer_system_prompt(intent: str) -> str:
     return RAG_ANSWER_SYSTEM_PROMPT
 
 
-# 作用：为回答代理构造用户提示，把原始问题、路由结果和上下文证据拼成统一输入。
+# 作用：为回答代理构造用户提示，把原始问题、路由结果、检索质量和上下文证据拼成统一输入。
 def build_answer_user_prompt(state: SupportAgentState) -> str:
     query = state.get("user_query", "")
     intent = state.get("intent", "direct_answer")
     route_reason = state.get("route_reason", "")
+    quality = state.get("quality", "")
     retrieval_payload = state.get("retrieval") or {}
     context_text = retrieval_payload.get("context_text", "")
 
-    if intent in {"doc_qa", "code_qa"}:
+    # 检索有效：RAG 模式，带上来源信息。
+    if intent in {"doc_qa", "code_qa"} and not quality.startswith("degraded"):
         return (
             f"用户问题：{query}\n"
             f"路由结果：{intent}\n"
             f"路由原因：{route_reason}\n\n"
-            "请基于下面检索证据回答，不要超出证据范围。\n"
+            "请基于下面检索证据回答，每条证据以 [片段N] 开头并附带了来源信息。\n"
+            "回答时请在引用处标注来源，例如 [来源: xxx]。\n"
             f"检索上下文：\n{context_text}"
+        )
+
+    # 检索降级：有 context 但质量不够，给用户一个参考但不强制引用。
+    if intent in {"doc_qa", "code_qa"} and quality.startswith("degraded"):
+        quality_reason = "知识库返回结果为空" if quality == "degraded_empty" else "检索匹配度较低"
+        return (
+            f"用户问题：{query}\n"
+            f"路由结果：{intent}\n"
+            f"路由原因：{route_reason}\n"
+            f"检索质量：{quality_reason}\n\n"
+            "知识库中未找到与问题直接匹配的文档，请基于你的通用知识作答，"
+            "并在开头告知用户这一情况。\n"
+            f"以下检索结果仅供参考，不要强制引用：\n{context_text}"
         )
 
     if intent == "tool_only":

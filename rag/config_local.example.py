@@ -19,6 +19,11 @@ LOCAL_OVERRIDES = {
         "app_secret": None,
         "open_api_base": "https://open.feishu.cn/open-apis",
     },
+    "gemini": {
+        "api_key": None,
+        "model": "gemini-2.5-flash",
+        "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    },
     "postgres": {
         "jdbc_url": "jdbc:postgresql://host:5432/dbname",
         "user": "your_user",
