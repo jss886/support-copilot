@@ -388,7 +388,7 @@ def list_feishu_wiki_subtree_docx_nodes(
     deduped: list[FeishuWikiNode] = []
     seen_obj_tokens: set[str] = set()
     for node in discovered:
-        if node.obj_type != "docx" or not node.obj_token:
+        if node.obj_type not in ("docx", "file") or not node.obj_token:
             continue
         # 同一篇云文档可能通过多个节点暴露出来，这里按 obj_token 去重，
         # 避免后续重复切片和重复向量化。
@@ -571,4 +571,27 @@ def load_feishu_document(
         image_ocr_count=image_ocr_count,
         table_count=table_count,
         attachment_count=attachment_count,
+    )
+
+
+def load_feishu_file(
+    file_token: str,
+    *,
+    file_name: str = "",
+    app_id: str | None = None,
+    app_secret: str | None = None,
+) -> FeishuDocument:
+    """通过飞书 Drive API 下载知识库中导入的外部文件（如 .md），返回 FeishuDocument。"""
+    token = get_tenant_access_token(app_id=app_id, app_secret=app_secret)
+    file_bytes = _request_feishu_bytes(
+        f"{settings.feishu.open_api_base}/drive/v1/files/{file_token}/download",
+        token=token,
+    )
+    text = file_bytes.decode("utf-8")
+    title = file_name or file_token
+    return FeishuDocument(
+        doc_id=file_token,
+        title=title,
+        text=text,
+        elements=[],
     )

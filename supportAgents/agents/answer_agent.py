@@ -31,9 +31,11 @@ def run_answer_agent(state: SupportAgentState) -> SupportAgentState:
     llm = _build_answer_llm()
     intent = next_state.get("intent", "direct_answer")
     quality = next_state.get("quality", "")
+    action_history = next_state.get("action_history") or []
+    has_action_results = bool(action_history)
     response = llm.invoke(
         [
-            SystemMessage(content=build_answer_system_prompt(intent, quality=quality)),
+            SystemMessage(content=build_answer_system_prompt(intent, quality=quality, has_action_results=has_action_results)),
             HumanMessage(content=build_answer_user_prompt(next_state)),
         ]
     )

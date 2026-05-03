@@ -96,6 +96,17 @@ class AnswerRequest(RetrievalOptions):
     question: str = Field(description="用户问答问题。")
 
 
+class ChatRequest(BaseModel):
+    # 作用：描述聊天工作台单次发送消息所需的请求参数。
+    question: str = Field(description="用户本轮输入的问题。")
+    mode: str = Field(default="auto", description="回答模式，可选 auto、direct、rag。")
+    session_id: str | None = Field(default=None, description="可选会话 ID。")
+    messages: list[dict[str, str]] = Field(
+        default_factory=list,
+        description="可选历史消息列表，第一版主要用于前端透传上下文。",
+    )
+
+
 class IngestionResult(BaseModel):
     # 作用：统一描述单次入库的结果信息。
     document_id: str | None = Field(default=None, description="单文档入库时返回的文档 ID。")
@@ -116,6 +127,19 @@ class RetrievalItem(BaseModel):
 class AnswerResult(BaseModel):
     # 作用：描述问答接口返回的最终答案。
     answer: str = Field(description="基于召回上下文生成的答案。")
+
+
+class ChatResult(BaseModel):
+    # 作用：统一承载聊天工作台所需的回答、路由和检索证据。
+    answer: str = Field(description="本轮消息生成的最终回答。")
+    mode: str = Field(description="本轮实际使用的回答模式。")
+    intent: str = Field(description="路由后的意图类型。")
+    route_reason: str = Field(description="本轮路由原因。")
+    quality: str | None = Field(default=None, description="检索质量标记，非检索模式时可能为空。")
+    retrieval_items: list[RetrievalItem] = Field(
+        default_factory=list,
+        description="本轮检索命中的证据片段列表。",
+    )
 
 
 class RetrievalEvaluationResult(BaseModel):
@@ -181,6 +205,11 @@ class RetrievalResponse(ApiResponse):
 class AnswerResponse(ApiResponse):
     # 作用：描述问答接口的响应结构。
     data: AnswerResult
+
+
+class ChatResponse(ApiResponse):
+    # 作用：描述聊天工作台接口的响应结构。
+    data: ChatResult
 
 
 class RetrievalEvaluationResponse(ApiResponse):

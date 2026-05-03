@@ -1,6 +1,7 @@
 import os
-from typing import Any, Optional
+from typing import Any, Literal, Optional
 
+from langchain_core.messages import AIMessage, BaseMessage
 from langchain_openai import ChatOpenAI
 
 from .base_client import BaseLLMClient
@@ -8,7 +9,12 @@ from .validators import validate_model
 
 
 class DeepSeekChatOpenAI(ChatOpenAI):
-    """对 DeepSeek 特殊参数做兼容处理的聊天模型封装。"""
+    """对 DeepSeek 特殊参数做兼容处理的聊天模型封装。
+
+    额外处理：
+    - reasoning_content 的保留与回传（DeepSeek thinking 模式要求回传该字段）
+    - deepseek-reasoner 模型的采样参数剔除
+    """
 
     def __init__(self, **kwargs):
         extra_body = dict(kwargs.get("extra_body") or {})
@@ -24,6 +30,47 @@ class DeepSeekChatOpenAI(ChatOpenAI):
         if extra_body:
             kwargs["extra_body"] = extra_body
         super().__init__(**kwargs)
+
+    # 作用：从 API 原始响应中提取 reasoning_content，注入到 AIMessage.additional_kwargs 中，
+    # 避免 LangChain 的 _convert_dict_to_message 丢弃该字段。
+    def _create_chat_result(
+        self,
+        response: dict | Any,
+        generation_info: dict | None = None,
+    ) -> Any:
+        chat_result = super()._create_chat_result(response, generation_info)
+        # 从原始响应里取出 reasoning_content，补到 AIMessage 上
+        response_dict = response if isinstance(response, dict) else response.model_dump()
+        choices = response_dict.get("choices") or []
+        for i, res in enumerate(choices):
+            msg = res.get("message") or {}
+            reasoning = msg.get("reasoning_content", "")
+            if reasoning and i < len(chat_result.generations):
+                gen = chat_result.generations[i]
+                if isinstance(gen.message, AIMessage):
+                    gen.message.additional_kwargs["reasoning_content"] = reasoning
+        return chat_result
+
+    # 作用：在构建请求时，把 AIMessage.additional_kwargs 中的 reasoning_content 回传到消息
+    # dict 中，满足 DeepSeek API "thinking 模式下必须回传 reasoning_content" 的要求。
+    def _get_request_payload(
+        self,
+        input_: Any,
+        *,
+        stop: list[str] | None = None,
+        **kwargs: Any,
+    ) -> dict:
+        payload = super()._get_request_payload(input_, stop=stop, **kwargs)
+        messages = self._convert_input(input_).to_messages()
+        msg_dicts = payload.get("messages") or []
+        if len(msg_dicts) != len(messages):
+            return payload
+        for orig_msg, msg_dict in zip(messages, msg_dicts):
+            if isinstance(orig_msg, AIMessage):
+                reasoning = orig_msg.additional_kwargs.get("reasoning_content", "")
+                if reasoning:
+                    msg_dict["reasoning_content"] = reasoning
+        return payload
 
 
 class DeepSeekClient(BaseLLMClient):

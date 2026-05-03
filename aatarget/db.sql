@@ -4,6 +4,7 @@ CREATE TABLE kb_documents (
     doc_type TEXT NOT NULL,
     title TEXT NOT NULL,
     source TEXT,
+    content_hash VARCHAR(64),
     repo_name TEXT,
     module_name TEXT,
     author TEXT,
@@ -12,6 +13,9 @@ CREATE TABLE kb_documents (
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
 );
+
+CREATE UNIQUE INDEX idx_kb_documents_source_unique
+ON kb_documents(source) WHERE source IS NOT NULL;
 
 CREATE TABLE kb_chunks (
     id UUID PRIMARY KEY,

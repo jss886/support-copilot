@@ -9,11 +9,13 @@ from rag.feishu_loader import (
     list_feishu_wiki_nodes,
     list_feishu_wiki_subtree_docx_nodes,
     load_feishu_document,
+    load_feishu_file,
 )
 from rag.hard_negative_data import generate_hard_negative_docs, seed_hard_negative_docs_to_db
 from rag.ingestion import (
     ingest_directory_to_db,
     ingest_feishu_doc_to_db,
+    ingest_feishu_file_to_db,
     ingest_feishu_wiki_subtree_to_db,
     ingest_file_to_db,
 )
@@ -41,11 +43,13 @@ __all__ = [
     "generate_hard_negative_docs",
     "ingest_directory_to_db",
     "ingest_feishu_doc_to_db",
+    "ingest_feishu_file_to_db",
     "ingest_feishu_wiki_subtree_to_db",
     "ingest_file_to_db",
     "list_feishu_wiki_nodes",
     "list_feishu_wiki_subtree_docx_nodes",
     "load_feishu_document",
+    "load_feishu_file",
     "parse_jdbc_postgres_url",
     "rerank_chunks",
     "retrieve",

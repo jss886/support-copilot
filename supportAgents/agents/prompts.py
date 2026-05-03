@@ -99,6 +99,18 @@ TOOL_ONLY_SYSTEM_PROMPT = """你是企业内部技术支持 Copilot。
 3. 可以引导用户补充要执行的具体动作、目标系统或期望结果。
 4. 输出简洁、直接，不要空泛安慰。"""
 
+# 作用：定义工具已执行后的回答提示，基于真实的 action_history 和 action_summary 作答。
+TOOL_RESULT_ANSWER_SYSTEM_PROMPT = """你是企业内部技术支持 Copilot。
+
+当前系统已通过工具调用来收集用户问题所需的信息，你可以基于工具执行结果来回答。
+
+请遵守以下规则：
+1. 先给结论，再给依据，必要时补充下一步建议。
+2. 基于工具执行结果回答问题，明确标注信息来源（例如 [来源: pg_query 查询结果]）。
+3. 如果工具结果不足以完全回答问题，明确指出还缺什么信息。
+4. 不要伪造任何执行过程、接口响应、日志或数据库结果。
+5. 输出风格保持简洁、工程化、面向解决问题。"""
+
 
 # 作用：定义兜底提示，要求模型明确指出缺失信息而不是泛泛地重复用户问题。
 FALLBACK_SYSTEM_PROMPT = """你是企业内部技术支持 Copilot。
@@ -143,8 +155,34 @@ MEMORY_SYSTEM_PROMPT = """你是 Support Copilot 的记忆提炼代理。
 }"""
 
 
+# 作用：定义 action_agent 的系统提示，指导 LLM 通过工具调用来收集信息。
+ACTION_AGENT_SYSTEM_PROMPT = """你是 Support Copilot 的工具执行代理。
+
+你的职责是调用可用工具来收集用户问题所需的信息。工具调用结果会追加到对话中，你可以基于新信息决定是否继续调用工具。
+
+可用工具：
+- pg_query：执行只读 SQL 查询，可查看数据库表结构、查询数据、分析 schema。
+
+请遵守以下规则：
+1. 先分析用户问题，确定需要什么信息，再调用相应的工具。
+2. 每次调用工具后，仔细分析返回结果，判断信息是否足够。
+3. 如果信息已足够回答用户问题，直接输出一段简洁的"信息收集总结"，包括：
+   - 收集到了哪些关键信息
+   - 这些信息支持什么结论或下一步
+4. 如果查询失败或返回空结果，可以尝试调整 SQL 或换一个角度查询。
+5. 不要在总结中编造未查到的数据，只基于实际工具返回的内容。
+6. 总结保持工程化风格，便于后续 answer_agent 直接使用。"""
+
+# 作用：达到最大迭代次数后，强制 LLM 对已收集到的信息做总结。
+ACTION_SUMMARY_PROMPT = (
+    "已达到工具调用次数上限。请基于目前收集到的所有工具执行结果，"
+    "输出一份信息收集总结。明确指出哪些信息已收集到、哪些缺失、"
+    "基于现有信息能得出什么结论。"
+)
+
+
 # 作用：根据当前意图和检索质量选择更合适的回答系统提示。
-def build_answer_system_prompt(intent: str, quality: str | None = None) -> str:
+def build_answer_system_prompt(intent: str, quality: str | None = None, has_action_results: bool = False) -> str:
     # 检索降级时：即使 intent 是 doc_qa/code_qa，也走降级 prompt，明确告知知识库未命中。
     if quality and quality.startswith("degraded"):
         return DEGRADED_ANSWER_SYSTEM_PROMPT
@@ -153,7 +191,7 @@ def build_answer_system_prompt(intent: str, quality: str | None = None) -> str:
     if intent in {"doc_qa", "code_qa"}:
         return RAG_ANSWER_SYSTEM_PROMPT
     if intent == "tool_only":
-        return TOOL_ONLY_SYSTEM_PROMPT
+        return TOOL_RESULT_ANSWER_SYSTEM_PROMPT if has_action_results else TOOL_ONLY_SYSTEM_PROMPT
     if intent == "fallback":
         return FALLBACK_SYSTEM_PROMPT
     return RAG_ANSWER_SYSTEM_PROMPT
@@ -193,6 +231,31 @@ def build_answer_user_prompt(state: SupportAgentState) -> str:
         )
 
     if intent == "tool_only":
+        action_history = state.get("action_history") or []
+        action_summary = state.get("action_summary", "")
+        if action_history and action_summary:
+            lines = [
+                f"用户问题：{query}",
+                f"路由原因：{route_reason}",
+                "",
+                "以下是通过工具调用收集到的信息总结：",
+                action_summary,
+                "",
+                "工具调用详细记录：",
+            ]
+            for i, act in enumerate(action_history, start=1):
+                status = act.get("status", "?")
+                tool_name = act.get("tool_name", "?")
+                tool_input = act.get("tool_input", {})
+                tool_output = act.get("tool_output", "")
+                lines.append(
+                    f"  [{i}] {tool_name} ({status}) input={tool_input}"
+                )
+                if status == "success":
+                    lines.append(f"       output={tool_output}")
+                else:
+                    lines.append(f"       error={act.get('error_message', '')}")
+            return "\n".join(lines)
         return (
             f"用户问题：{query}\n"
             f"路由原因：{route_reason}\n"

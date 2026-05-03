@@ -61,6 +61,20 @@ def format_state(state: dict, mode: str = "text") -> str:
     else:
         lines.append(f"  quality    : (未评估)")
 
+    action_history = state.get("action_history") or []
+    action_summary = state.get("action_summary", "")
+    if action_history:
+        lines.append(f"  action     : 工具调用 {len(action_history)} 次")
+        for i, act in enumerate(action_history, start=1):
+            tool_name = act.get("tool_name", "?")
+            status = act.get("status", "?")
+            status_label = "成功" if status == "success" else f"失败: {act.get('error_message', '')}"
+            lines.append(f"               [{i}] {tool_name} → {status_label}")
+        if action_summary:
+            lines.append(f"               summary: {action_summary[:200]}")
+    else:
+        lines.append("  action     : (未执行)")
+
     retrieval = state.get("retrieval") or {}
     if retrieval:
         items = retrieval.get("items", [])
@@ -142,6 +156,22 @@ def run_step_by_step(user_query: str, mode: str = "auto", json_mode: bool = Fals
     else:
         if not json_mode:
             print(f"\n[步骤 2] retrieval — 跳过 (intent={intent}，不需要检索)\n")
+
+        # ── 第 2b 步: action — 工具执行 (仅 tool_only) ──
+        if intent == "tool_only":
+            if not json_mode:
+                print("\n[步骤 2b] action — 工具执行\n")
+            try:
+                from supportAgents.agents import run_action_agent
+
+                state = run_action_agent(state)
+                print(format_state(state, mode="json" if json_mode else "text"))
+            except Exception as exc:
+                state["error"] = f"action 执行失败: {exc}"
+                if not json_mode:
+                    print(f"  ? action 失败: {exc}")
+                print(format_state(state, mode="json" if json_mode else "text"))
+            _wait_for_next_step("action", json_mode)
 
     # ── 第三步: answer ──
     if not json_mode:

@@ -1,9 +1,11 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import HTMLResponse, JSONResponse
 from scalar_fastapi import get_scalar_api_reference
 
 from api.routers.answering import router as answering_router
+from api.routers.chat import router as chat_router
 from api.routers.evaluation import router as evaluation_router
 from api.routers.health import router as health_router
 from api.routers.ingestion import router as ingestion_router
@@ -19,11 +21,24 @@ def create_app() -> FastAPI:
         version="1.1.0",
     )
 
+    # 这里放开本地前端开发常用地址，避免 Vite 联调时被浏览器跨域拦截。
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[
+            "http://127.0.0.1:5173",
+            "http://localhost:5173",
+        ],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
     app.include_router(health_router)
     app.include_router(ingestion_router)
     app.include_router(seeding_router)
     app.include_router(retrieval_router)
     app.include_router(answering_router)
+    app.include_router(chat_router)
     app.include_router(evaluation_router)
 
     # 这里补一个 Scalar 文档入口，保留 Swagger 的同时提供更现代的调试体验。

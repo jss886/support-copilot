@@ -9,3 +9,8 @@ rag/config_local.py
 
 # 本地模型文件体积过大，不进入版本库
 resources/models/
+
+# 前端构建产物与依赖
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo

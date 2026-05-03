@@ -24,7 +24,27 @@
       "Bash(.venv/Scripts/python.exe -c ' *)",
       "Bash(.venv/Scripts/python.exe scripts/debug_graph.py --step \"如何排查Kafka消息堆积\")",
       "Bash(.venv/Scripts/python.exe scripts/debug_graph.py \"Kafka消息堆积怎么排查\")",
-      "Bash(.venv/Scripts/python.exe -c \"from supportAgents.agents import run_quality_gate; print\\('import OK'\\)\")"
+      "Bash(.venv/Scripts/python.exe -c \"from supportAgents.agents import run_quality_gate; print\\('import OK'\\)\")",
+      "Bash(.venv/Scripts/pip.exe search *)",
+      "WebSearch",
+      "Bash(file \"前端效果图初版.png\")",
+      "Bash(python -c \"from PIL import Image; img = Image.open\\('前端效果图初版.png'\\); print\\(f'Size: {img.size}, Mode: {img.mode}'\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import langchain_openai; print\\(langchain_openai.__version__\\)\")",
+      "Bash(python *)",
+      "WebFetch(domain:open.feishu.cn)",
+      "Bash(Get-ChildItem *)",
+      "Bash(git fetch *)",
+      "Bash(git config *)",
+      "Bash(Test-NetConnection github.com -Port 443 -WarningAction SilentlyContinue)",
+      "Bash(Select-Object TcpTestSucceeded)",
+      "WebFetch(domain:docs.tavily.com)",
+      "WebFetch(domain:pypi.org)",
+      "PowerShell(pip install *)",
+      "PowerShell(python -c \"import tavily; help\\(tavily\\)\" 2>&1)",
+      "PowerShell(python -c \"from tavily import TavilyClient; help\\(TavilyClient\\)\" 2>&1)",
+      "PowerShell(python -c \"from tavily import TavilyClient; import inspect; print\\(inspect.getsource\\(TavilyClient\\)\\)\" 2>&1 | Select-Object -First 80)",
+      "Bash(git add *)"
     ]
   }
 }

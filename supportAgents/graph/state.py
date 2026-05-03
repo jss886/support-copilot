@@ -27,11 +27,12 @@ class RetrievalPayload(TypedDict, total=False):
 
 
 class ActionPayload(TypedDict, total=False):
-    # 作用：为后续 action_agent 预留统一结果结构，避免后面再改 state 协议。
+    # 作用：记录单次工具调用的输入、输出和状态，action_agent 每轮追加一条。
     tool_name: str
     tool_input: dict[str, Any]
     tool_output: Any
-    status: str
+    status: str  # "success" | "error"
+    error_message: str
 
 
 class MemoryPayload(TypedDict, total=False):
@@ -50,7 +51,8 @@ class SupportAgentState(TypedDict, total=False):
     route_reason: str
     messages: list[dict[str, str]]
     retrieval: RetrievalPayload
-    action: ActionPayload
+    action_history: list[ActionPayload]
+    action_summary: str
     mode: ModeType
     quality: QualityType
     answer: str

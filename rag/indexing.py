@@ -326,7 +326,7 @@ def build_index_for_feishu_doc(
     document = load_feishu_document(doc_id=doc_id)
     client = DashScopeEmbeddingClient()
     records = build_records_for_text(
-        source=f"feishu://docx/{doc_id}",
+        source=f"https://www.feishu.cn/wiki/{doc_id}",
         text=document.text,
         elements=document.elements,
         client=client,

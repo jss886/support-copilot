@@ -1,3 +1,4 @@
+import hashlib
 import json
 import uuid
 from pathlib import Path
@@ -5,7 +6,11 @@ from pathlib import Path
 from rag.config import settings
 from rag.db import connect_postgres, parse_jdbc_postgres_url
 from rag.embeddings import DashScopeEmbeddingClient
-from rag.feishu_loader import load_feishu_document, list_feishu_wiki_subtree_docx_nodes
+from rag.feishu_loader import (
+    load_feishu_document,
+    load_feishu_file,
+    list_feishu_wiki_subtree_docx_nodes,
+)
 from rag.indexing import build_records_for_text, load_text
 from rag.models import ChunkRecord, SourceElement
 from rag.text_search import build_chunk_search_text, extract_search_keywords
@@ -40,6 +45,7 @@ def _build_chunk_search_payload(
 
 
 # 作用：覆盖同一 source 的旧文档，并把新切片连同向量和分词后的 tsv 一起写入数据库。
+# 如果 content_hash 与已有记录一致则跳过写入，避免重复向量化和写库。
 def _insert_document(
     jdbc_url: str,
     db_user: str,
@@ -49,18 +55,27 @@ def _insert_document(
     doc_type: str,
     tags: dict,
     records: list[ChunkRecord],
+    content_hash: str = "",
 ) -> tuple[str, int]:
     params = parse_jdbc_postgres_url(jdbc_url, user=db_user, password=db_password)
-    document_id = str(uuid.uuid4())
 
     with connect_postgres(params) as conn:
         with conn.cursor() as cur:
+            if content_hash and source:
+                cur.execute(
+                    "SELECT id FROM kb_documents WHERE source = %s AND content_hash = %s",
+                    (source, content_hash),
+                )
+                if cur.fetchone():
+                    return "", 0
+
             cur.execute("DELETE FROM kb_documents WHERE source = %s", (source,))
+            document_id = str(uuid.uuid4())
             cur.execute(
                 """
                 INSERT INTO kb_documents (
-                    id, doc_name, doc_type, title, source, tags
-                ) VALUES (%s, %s, %s, %s, %s, %s::jsonb)
+                    id, doc_name, doc_type, title, source, tags, content_hash
+                ) VALUES (%s, %s, %s, %s, %s, %s::jsonb, %s)
                 """,
                 (
                     document_id,
@@ -69,6 +84,7 @@ def _insert_document(
                     title,
                     source,
                     json.dumps(tags, ensure_ascii=False),
+                    content_hash or None,
                 ),
             )
 
@@ -208,6 +224,24 @@ def ingest_text_to_db(
     resolved_jdbc_url, resolved_db_user, resolved_db_password = _resolve_db_config(
         jdbc_url, db_user, db_password
     )
+    content_hash = hashlib.sha256(text.encode("utf-8")).hexdigest() if text else ""
+
+    # 内容未变则跳过切片+向量化，避免重复调用 embedding API。
+    if content_hash and source:
+        params = parse_jdbc_postgres_url(
+            resolved_jdbc_url,
+            user=resolved_db_user,
+            password=resolved_db_password,
+        )
+        with connect_postgres(params) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "SELECT id FROM kb_documents WHERE source = %s AND content_hash = %s",
+                    (source, content_hash),
+                )
+                if cur.fetchone():
+                    return "", 0
+
     records = _build_records(
         source=source,
         text=text,
@@ -227,6 +261,7 @@ def ingest_text_to_db(
         doc_type=doc_type,
         tags=tags or {},
         records=records,
+        content_hash=content_hash,
     )
 
 
@@ -335,7 +370,7 @@ def ingest_feishu_doc_to_db(
     embedding_dimensions: int = 1536,
 ) -> tuple[str, int]:
     document = load_feishu_document(doc_id=doc_id)
-    source = f"feishu://docx/{doc_id}"
+    source = f"https://www.feishu.cn/wiki/{doc_id}"
     return ingest_text_to_db(
         title=document.title,
         source=source,
@@ -360,7 +395,41 @@ def ingest_feishu_doc_to_db(
     )
 
 
-# 作用：递归导入指定飞书知识库父节点下的全部 docx 文档。
+def ingest_feishu_file_to_db(
+    file_token: str,
+    *,
+    file_name: str = "",
+    jdbc_url: str | None = None,
+    db_user: str | None = None,
+    db_password: str | None = None,
+    chunk_size: int | None = None,
+    chunk_overlap: int | None = None,
+    batch_size: int | None = None,
+    embedding_dimensions: int = 1536,
+) -> tuple[str, int]:
+    document = load_feishu_file(file_token=file_token, file_name=file_name)
+    source = f"feishu://file/{file_token}"
+    return ingest_text_to_db(
+        title=document.title,
+        source=source,
+        doc_type="feishu_file",
+        text=document.text,
+        tags={
+            "file_token": file_token,
+            "file_name": file_name,
+        },
+        chunk_id_prefix=file_token,
+        jdbc_url=jdbc_url,
+        db_user=db_user,
+        db_password=db_password,
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        batch_size=batch_size,
+        embedding_dimensions=embedding_dimensions,
+    )
+
+
+# 作用：递归导入指定飞书知识库父节点下的全部 docx 文档和导入文件。
 def ingest_feishu_wiki_subtree_to_db(
     *,
     space_id: str,
@@ -379,7 +448,7 @@ def ingest_feishu_wiki_subtree_to_db(
     )
     if not nodes:
         raise ValueError(
-            f"No docx documents found under space_id={space_id}, parent_node_token={parent_node_token}"
+            f"No docx or file documents found under space_id={space_id}, parent_node_token={parent_node_token}"
         )
 
     document_count = 0
@@ -387,18 +456,31 @@ def ingest_feishu_wiki_subtree_to_db(
     for node in nodes:
         if not node.obj_token:
             continue
-        # 这里复用单文档导入逻辑，确保批量导入与手动导入在切片、元数据和检索文本构建上保持一致。
-        _, inserted_chunks = ingest_feishu_doc_to_db(
-            doc_id=node.obj_token,
-            jdbc_url=jdbc_url,
-            db_user=db_user,
-            db_password=db_password,
-            chunk_size=chunk_size,
-            chunk_overlap=chunk_overlap,
-            batch_size=batch_size,
-            embedding_dimensions=embedding_dimensions,
-        )
-        document_count += 1
+        if node.obj_type == "file":
+            _, inserted_chunks = ingest_feishu_file_to_db(
+                file_token=node.obj_token,
+                file_name=node.title,
+                jdbc_url=jdbc_url,
+                db_user=db_user,
+                db_password=db_password,
+                chunk_size=chunk_size,
+                chunk_overlap=chunk_overlap,
+                batch_size=batch_size,
+                embedding_dimensions=embedding_dimensions,
+            )
+        else:
+            _, inserted_chunks = ingest_feishu_doc_to_db(
+                doc_id=node.obj_token,
+                jdbc_url=jdbc_url,
+                db_user=db_user,
+                db_password=db_password,
+                chunk_size=chunk_size,
+                chunk_overlap=chunk_overlap,
+                batch_size=batch_size,
+                embedding_dimensions=embedding_dimensions,
+            )
+        if inserted_chunks > 0:
+            document_count += 1
         chunk_count += inserted_chunks
 
     return document_count, chunk_count
