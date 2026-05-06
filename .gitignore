@@ -10,6 +10,9 @@ rag/config_local.py
 # 本地模型文件体积过大，不进入版本库
 resources/models/
 
+# 个人简历，不进入版本库
+aatarget/简历.md
+
 # 前端构建产物与依赖
 frontend/node_modules/
 frontend/dist/

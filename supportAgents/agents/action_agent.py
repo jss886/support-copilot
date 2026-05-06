@@ -8,6 +8,7 @@ from supportAgents.agents.prompts import ACTION_AGENT_SYSTEM_PROMPT, ACTION_SUMM
 from supportAgents.graph.state import ActionPayload, SupportAgentState
 from supportAgents.llm_clients import create_llm_client
 from supportAgents.tools.pg_query import run_pg_query
+from supportAgents.tools.tavily_search import run_tavily_search, run_tavily_search_context
 
 MAX_ITERATIONS = 7
 
@@ -23,7 +24,86 @@ def pg_query(sql: str) -> str:
     return json.dumps(result, ensure_ascii=False, default=str)
 
 
-AVAILABLE_TOOLS = [pg_query]
+@tool
+def tavily_search(
+    query: str,
+    search_depth: str = "basic",
+    topic: str = "general",
+    days: int = 7,
+    max_results: int = 5,
+    include_domains: list[str] | None = None,
+    exclude_domains: list[str] | None = None,
+    include_answer: bool = False,
+    include_raw_content: bool = False,
+) -> str:
+    """执行网络搜索，从互联网获取最新信息。
+
+    参数：
+    - query: 搜索关键词或问题
+    - search_depth: "basic"(快速) 或 "advanced"(深度)
+    - topic: "general"(通用) / "news"(新闻) / "finance"(财经)
+    - days: 搜索最近多少天的内容，默认7天
+    - max_results: 最大返回结果数，默认5
+    - include_domains: 限定搜索域名列表
+    - exclude_domains: 排除域名列表
+    - include_answer: 是否包含 AI 生成的回答摘要
+    - include_raw_content: 是否包含网页原始内容
+
+    返回 JSON 格式搜索结果，包含标题、URL、摘要等信息。
+    """
+    result = run_tavily_search(
+        query=query,
+        search_depth=search_depth,
+        topic=topic,
+        days=days,
+        max_results=max_results,
+        include_domains=include_domains,
+        exclude_domains=exclude_domains,
+        include_answer=include_answer,
+        include_raw_content=include_raw_content,
+    )
+    return json.dumps(result, ensure_ascii=False, default=str)
+
+
+@tool
+def tavily_search_context(
+    query: str,
+    search_depth: str = "basic",
+    topic: str = "general",
+    days: int = 7,
+    max_results: int = 5,
+    max_tokens: int = 4000,
+    include_domains: list[str] | None = None,
+    exclude_domains: list[str] | None = None,
+) -> str:
+    """获取搜索上下文字符串（自动截断到 max_tokens），适合直接注入 LLM 上下文。
+
+    参数：
+    - query: 搜索关键词或问题
+    - search_depth: "basic"(快速) 或 "advanced"(深度)
+    - topic: "general"(通用) / "news"(新闻) / "finance"(财经)
+    - days: 搜索最近多少天的内容，默认7天
+    - max_results: 最大返回结果数，默认5
+    - max_tokens: 返回内容的最大 token 数，默认4000
+    - include_domains: 限定搜索域名列表
+    - exclude_domains: 排除域名列表
+
+    返回包含搜索上下文字符串的 JSON。
+    """
+    result = run_tavily_search_context(
+        query=query,
+        search_depth=search_depth,
+        topic=topic,
+        days=days,
+        max_results=max_results,
+        max_tokens=max_tokens,
+        include_domains=include_domains,
+        exclude_domains=exclude_domains,
+    )
+    return json.dumps(result, ensure_ascii=False, default=str)
+
+
+AVAILABLE_TOOLS = [pg_query, tavily_search, tavily_search_context]
 
 
 def _build_action_llm():
@@ -100,6 +180,71 @@ def run_action_agent(state: SupportAgentState) -> SupportAgentState:
                         ActionPayload(
                             tool_name=tool_name,
                             tool_input={"sql": sql},
+                            tool_output=raw,
+                            status="success",
+                        )
+                    )
+            elif tool_name == "tavily_search":
+                raw = run_tavily_search(
+                    query=tool_args.get("query", ""),
+                    search_depth=tool_args.get("search_depth", "basic"),
+                    topic=tool_args.get("topic", "general"),
+                    days=tool_args.get("days", 7),
+                    max_results=tool_args.get("max_results", 5),
+                    include_domains=tool_args.get("include_domains"),
+                    exclude_domains=tool_args.get("exclude_domains"),
+                    include_answer=tool_args.get("include_answer", False),
+                    include_raw_content=tool_args.get("include_raw_content", False),
+                )
+                if raw.get("error"):
+                    result_text = f"搜索失败: {raw['error']}"
+                    action_history.append(
+                        ActionPayload(
+                            tool_name=tool_name,
+                            tool_input=tool_args,
+                            tool_output=raw.get("error", ""),
+                            status="error",
+                            error_message=raw["error"],
+                        )
+                    )
+                else:
+                    result_text = json.dumps(raw, ensure_ascii=False, default=str)
+                    action_history.append(
+                        ActionPayload(
+                            tool_name=tool_name,
+                            tool_input=tool_args,
+                            tool_output=raw,
+                            status="success",
+                        )
+                    )
+            elif tool_name == "tavily_search_context":
+                raw = run_tavily_search_context(
+                    query=tool_args.get("query", ""),
+                    search_depth=tool_args.get("search_depth", "basic"),
+                    topic=tool_args.get("topic", "general"),
+                    days=tool_args.get("days", 7),
+                    max_results=tool_args.get("max_results", 5),
+                    max_tokens=tool_args.get("max_tokens", 4000),
+                    include_domains=tool_args.get("include_domains"),
+                    exclude_domains=tool_args.get("exclude_domains"),
+                )
+                if raw.get("error"):
+                    result_text = f"搜索失败: {raw['error']}"
+                    action_history.append(
+                        ActionPayload(
+                            tool_name=tool_name,
+                            tool_input=tool_args,
+                            tool_output=raw.get("error", ""),
+                            status="error",
+                            error_message=raw["error"],
+                        )
+                    )
+                else:
+                    result_text = json.dumps(raw, ensure_ascii=False, default=str)
+                    action_history.append(
+                        ActionPayload(
+                            tool_name=tool_name,
+                            tool_input=tool_args,
                             tool_output=raw,
                             status="success",
                         )

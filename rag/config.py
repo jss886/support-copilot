@@ -39,6 +39,10 @@ USER_DEFAULTS = {
         "text_search_config": "simple",
         "connect_timeout": 5,
     },
+    "tavily": {
+        "api_key": None,
+        "api_base_url": "https://api.tavily.com",
+    },
     "rag": {
         "index_file": str(ARTIFACTS_DIR / "basic_rag_index.json"),
         "chunk_size": 500,
@@ -98,6 +102,12 @@ class PostgresSettings:
 
 
 @dataclass(frozen=True)
+class TavilySettings:
+    api_key: str | None
+    api_base_url: str
+
+
+@dataclass(frozen=True)
 class RagSettings:
     index_file: str
     chunk_size: int
@@ -123,6 +133,7 @@ class AppSettings:
     feishu: FeishuSettings
     gemini: GeminiSettings
     postgres: PostgresSettings
+    tavily: TavilySettings
     rag: RagSettings
 
 
@@ -178,6 +189,7 @@ def load_settings() -> AppSettings:
     feishu_defaults = _merge_section("feishu")
     gemini_defaults = _merge_section("gemini")
     postgres_defaults = _merge_section("postgres")
+    tavily_defaults = _merge_section("tavily")
     rag_defaults = _merge_section("rag")
     resolved_enable_rerank = _prefer_config_bool(
         rag_defaults["enable_rerank"],
@@ -234,6 +246,13 @@ def load_settings() -> AppSettings:
                 "POSTGRES_CONNECT_TIMEOUT",
             )
             or 5,
+        ),
+        tavily=TavilySettings(
+            api_key=_prefer_config(tavily_defaults["api_key"], "TAVILY_API_KEY"),
+            api_base_url=_prefer_config(
+                tavily_defaults["api_base_url"], "TAVILY_API_BASE_URL"
+            )
+            or "https://api.tavily.com",
         ),
         rag=RagSettings(
             index_file=_prefer_config(rag_defaults["index_file"], "RAG_INDEX_FILE")
