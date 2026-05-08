@@ -2,6 +2,7 @@ import json
 import os
 import re
 from dataclasses import dataclass
+from typing import Literal
 
 from langchain_classic.chat_models import init_chat_model
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -56,6 +57,7 @@ class RewriteQueryVariant:
     text: str
     weight: float
     reason: str
+    variant_type: Literal["query", "hyde"] = "query"
 
 
 @dataclass(frozen=True)
@@ -97,8 +99,8 @@ def _build_keyword_query(query: str) -> str:
     return " ".join(keywords)
 
 
-# 作用：只在问题明显口语化、歧义重或规则清洗后变化较大时，才触发 LLM 改写。
-def _should_use_llm(query: str, normalized_query: str) -> bool:
+# 作用：只在问题明显口语化、歧义重或规则清洗后变化较大时，才触发 HyDE 生成假设答案。
+def _should_use_hyde(query: str, normalized_query: str) -> bool:
     if not settings.rag.enable_llm_query_rewrite:
         return False
     if not os.getenv("DEEPSEEK_API_KEY"):
@@ -111,46 +113,39 @@ def _should_use_llm(query: str, normalized_query: str) -> bool:
     return len(extract_query_keywords(query, limit=4)) <= 2
 
 
-# 作用：把模型输出解析成结构化查询列表，解析失败时直接降级为空列表。
-def _parse_llm_queries(content: str) -> list[str]:
+# 作用：把模型输出解析成结构化假设答案，解析失败时直接降级为空字符串。
+def _parse_hyde_document(content: str) -> str:
     try:
         payload = json.loads(content)
     except json.JSONDecodeError:
         match = re.search(r"\{.*\}", content, flags=re.DOTALL)
         if not match:
-            return []
+            return ""
         try:
             payload = json.loads(match.group(0))
         except json.JSONDecodeError:
-            return []
+            return ""
 
     if not isinstance(payload, dict):
-        return []
-    search_queries = payload.get("search_queries")
-    if not isinstance(search_queries, list):
-        return []
-
-    queries: list[str] = []
-    for item in search_queries:
-        if not isinstance(item, str):
-            continue
-        normalized_item = normalize_query_for_retrieval(item)
-        if normalized_item:
-            queries.append(normalized_item)
-    return queries
+        return ""
+    hypothetical_document = payload.get("hypothetical_document")
+    if not isinstance(hypothetical_document, str):
+        return ""
+    return normalize_search_text(hypothetical_document)
 
 
-# 作用：让模型只产出适合检索的 search query，不回答问题也不凭空补事实。
-def _rewrite_with_llm(query: str, normalized_query: str, max_queries: int) -> list[str]:
+# 作用：让模型先写一段假设答案，只用于增强向量检索的语义表达。
+def _build_hyde_document(query: str, normalized_query: str) -> str:
     model = init_chat_model(settings.rag.query_rewrite_model)
     response = model.invoke(
         [
             SystemMessage(
                 content=(
-                    "你是知识库检索改写助手。"
-                    "你的任务是把用户问题改写成更适合知识库检索的查询。"
-                    "不要回答问题，不要新增原问题里没有依据的事实。"
-                    "优先保留正式产品名、功能名、错误现象和关键约束。"
+                    "你是知识库检索 HyDE 助手。"
+                    "你的任务是为用户问题生成一段高度相关的假设性知识库答案，"
+                    "这段文本只用于向量检索，不会直接展示给用户。"
+                    "优先保留正式产品名、功能名、错误现象、排查步骤和关键约束。"
+                    "不要编造具体配置值、时间、版本号或原问题里没有依据的专有事实。"
                     "只输出 JSON。"
                 )
             ),
@@ -158,13 +153,13 @@ def _rewrite_with_llm(query: str, normalized_query: str, max_queries: int) -> li
                 content=(
                     f"用户原问题：{query}\n"
                     f"规则清洗后：{normalized_query}\n"
-                    f"最多输出 {max_queries} 条 search query。\n"
-                    '输出格式：{"search_queries":["...", "..."]}'
+                    "请输出一段 80 到 180 字的假设性答案，语言尽量贴近知识库文档。\n"
+                    '输出格式：{"hypothetical_document":"..."}'
                 )
             ),
         ]
     )
-    return _parse_llm_queries(getattr(response, "content", ""))
+    return _parse_hyde_document(getattr(response, "content", ""))
 
 
 # 作用：构建最终参与召回的查询变体，默认保留原问题并追加更稳的补充查询。
@@ -182,7 +177,9 @@ def build_query_rewrite_result(
     if rewrite_mode not in _SUPPORTED_REWRITE_MODES:
         rewrite_mode = "fast"
 
-    variants: list[RewriteQueryVariant] = [RewriteQueryVariant(text=original_query, weight=1.0, reason="original")]
+    variants: list[RewriteQueryVariant] = [
+        RewriteQueryVariant(text=original_query, weight=1.0, reason="original")
+    ]
     used_llm = False
     if not should_use_rewrite:
         return QueryRewriteResult(
@@ -206,24 +203,27 @@ def build_query_rewrite_result(
         if keyword_query and keyword_query not in {variant.text for variant in variants}:
             variants.append(RewriteQueryVariant(text=keyword_query, weight=0.8, reason="keywords"))
 
-    if rewrite_mode == "deep" and _should_use_llm(original_query, normalized_query):
+    if rewrite_mode == "deep" and _should_use_hyde(original_query, normalized_query):
         try:
-            llm_queries = _rewrite_with_llm(
+            hyde_document = _build_hyde_document(
                 original_query,
                 normalized_query,
-                max_queries=settings.rag.query_rewrite_max_queries,
             )
         except Exception:
-            llm_queries = []
+            hyde_document = ""
         else:
-            used_llm = bool(llm_queries)
+            used_llm = bool(hyde_document)
 
-        for llm_query in llm_queries:
-            if llm_query in {variant.text for variant in variants}:
-                continue
-            variants.append(RewriteQueryVariant(text=llm_query, weight=0.7, reason="llm"))
-            if len(variants) >= _MAX_VARIANTS:
-                break
+        # 这里把 HyDE 文本作为独立变体交给向量召回，避免污染关键词检索分支。
+        if hyde_document and hyde_document not in {variant.text for variant in variants}:
+            variants.append(
+                RewriteQueryVariant(
+                    text=hyde_document,
+                    weight=0.7,
+                    reason="hyde",
+                    variant_type="hyde",
+                )
+            )
 
     return QueryRewriteResult(
         original_query=original_query,

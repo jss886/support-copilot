@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import Iterable
 
 from rag.config import settings
+from rag.contextual_retrieval import contextualize_chunk_text
 from rag.embeddings import DashScopeEmbeddingClient
 from rag.feishu_loader import load_feishu_document
 from rag.models import ChunkRecord, SourceElement
@@ -239,7 +240,22 @@ def build_records_for_text(
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
     )
-    chunk_texts = [item[0] for item in raw_chunks]
+    contextualized_chunks = [
+        (
+            contextualize_chunk_text(
+                document_text=text,
+                chunk_text=chunk_text,
+                start=start,
+                end=end,
+                title_path=metadata.get("title_path", []),
+            ),
+            start,
+            end,
+            metadata,
+        )
+        for chunk_text, start, end, metadata in raw_chunks
+    ]
+    chunk_texts = [item[0] for item in contextualized_chunks]
     embeddings: list[list[float]] = []
 
     for text_batch in batched(chunk_texts, batch_size):
@@ -257,7 +273,7 @@ def build_records_for_text(
             metadata=metadata,
         )
         for idx, ((chunk_text, start, end, metadata), embedding) in enumerate(
-            zip(raw_chunks, embeddings)
+            zip(contextualized_chunks, embeddings)
         )
     ]
 

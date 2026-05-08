@@ -56,6 +56,10 @@ USER_DEFAULTS = {
         "enable_llm_query_rewrite": True,
         "query_rewrite_model": "deepseek-chat",
         "query_rewrite_max_queries": 2,
+        "enable_contextual_retrieval": True,
+        "contextual_retrieval_model": "deepseek-chat",
+        "contextual_retrieval_max_document_chars": 4000,
+        "contextual_retrieval_max_context_chars": 120,
         "enable_rerank": True,
         "reranker_model_path": str(RESOURCES_DIR / "models" / "bge-reranker-v2-m3"),
         "reranker_batch_size": 32,
@@ -121,6 +125,10 @@ class RagSettings:
     enable_llm_query_rewrite: bool
     query_rewrite_model: str
     query_rewrite_max_queries: int
+    enable_contextual_retrieval: bool
+    contextual_retrieval_model: str
+    contextual_retrieval_max_document_chars: int
+    contextual_retrieval_max_context_chars: int
     enable_rerank: bool
     reranker_model_path: str
     reranker_batch_size: int
@@ -202,6 +210,10 @@ def load_settings() -> AppSettings:
     resolved_enable_llm_query_rewrite = _prefer_config_bool(
         rag_defaults["enable_llm_query_rewrite"],
         "RAG_ENABLE_LLM_QUERY_REWRITE",
+    )
+    resolved_enable_contextual_retrieval = _prefer_config_bool(
+        rag_defaults["enable_contextual_retrieval"],
+        "RAG_ENABLE_CONTEXTUAL_RETRIEVAL",
     )
 
     return AppSettings(
@@ -303,6 +315,26 @@ def load_settings() -> AppSettings:
                 "RAG_QUERY_REWRITE_MAX_QUERIES",
             )
             or 2,
+            enable_contextual_retrieval=(
+                True
+                if resolved_enable_contextual_retrieval is None
+                else resolved_enable_contextual_retrieval
+            ),
+            contextual_retrieval_model=_prefer_config(
+                rag_defaults["contextual_retrieval_model"],
+                "RAG_CONTEXTUAL_RETRIEVAL_MODEL",
+            )
+            or "deepseek-chat",
+            contextual_retrieval_max_document_chars=_prefer_config_int(
+                rag_defaults["contextual_retrieval_max_document_chars"],
+                "RAG_CONTEXTUAL_RETRIEVAL_MAX_DOCUMENT_CHARS",
+            )
+            or 4000,
+            contextual_retrieval_max_context_chars=_prefer_config_int(
+                rag_defaults["contextual_retrieval_max_context_chars"],
+                "RAG_CONTEXTUAL_RETRIEVAL_MAX_CONTEXT_CHARS",
+            )
+            or 120,
             enable_rerank=True if resolved_enable_rerank is None else resolved_enable_rerank,
             reranker_model_path=_prefer_config(
                 rag_defaults["reranker_model_path"],

@@ -57,9 +57,16 @@ def run_retrieval_agent(
     )
 
     next_state: SupportAgentState = dict(state)
+    hyde_variant = next(
+        (variant for variant in rewrite_result.variants if variant.variant_type == "hyde"),
+        None,
+    )
     next_state["retrieval"] = {
         "query": query,
-        "rewritten_queries": [variant.text for variant in rewrite_result.variants],
+        "rewritten_queries": [
+            variant.text for variant in rewrite_result.variants if variant.variant_type == "query"
+        ],
+        "hyde_document": hyde_variant.text if hyde_variant else "",
         "items": [_to_retrieval_item(score, record) for score, record in retrieved],
         "context_text": build_context_text(retrieved),
     }

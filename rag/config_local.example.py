@@ -35,5 +35,9 @@ LOCAL_OVERRIDES = {
         "chunk_size": 500,
         "chunk_overlap": 100,
         "batch_size": 8,
+        "enable_contextual_retrieval": True,
+        "contextual_retrieval_model": "deepseek-chat",
+        "contextual_retrieval_max_document_chars": 4000,
+        "contextual_retrieval_max_context_chars": 120,
     },
 }

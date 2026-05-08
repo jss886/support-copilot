@@ -199,9 +199,9 @@ def _fuse_branch_results(
     return [(merged_scores[key], merged_records[key]) for key in ranked_keys[:top_k]]
 
 
-# 作用：执行单条查询变体的混合召回，先拿到用于全局融合的候选集合。
+# 作用：执行单条查询变体的召回；普通 query 走混合检索，HyDE 文本只走向量检索。
 def _retrieve_single_query_candidates(
-    query: str,
+    variant: RewriteQueryVariant,
     *,
     candidate_top_k: int,
     source: str | None,
@@ -209,19 +209,22 @@ def _retrieve_single_query_candidates(
     embedding_client: DashScopeEmbeddingClient,
 ) -> list[tuple[float, ChunkRecord]]:
     per_branch_top_k = max(candidate_top_k * 2, 20)
-    query_embedding = embedding_client.embed_texts([query])[0]
+    query_embedding = embedding_client.embed_texts([variant.text])[0]
     vector_results = _retrieve_vector(
         query_embedding,
         top_k=per_branch_top_k,
         source=source,
         params=params,
     )
-    keyword_results = _retrieve_keyword(
-        query,
-        top_k=per_branch_top_k,
-        source=source,
-        params=params,
-    )
+    # HyDE 是假设性答案文本，更适合增强语义召回，直接参与关键词检索反而容易引入噪声。
+    keyword_results = []
+    if variant.variant_type == "query":
+        keyword_results = _retrieve_keyword(
+            variant.text,
+            top_k=per_branch_top_k,
+            source=source,
+            params=params,
+        )
     return _fuse_with_rrf(vector_results, keyword_results, top_k=per_branch_top_k)
 
 
@@ -257,7 +260,7 @@ def retrieve_hybrid_candidates(
     branch_results: list[tuple[RewriteQueryVariant, list[tuple[float, ChunkRecord]]]] = []
     for variant in rewrite_result.variants:
         results = _retrieve_single_query_candidates(
-            variant.text,
+            variant,
             candidate_top_k=candidate_top_k,
             source=source,
             params=params,

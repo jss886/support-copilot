@@ -68,6 +68,7 @@ class RetrievalPayload(TypedDict, total=False):
     # 作用：承载 retrieval_agent 的输出，既保留原始证据，也保留拼好的上下文文本。
     query: str
     rewritten_queries: list[str]
+    hyde_document: str
     items: list[RetrievalItem]
     context_text: str
 
