@@ -1,22 +1,71 @@
 import json
 import os
 import re
+from concurrent.futures import ThreadPoolExecutor
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from supportAgents.agents.prompts import PLANNER_SYSTEM_PROMPT
-from supportAgents.graph.state import PlanPayload, SubTask, SupportAgentState
+from supportAgents.graph.state import (
+    PlanPayload,
+    SubTask,
+    SupportAgentState,
+    TaskExecutionResult,
+)
 from supportAgents.llm_clients import create_llm_client
+from supportAgents.workers.task_workers import (
+    run_direct_answer_worker_task,
+    run_retrieval_worker_task,
+    run_tool_worker_task,
+)
 
-_VALID_SUB_INTENTS = {"doc_qa", "code_qa", "tool_only", "direct_answer"}
+_VALID_SUB_INTENTS = {"knowledge_qa", "tool_only", "direct_answer"}
 
 
+# 作用：构造 planner 专用模型实例，保持复杂任务分解成本可控。
 def _build_planner_llm():
     model = os.environ.get("SUPPORT_PLANNER_MODEL", "deepseek-v4-flash")
     client = create_llm_client("deepseek", model, timeout=30, max_retries=1, temperature=0)
     return client.get_llm()
 
 
+# 作用：把 planner 原始输出整理成带 task_id 的规范子任务。
+def _normalize_sub_tasks(sub_tasks_raw: list[dict]) -> list[SubTask]:
+    sub_tasks: list[SubTask] = []
+    valid_task_ids: set[int] = set()
+
+    for raw_index, raw_task in enumerate(sub_tasks_raw):
+        sub_query = str(raw_task.get("sub_query", "")).strip()
+        sub_intent = str(raw_task.get("sub_intent", "knowledge_qa")).strip().lower()
+        depends_on_raw = raw_task.get("depends_on", [])
+        if not isinstance(depends_on_raw, list):
+            depends_on_raw = []
+
+        if not sub_query or sub_intent not in _VALID_SUB_INTENTS:
+            continue
+
+        # 这里让 depends_on 依赖稳定的 task_id，而不是最终列表位置。
+        depends_on = [
+            dep_id
+            for dep_id in depends_on_raw
+            if isinstance(dep_id, int) and dep_id < raw_index and dep_id in valid_task_ids
+        ]
+        task_id = raw_index
+        valid_task_ids.add(task_id)
+        sub_tasks.append(
+            SubTask(
+                task_id=task_id,
+                sub_query=sub_query,
+                sub_intent=sub_intent,
+                depends_on=depends_on,
+                result="",
+            )
+        )
+
+    return sub_tasks
+
+
+# 作用：把 planner 的 JSON 输出解析成结构化计划，解析失败时返回 None。
 def _parse_plan_json(content: str) -> PlanPayload | None:
     if not content:
         return None
@@ -35,30 +84,11 @@ def _parse_plan_json(content: str) -> PlanPayload | None:
     if not isinstance(sub_tasks_raw, list) or not sub_tasks_raw:
         return None
 
-    sub_tasks: list[SubTask] = []
-    for i, st in enumerate(sub_tasks_raw):
-        sub_query = st.get("sub_query", "").strip()
-        sub_intent = st.get("sub_intent", "doc_qa").strip().lower()
-        depends_on = st.get("depends_on", [])
-        if not isinstance(depends_on, list):
-            depends_on = []
-        # 校验 depends_on 索引范围
-        depends_on = [d for d in depends_on if isinstance(d, int) and 0 <= d < i]
-        if not sub_query or sub_intent not in _VALID_SUB_INTENTS:
-            continue
-        sub_tasks.append(
-            SubTask(
-                sub_query=sub_query,
-                sub_intent=sub_intent,
-                depends_on=depends_on,
-                result="",
-            )
-        )
-
+    sub_tasks = _normalize_sub_tasks(sub_tasks_raw)
     if not sub_tasks:
         return None
 
-    plan_reason = payload.get("plan_reason", "").strip()
+    plan_reason = str(payload.get("plan_reason", "")).strip()
     return PlanPayload(
         original_query="",
         sub_tasks=sub_tasks,
@@ -66,14 +96,14 @@ def _parse_plan_json(content: str) -> PlanPayload | None:
     )
 
 
+# 作用：将复杂用户问题分解为有序子任务列表，写入 state["plan"]。
 def run_planner(state: SupportAgentState) -> SupportAgentState:
-    """将复杂用户问题分解为有序子任务列表，写入 state["plan"]."""
     next_state: SupportAgentState = dict(state)
     if next_state.get("error"):
         return next_state
 
     query = next_state.get("user_query", "")
-    intent = next_state.get("intent", "doc_qa")
+    intent = next_state.get("intent", "knowledge_qa")
 
     llm = _build_planner_llm()
     try:
@@ -93,11 +123,12 @@ def run_planner(state: SupportAgentState) -> SupportAgentState:
     except Exception:
         pass
 
-    # 分解失败，降级为直接处理原问题
+    # 作用：planner 失败时降级成单子任务，避免复杂链路直接中断。
     next_state["plan"] = PlanPayload(
         original_query=query,
         sub_tasks=[
             SubTask(
+                task_id=0,
                 sub_query=query,
                 sub_intent=intent,
                 depends_on=[],
@@ -109,101 +140,213 @@ def run_planner(state: SupportAgentState) -> SupportAgentState:
     return next_state
 
 
+# 作用：构建 task_id 到子任务的映射，避免后续调度依赖列表位置。
+def _build_task_map(sub_tasks: list[SubTask]) -> dict[int, SubTask]:
+    return {
+        task["task_id"]: task
+        for task in sub_tasks
+        if isinstance(task.get("task_id"), int)
+    }
+
+
+# 作用：按 task_id 计算拓扑顺序；如果存在循环依赖则返回 None。
 def _topological_order(sub_tasks: list[SubTask]) -> list[int] | None:
-    """返回子任务的拓扑排序索引列表，存在环则返回 None."""
-    n = len(sub_tasks)
-    in_degree = [0] * n
-    adj: list[list[int]] = [[] for _ in range(n)]
+    task_map = _build_task_map(sub_tasks)
+    in_degree = {task_id: 0 for task_id in task_map}
+    adjacency = {task_id: [] for task_id in task_map}
 
-    for i, st in enumerate(sub_tasks):
-        for dep in st.get("depends_on", []):
-            if isinstance(dep, int) and 0 <= dep < n:
-                adj[dep].append(i)
-                in_degree[i] += 1
+    for task_id, task in task_map.items():
+        for dep_id in task.get("depends_on", []):
+            if dep_id not in task_map:
+                continue
+            adjacency[dep_id].append(task_id)
+            in_degree[task_id] += 1
 
-    queue = [i for i in range(n) if in_degree[i] == 0]
+    ready = sorted(task_id for task_id, degree in in_degree.items() if degree == 0)
     order: list[int] = []
-    while queue:
-        node = queue.pop(0)
-        order.append(node)
-        for neighbor in adj[node]:
+    while ready:
+        task_id = ready.pop(0)
+        order.append(task_id)
+        for neighbor in adjacency[task_id]:
             in_degree[neighbor] -= 1
             if in_degree[neighbor] == 0:
-                queue.append(neighbor)
+                ready.append(neighbor)
+                ready.sort()
 
-    return order if len(order) == n else None
+    return order if len(order) == len(task_map) else None
 
 
+# 作用：按 DAG 依赖分波次，同一波次内的任务互不依赖，可以并发执行。
+def _topological_waves(sub_tasks: list[SubTask]) -> list[list[int]] | None:
+    task_map = _build_task_map(sub_tasks)
+    in_degree = {task_id: 0 for task_id in task_map}
+    adjacency = {task_id: [] for task_id in task_map}
+
+    for task_id, task in task_map.items():
+        for dep_id in task.get("depends_on", []):
+            if dep_id not in task_map:
+                continue
+            adjacency[dep_id].append(task_id)
+            in_degree[task_id] += 1
+
+    remaining = set(task_map)
+    waves: list[list[int]] = []
+
+    while remaining:
+        wave = sorted(task_id for task_id in remaining if in_degree[task_id] == 0)
+        if not wave:
+            return None
+        waves.append(wave)
+        for task_id in wave:
+            remaining.remove(task_id)
+            for neighbor in adjacency[task_id]:
+                in_degree[neighbor] -= 1
+
+    return waves
+
+
+# 作用：把前置子任务结果注入当前任务输入，先用文本协议保持 supervisor 与 worker 解耦。
+def _build_worker_query(
+    *,
+    sub_task: SubTask,
+    execution_results: dict[int, TaskExecutionResult],
+) -> str:
+    sub_query = sub_task.get("sub_query", "")
+    dependency_blocks: list[str] = []
+    for dep_id in sub_task.get("depends_on", []):
+        dep_result = execution_results.get(dep_id)
+        if not dep_result:
+            continue
+
+        dep_text = dep_result.get("summary", "") or dep_result.get("result", "")
+        dep_error = dep_result.get("error", "")
+        if dep_text:
+            dependency_blocks.append(f"[前置任务 {dep_id}] {dep_text}")
+        elif dep_error:
+            dependency_blocks.append(f"[前置任务 {dep_id} 失败] {dep_error}")
+
+    if not dependency_blocks:
+        return sub_query
+    return "\n".join(dependency_blocks) + f"\n当前子问题：{sub_query}"
+
+
+# 作用：构造 worker 输入状态，后续替换成 subgraph 时可以继续复用这层协议。
+def _build_worker_state(
+    *,
+    parent_state: SupportAgentState,
+    sub_task: SubTask,
+    execution_results: dict[int, TaskExecutionResult],
+) -> SupportAgentState:
+    task_id = sub_task.get("task_id", -1)
+    worker_query = _build_worker_query(
+        sub_task=sub_task,
+        execution_results=execution_results,
+    )
+    return SupportAgentState(
+        session_id=parent_state.get("session_id", ""),
+        user_query=worker_query,
+        normalized_query=worker_query.strip(),
+        intent=sub_task.get("sub_intent", "direct_answer"),
+        route_reason=f"planner_supervisor_task_{task_id}",
+        messages=parent_state.get("messages", []),
+        mode="auto",
+    )
+
+
+# 作用：按子任务意图选择合适 worker，先统一走函数接口，后续可平滑替换成 subgraph。
+def _dispatch_worker(
+    *,
+    sub_task: SubTask,
+    worker_state: SupportAgentState,
+) -> TaskExecutionResult:
+    task_id = sub_task.get("task_id", -1)
+    sub_intent = sub_task.get("sub_intent", "direct_answer")
+    if sub_intent == "knowledge_qa":
+        return run_retrieval_worker_task(
+            task_id=task_id,
+            sub_task=sub_task,
+            worker_state=worker_state,
+        )
+    if sub_intent == "tool_only":
+        return run_tool_worker_task(
+            task_id=task_id,
+            sub_task=sub_task,
+            worker_state=worker_state,
+        )
+    return run_direct_answer_worker_task(
+        task_id=task_id,
+        sub_task=sub_task,
+        worker_state=worker_state,
+    )
+
+
+# 作用：执行单个子任务，作为并发调度时的最小执行单元。
+def _execute_single_task(
+    *,
+    parent_state: SupportAgentState,
+    sub_task: SubTask,
+    execution_results: dict[int, TaskExecutionResult],
+) -> TaskExecutionResult:
+    worker_state = _build_worker_state(
+        parent_state=parent_state,
+        sub_task=sub_task,
+        execution_results=execution_results,
+    )
+    return _dispatch_worker(sub_task=sub_task, worker_state=worker_state)
+
+
+# 作用：以 supervisor 方式调度子任务，按依赖波次并发执行同一层内的无依赖子任务。
 def run_execute_subtasks(state: SupportAgentState) -> SupportAgentState:
-    """按拓扑序逐个执行子任务，复用现有 agent 函数。结果写入 plan_results."""
-    from supportAgents.agents.answer_agent import run_answer_agent
-    from supportAgents.agents.orchestrator_agent import run_orchestrator
-    from supportAgents.agents.quality_gate import run_quality_gate
-    from supportAgents.agents.retrieval_agent import run_retrieval_agent
-
     next_state: SupportAgentState = dict(state)
     if next_state.get("error"):
         return next_state
 
     plan = next_state.get("plan") or {}
     sub_tasks = plan.get("sub_tasks", [])
-
     if not sub_tasks:
         next_state["plan_results"] = []
         return next_state
 
-    order = _topological_order(sub_tasks)
-    if order is None:
+    task_map = _build_task_map(sub_tasks)
+    waves = _topological_waves(sub_tasks)
+    if waves is None:
         next_state["error"] = "planner_cycle_detected"
         return next_state
 
-    executed: list[SubTask] = [dict(st) for st in sub_tasks]
+    execution_results: dict[int, TaskExecutionResult] = {}
+    ordered_results: list[TaskExecutionResult] = []
+    max_workers = int(os.environ.get("PLANNER_MAX_WORKERS", "0")) or None
 
-    for idx in order:
-        st = executed[idx]
-        sub_query = st.get("sub_query", "")
-        sub_intent = st.get("sub_intent", "doc_qa")
-        depends_on = st.get("depends_on", [])
+    for wave in waves:
+        if len(wave) == 1:
+            task_id = wave[0]
+            task_result = _execute_single_task(
+                parent_state=next_state,
+                sub_task=task_map[task_id],
+                execution_results=execution_results,
+            )
+            execution_results[task_id] = task_result
+            ordered_results.append(task_result)
+            continue
 
-        # 将依赖子任务的结果注入查询上下文
-        dep_results = []
-        for dep_idx in depends_on:
-            if 0 <= dep_idx < len(executed):
-                dep_result = executed[dep_idx].get("result", "")
-                if dep_result:
-                    dep_results.append(f"[前置信息 {dep_idx}] {dep_result}")
-        if dep_results:
-            sub_query = "\n".join(dep_results) + f"\n当前子问题：{sub_query}"
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_task_id = {
+                executor.submit(
+                    _execute_single_task,
+                    parent_state=next_state,
+                    sub_task=task_map[task_id],
+                    execution_results=dict(execution_results),
+                ): task_id
+                for task_id in wave
+            }
 
-        # 构造 mini state，复用现有节点
-        mini_state: SupportAgentState = {
-            "session_id": next_state.get("session_id", ""),
-            "user_query": sub_query,
-            "normalized_query": sub_query.strip(),
-            "intent": sub_intent,
-            "route_reason": f"planner_subtask_{idx}",
-            "messages": next_state.get("messages", []),
-            "mode": "auto",
-        }
+            wave_results: dict[int, TaskExecutionResult] = {}
+            for future, task_id in future_to_task_id.items():
+                wave_results[task_id] = future.result()
 
-        try:
-            if sub_intent == "tool_only":
-                from supportAgents.agents.action_agent import run_action_agent
+        for task_id in wave:
+            execution_results[task_id] = wave_results[task_id]
+            ordered_results.append(wave_results[task_id])
 
-                mini_state = run_action_agent(mini_state)
-                if not mini_state.get("error"):
-                    mini_state = run_answer_agent(mini_state)
-            elif sub_intent in {"doc_qa", "code_qa"}:
-                mini_state = run_retrieval_agent(mini_state)
-                if not mini_state.get("error"):
-                    mini_state = run_quality_gate(mini_state)
-                    mini_state = run_answer_agent(mini_state)
-            else:
-                mini_state = run_answer_agent(mini_state)
-
-            executed[idx]["result"] = mini_state.get("answer", "") or mini_state.get("error", "")
-        except Exception as exc:
-            executed[idx]["result"] = f"[子任务执行失败] {exc}"
-
-    next_state["plan_results"] = executed
+    next_state["plan_results"] = ordered_results
     return next_state

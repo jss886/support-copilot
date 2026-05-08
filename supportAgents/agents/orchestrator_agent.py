@@ -10,18 +10,46 @@ from supportAgents.agents.prompts import ORCHESTRATOR_SYSTEM_PROMPT
 from supportAgents.graph.state import ComplexityType, IntentType, SupportAgentState
 from supportAgents.llm_clients import create_llm_client
 
-RouteCategory = Literal["doc_qa", "code_qa", "tool_only", "direct_answer", "fallback"]
+RouteCategory = Literal["knowledge_qa", "tool_only", "direct_answer", "fallback"]
 
-_VALID_INTENTS = {"doc_qa", "code_qa", "tool_only", "direct_answer", "fallback"}
+_VALID_INTENTS = {"knowledge_qa", "tool_only", "direct_answer", "fallback"}
 
-_CODE_KEYWORDS = {
-    "代码", "code", "bug", "报错", "异常", "接口", "函数", "类", "traceback", "sql",
+_KNOWLEDGE_KEYWORDS = {
+    "代码",
+    "code",
+    "bug",
+    "报错",
+    "异常",
+    "接口",
+    "函数",
+    "类",
+    "traceback",
+    "sql",
+    "文档",
+    "手册",
+    "说明",
+    "faq",
+    "排查",
+    "配置",
 }
 _TOOL_KEYWORDS = {
-    "调用", "执行", "运行", "检查", "查询", "tool", "curl", "脚本", "命令",
+    "调用",
+    "执行",
+    "运行",
+    "检查",
+    "查询",
+    "tool",
+    "curl",
+    "脚本",
+    "命令",
 }
 _DIRECT_ANSWER_KEYWORDS = {
-    "你好", "hi", "hello", "谢谢", "是什么", "什么意思",
+    "你好",
+    "hi",
+    "hello",
+    "谢谢",
+    "是什么",
+    "什么意思",
 }
 
 
@@ -32,14 +60,14 @@ class IntentDecision:
     complexity: ComplexityType = "simple"
 
 
-# 作用：构造 orchestrator 专用模型实例，用 DeepSeek V4 Flash 保证低延迟和低成本。
+# 作用：构造 orchestrator 专用模型实例，用较轻模型完成意图与复杂度判断。
 def _build_orchestrator_llm():
     model = os.environ.get("SUPPORT_ORCHESTRATOR_MODEL", "deepseek-v4-flash")
     client = create_llm_client("deepseek", model, timeout=15, max_retries=1, temperature=0)
     return client.get_llm()
 
 
-# 作用：把 LLM 输出的 JSON 解析为结构化的路由决策，解析失败时返回 None。
+# 作用：把 LLM 输出的 JSON 解析成结构化路由决策，解析失败时返回 None。
 def _parse_intent_json(content: str) -> IntentDecision | None:
     if not content:
         return None
@@ -75,7 +103,7 @@ def _decide_intent_with_llm(query: str) -> IntentDecision | None:
     return _parse_intent_json(getattr(response, "content", "") or "")
 
 
-# 作用：把用户问题归一成便于规则判断的文本。
+# 作用：把用户问题归一化成便于规则判断的文本。
 def _normalize_query(query: str) -> str:
     return " ".join(query.strip().lower().split())
 
@@ -89,8 +117,8 @@ def decide_intent(query: str) -> IntentDecision:
     if any(keyword in normalized_query for keyword in _TOOL_KEYWORDS):
         return IntentDecision(intent="tool_only", reason="matched_tool_keyword")
 
-    if any(keyword in normalized_query for keyword in _CODE_KEYWORDS):
-        return IntentDecision(intent="code_qa", reason="matched_code_keyword")
+    if any(keyword in normalized_query for keyword in _KNOWLEDGE_KEYWORDS):
+        return IntentDecision(intent="knowledge_qa", reason="matched_knowledge_keyword")
 
     if any(keyword in normalized_query for keyword in _DIRECT_ANSWER_KEYWORDS) and len(
         normalized_query
@@ -100,11 +128,11 @@ def decide_intent(query: str) -> IntentDecision:
     if len(normalized_query) <= 6:
         return IntentDecision(intent="direct_answer", reason="short_query")
 
-    return IntentDecision(intent="doc_qa", reason="default_to_retrieval")
+    return IntentDecision(intent="knowledge_qa", reason="default_to_retrieval")
 
 
 # 作用：执行总控路由节点。
-# auto 模式优先用 LLM 路由，失败时自动降级为关键词规则；
+# auto 模式优先用 LLM 路由，失败时自动降级为关键词规则。
 # direct/rag 模式直接跳过路由判断。
 def run_orchestrator(state: SupportAgentState) -> SupportAgentState:
     query = state.get("user_query", "")
@@ -119,11 +147,10 @@ def run_orchestrator(state: SupportAgentState) -> SupportAgentState:
         return next_state
 
     if mode == "rag":
-        next_state["intent"] = "doc_qa"
+        next_state["intent"] = "knowledge_qa"
         next_state["route_reason"] = "user_selected_rag_mode"
         return next_state
 
-    # auto 模式：优先 LLM 路由，失败时降级为关键词规则。
     try:
         decision = _decide_intent_with_llm(query)
         if decision is not None:

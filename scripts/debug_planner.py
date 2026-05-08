@@ -150,8 +150,7 @@ def format_planner(state: dict, mode: str = "text") -> str:
         query_preview = sub_query[:80] + "..." if len(sub_query) > 80 else sub_query
 
         intent_color_map = {
-            "doc_qa": BLUE,
-            "code_qa": CYAN,
+            "knowledge_qa": BLUE,
             "tool_only": YELLOW,
             "direct_answer": GREEN,
         }

@@ -21,7 +21,7 @@ def _route_after_orchestrator(state: SupportAgentState) -> str:
     intent = state.get("intent", "fallback")
     if intent == "tool_only":
         return "action"
-    if intent in {"doc_qa", "code_qa"}:
+    if intent == "knowledge_qa":
         return "retrieval"
     return "answer"
 

@@ -129,7 +129,7 @@ def run_step_by_step(user_query: str, mode: str = "auto", json_mode: bool = Fals
 
     # ── 第二步: retrieval ──
     intent = state.get("intent", "fallback")
-    if intent in ("doc_qa", "code_qa"):
+    if intent == "knowledge_qa":
         if not json_mode:
             print("\n[步骤 2] retrieval — 检索知识库\n")
         try:
@@ -213,7 +213,7 @@ def run_dry_analysis(user_query: str, mode: str = "auto"):
     print(f"    判断依据   : {route_reason}")
     print()
     print("  后续链路:")
-    if intent in ("doc_qa", "code_qa"):
+    if intent == "knowledge_qa":
         print(f"    orchestrator → retrieval → answer")
     else:
         print(f"    orchestrator → answer (跳过检索)")

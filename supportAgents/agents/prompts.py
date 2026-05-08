@@ -11,16 +11,14 @@ ORCHESTRATOR_SYSTEM_PROMPT = """你是 Support Copilot 的总控路由代理。
 - 工具执行：可执行只读 SQL 查询（pg_query），以及联网搜索获取互联网实时信息（tavily_search）
 
 当前可选路由只有以下几类：
-1. doc_qa：问题主要依赖内部知识库、文档、FAQ、接口说明、历史案例等信息来回答
-2. code_qa：问题涉及代码、报错、函数、类、SQL、接口实现、调用链、日志分析等技术内容
-3. tool_only：问题需要执行工具（SQL查询或联网搜索）才能回答，知识库和模型自身知识均不可靠
-4. direct_answer：问题简单，模型自身知识足以回答，不需要检索和工具
-5. fallback：问题信息不足、意图不清、超出系统能力范围，当前无法可靠处理
+1. knowledge_qa：问题需要依赖内部知识库、文档、FAQ、接口说明、历史案例或技术资料来回答
+2. tool_only：问题需要执行工具（SQL查询或联网搜索）才能回答，知识库和模型自身知识均不可靠
+3. direct_answer：问题简单，模型自身知识足以回答，不需要检索和工具
+4. fallback：问题信息不足、意图不清、超出系统能力范围，当前无法可靠处理
 
 请遵守以下规则：
 1. 你的核心任务是分类和路由，不是解释问题本身。
-2. 如果问题涉及内部文档说明、排查手册、接口文档、历史经验，优先考虑 doc_qa。
-3. 如果问题明显涉及代码实现、报错堆栈、SQL、函数行为、模块依赖，优先考虑 code_qa。
+2. 如果问题涉及内部文档说明、排查手册、接口文档、历史经验、代码实现、报错堆栈、SQL、函数行为或模块依赖，优先考虑 knowledge_qa。
 4. tool_only 的适用场景包括：
    - 需要联网搜索获取最新信息、时事新闻、版本更新、开源项目动态、公开技术文档等，例如"React 19 最新特性"、"Python 3.13 发布说明"
    - 需要执行 SQL 查询数据库状态
@@ -34,13 +32,13 @@ ORCHESTRATOR_SYSTEM_PROMPT = """你是 Support Copilot 的总控路由代理。
 
 请输出 JSON，格式如下：
 {
-  "intent": "doc_qa | code_qa | tool_only | direct_answer | fallback",
+  "intent": "knowledge_qa | tool_only | direct_answer | fallback",
   "complexity": "simple | complex",
   "reason": "一句简洁中文说明，解释为什么这么路由"
 }"""
 
 
-# 作用：定义基于 RAG 检索结果的回答提示，适用于 doc_qa 和 code_qa 场景。
+# 作用：定义基于 RAG 检索结果的回答提示，适用于 knowledge_qa 场景。
 RAG_ANSWER_SYSTEM_PROMPT = """你是企业内部技术支持 Copilot。
 
 你的职责是基于知识库检索结果、接口文档、故障案例、工具结果和当前会话上下文，
@@ -196,12 +194,12 @@ ACTION_SUMMARY_PROMPT = (
 
 # 作用：根据当前意图和检索质量选择更合适的回答系统提示。
 def build_answer_system_prompt(intent: str, quality: str | None = None, has_action_results: bool = False) -> str:
-    # 检索降级时：即使 intent 是 doc_qa/code_qa，也走降级 prompt，明确告知知识库未命中。
+    # 检索降级时：即使 intent 是 knowledge_qa，也走降级 prompt，明确告知知识库未命中。
     if quality and quality.startswith("degraded"):
         return DEGRADED_ANSWER_SYSTEM_PROMPT
     if intent == "direct_answer":
         return DIRECT_ANSWER_SYSTEM_PROMPT
-    if intent in {"doc_qa", "code_qa"}:
+    if intent == "knowledge_qa":
         return RAG_ANSWER_SYSTEM_PROMPT
     if intent == "tool_only":
         return TOOL_RESULT_ANSWER_SYSTEM_PROMPT if has_action_results else TOOL_ONLY_SYSTEM_PROMPT
@@ -220,7 +218,7 @@ def build_answer_user_prompt(state: SupportAgentState) -> str:
     context_text = retrieval_payload.get("context_text", "")
 
     # 检索有效：RAG 模式，带上来源信息。
-    if intent in {"doc_qa", "code_qa"} and not quality.startswith("degraded"):
+    if intent == "knowledge_qa" and not quality.startswith("degraded"):
         return (
             f"用户问题：{query}\n"
             f"路由结果：{intent}\n"
@@ -231,7 +229,7 @@ def build_answer_user_prompt(state: SupportAgentState) -> str:
         )
 
     # 检索降级：有 context 但质量不够，给用户一个参考但不强制引用。
-    if intent in {"doc_qa", "code_qa"} and quality.startswith("degraded"):
+    if intent == "knowledge_qa" and quality.startswith("degraded"):
         quality_reason = "知识库返回结果为空" if quality == "degraded_empty" else "检索匹配度较低"
         return (
             f"用户问题：{query}\n"
@@ -304,8 +302,7 @@ PLANNER_SYSTEM_PROMPT = """你是 Support Copilot 的任务规划代理。
 6. 依赖关系必须形成 DAG，不允许循环依赖
 
 每个子任务的 sub_intent 含义：
-- doc_qa：需要查询内部知识库、文档、FAQ
-- code_qa：涉及代码实现、报错、SQL、接口等技术内容
+- knowledge_qa：需要查询内部知识库、文档、FAQ、接口资料或技术说明
 - tool_only：需要执行 SQL 查询或联网搜索
 - direct_answer：该子问题模型自身知识足以回答
 
@@ -314,7 +311,7 @@ PLANNER_SYSTEM_PROMPT = """你是 Support Copilot 的任务规划代理。
   "sub_tasks": [
     {
       "sub_query": "完整可独立理解的子问题查询语句",
-      "sub_intent": "doc_qa | code_qa | tool_only | direct_answer",
+      "sub_intent": "knowledge_qa | tool_only | direct_answer",
       "depends_on": []
     }
   ],

@@ -52,7 +52,9 @@
       "PowerShell(python -c \"from supportAgents.agents.action_agent import AVAILABLE_TOOLS; print\\([t.name for t in AVAILABLE_TOOLS]\\)\" 2>&1)",
       "PowerShell(python -c \"from supportAgents.tools.tavily_search import run_tavily_search; import json; r = run_tavily_search\\('Python LangGraph tutorial', max_results=2\\); print\\(json.dumps\\(r, ensure_ascii=False, indent=2\\)[:500]\\)\" 2>&1)",
       "Bash(Select-Object -ExpandProperty FullName)",
-      "PowerShell(Get-ChildItem -Depth 2 -Directory | ForEach-Object { $_.FullName.Replace\\(\"E:\\\\develop\\\\py\\\\project\\\\support-copilot\\\\\", \"\"\\) })"
+      "PowerShell(Get-ChildItem -Depth 2 -Directory | ForEach-Object { $_.FullName.Replace\\(\"E:\\\\develop\\\\py\\\\project\\\\support-copilot\\\\\", \"\"\\) })",
+      "Bash(Select-Object -First 80)",
+      "PowerShell(Get-ChildItem *)"
     ]
   }
 }
