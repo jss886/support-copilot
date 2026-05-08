@@ -7,7 +7,7 @@ from typing import Literal
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from supportAgents.agents.prompts import ORCHESTRATOR_SYSTEM_PROMPT
-from supportAgents.graph.state import IntentType, SupportAgentState
+from supportAgents.graph.state import ComplexityType, IntentType, SupportAgentState
 from supportAgents.llm_clients import create_llm_client
 
 RouteCategory = Literal["doc_qa", "code_qa", "tool_only", "direct_answer", "fallback"]
@@ -29,6 +29,7 @@ _DIRECT_ANSWER_KEYWORDS = {
 class IntentDecision:
     intent: IntentType
     reason: str
+    complexity: ComplexityType = "simple"
 
 
 # 作用：构造 orchestrator 专用模型实例，用 DeepSeek V4 Flash 保证低延迟和低成本。
@@ -57,7 +58,9 @@ def _parse_intent_json(content: str) -> IntentDecision | None:
     reason = payload.get("reason", "").strip()
     if intent not in _VALID_INTENTS:
         return None
-    return IntentDecision(intent=intent, reason=reason or "llm_routed")
+    complexity_raw = payload.get("complexity", "simple").strip().lower()
+    complexity: ComplexityType = "complex" if complexity_raw == "complex" else "simple"
+    return IntentDecision(intent=intent, reason=reason or "llm_routed", complexity=complexity)
 
 
 # 作用：用 LLM 判断用户意图，返回结构化路由决策。
@@ -126,6 +129,7 @@ def run_orchestrator(state: SupportAgentState) -> SupportAgentState:
         if decision is not None:
             next_state["intent"] = decision.intent
             next_state["route_reason"] = f"llm: {decision.reason}"
+            next_state["complexity"] = decision.complexity
             return next_state
     except Exception:
         pass
@@ -133,4 +137,5 @@ def run_orchestrator(state: SupportAgentState) -> SupportAgentState:
     decision = decide_intent(query)
     next_state["intent"] = decision.intent
     next_state["route_reason"] = f"keyword_fallback: {decision.reason}"
+    next_state["complexity"] = decision.complexity
     return next_state

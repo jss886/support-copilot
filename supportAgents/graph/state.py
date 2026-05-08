@@ -6,6 +6,22 @@ ModeType = Literal["auto", "direct", "rag"]
 # quality: 检索质量标记，quality_gate 节点写入，answer 节点读取。
 # passed=检索有效走RAG，degraded_empty=零结果降级，degraded_low_score=低分降级
 QualityType = Literal["passed", "degraded_empty", "degraded_low_score"]
+ComplexityType = Literal["simple", "complex"]
+
+
+class SubTask(TypedDict, total=False):
+    """Planner 分解出的单个子任务"""
+    sub_query: str
+    sub_intent: IntentType
+    depends_on: list[int]  # 依赖的子任务索引，空列表表示无依赖
+    result: str            # 执行结果，由 execute_subtasks 填充
+
+
+class PlanPayload(TypedDict, total=False):
+    """Planner 输出的完整计划"""
+    original_query: str
+    sub_tasks: list[SubTask]
+    plan_reason: str
 
 
 class RetrievalItem(TypedDict):
@@ -56,6 +72,10 @@ class SupportAgentState(TypedDict, total=False):
     mode: ModeType
     quality: QualityType
     answer: str
+    complexity: ComplexityType
+    plan: PlanPayload
+    plan_results: list[SubTask]
+    synthesized_answer: str
     memory: MemoryPayload
     error: str
 

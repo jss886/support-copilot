@@ -7,11 +7,17 @@ from supportAgents.agents import (
     run_quality_gate,
     run_retrieval_agent,
 )
+from supportAgents.agents.planner_agent import run_execute_subtasks, run_planner
+from supportAgents.agents.synthesizer_agent import run_synthesizer
 from supportAgents.graph.state import SupportAgentState
 
 
 # 作用：根据 orchestrator 写入的 intent 决定后续走检索、工具还是直接回答链路。
 def _route_after_orchestrator(state: SupportAgentState) -> str:
+    complexity = state.get("complexity", "simple")
+    if complexity == "complex":
+        return "planner"
+
     intent = state.get("intent", "fallback")
     if intent == "tool_only":
         return "action"
@@ -27,12 +33,16 @@ def build_support_graph():
     builder.add_node("quality_gate", run_quality_gate)
     builder.add_node("action", run_action_agent)
     builder.add_node("answer", run_answer_agent)
+    builder.add_node("planner", run_planner)
+    builder.add_node("execute_subtasks", run_execute_subtasks)
+    builder.add_node("synthesizer", run_synthesizer)
 
     builder.add_edge(START, "orchestrator")
     builder.add_conditional_edges(
         "orchestrator",
         _route_after_orchestrator,
         {
+            "planner": "planner",
             "retrieval": "retrieval",
             "action": "action",
             "answer": "answer",
@@ -43,7 +53,11 @@ def build_support_graph():
     builder.add_edge("quality_gate", "answer")
     # action → answer：工具执行完成后进入回答节点。
     builder.add_edge("action", "answer")
+    # planner → execute_subtasks → synthesizer：复杂任务分解执行链路。
+    builder.add_edge("planner", "execute_subtasks")
+    builder.add_edge("execute_subtasks", "synthesizer")
     builder.add_edge("answer", END)
+    builder.add_edge("synthesizer", END)
     return builder.compile()
 
 
