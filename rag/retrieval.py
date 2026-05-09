@@ -160,7 +160,7 @@ def _fuse_with_rrf(
     top_k: int,
     rrf_k: int = 60,
     vector_weight: float = 1.0,
-    keyword_weight: float = 0.5,
+    keyword_weight: float = 0.4,
 ) -> list[tuple[float, ChunkRecord]]:
     merged_scores: dict[str, float] = {}
     merged_records: dict[str, ChunkRecord] = {}
@@ -233,6 +233,7 @@ def retrieve_hybrid_candidates(
     query: str,
     *,
     candidate_top_k: int,
+    messages: list[dict[str, str]] | None = None,
     jdbc_url: str | None = None,
     db_user: str | None = None,
     db_password: str | None = None,
@@ -255,6 +256,7 @@ def retrieve_hybrid_candidates(
 
     rewrite_result = build_query_rewrite_result(
         query,
+        messages=messages,
         use_query_rewrite=use_query_rewrite,
     )
     branch_results: list[tuple[RewriteQueryVariant, list[tuple[float, ChunkRecord]]]] = []
@@ -278,6 +280,7 @@ def retrieve_hybrid_candidates(
 def retrieve(
     query: str,
     top_k: int | None = None,
+    messages: list[dict[str, str]] | None = None,
     jdbc_url: str | None = None,
     db_user: str | None = None,
     db_password: str | None = None,
@@ -297,6 +300,7 @@ def retrieve(
     candidates = retrieve_hybrid_candidates(
         query=query,
         candidate_top_k=resolved_candidate_top_k,
+        messages=messages,
         jdbc_url=jdbc_url,
         db_user=db_user,
         db_password=db_password,

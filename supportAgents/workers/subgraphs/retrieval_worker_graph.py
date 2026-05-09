@@ -27,4 +27,3 @@ def build_retrieval_worker_graph():
 def run_retrieval_worker_graph(state: SupportAgentState) -> SupportAgentState:
     graph = build_retrieval_worker_graph()
     return graph.invoke(state)
-

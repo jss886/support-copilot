@@ -45,10 +45,12 @@ def run_retrieval_agent(
 
     rewrite_result = build_query_rewrite_result(
         query,
+        messages=state.get("messages"),
         use_query_rewrite=use_query_rewrite,
     )
     retrieved = retrieve(
         query=query,
+        messages=state.get("messages"),
         top_k=top_k,
         source=source,
         candidate_top_k=candidate_top_k,
