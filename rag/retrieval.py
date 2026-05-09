@@ -35,9 +35,10 @@ def _resolve_db_config(
     )
 
 
-# 作用：把数据库中的文本和元数据组装成统一的切片对象，方便上层复用。
-def _build_chunk_record(content: str, metadata: dict) -> ChunkRecord:
+# 作用：把数据库中的文本、主键和元数据组装成统一的切片对象，方便上层复用。
+def _build_chunk_record(db_chunk_id: str, content: str, metadata: dict) -> ChunkRecord:
     return ChunkRecord(
+        db_chunk_id=db_chunk_id,
         chunk_id=metadata.get("chunk_id", ""),
         source=metadata.get("source", ""),
         text=content,
@@ -77,6 +78,7 @@ def _retrieve_vector(
     source_clause = _build_source_filter_clause(source, sql_params)
     sql = f"""
         SELECT
+            c.id,
             c.content,
             c.metadata,
             1 - (c.embedding <=> %s::vector) AS score
@@ -94,9 +96,9 @@ def _retrieve_vector(
             rows = cur.fetchall()
 
     results: list[tuple[float, ChunkRecord]] = []
-    for content, metadata, score in rows:
+    for db_chunk_id, content, metadata, score in rows:
         resolved_metadata = _normalize_metadata(metadata)
-        results.append((float(score), _build_chunk_record(content, resolved_metadata)))
+        results.append((float(score), _build_chunk_record(str(db_chunk_id), content, resolved_metadata)))
     return results
 
 
@@ -124,6 +126,7 @@ def _retrieve_keyword(
 
     sql = f"""
         SELECT
+            c.id,
             c.content,
             c.metadata,
             ts_rank_cd(c.tsv, to_tsquery(%s)) AS score
@@ -141,9 +144,9 @@ def _retrieve_keyword(
             rows = cur.fetchall()
 
     results: list[tuple[float, ChunkRecord]] = []
-    for content, metadata, score in rows:
+    for db_chunk_id, content, metadata, score in rows:
         resolved_metadata = _normalize_metadata(metadata)
-        results.append((float(score), _build_chunk_record(content, resolved_metadata)))
+        results.append((float(score), _build_chunk_record(str(db_chunk_id), content, resolved_metadata)))
     return results
 
 

@@ -1,0 +1,57 @@
+[
+  {
+    "item_id": "case_001",
+    "question": "MySQL有哪些锁？",
+    "ground_truth": "表级锁和行级锁、记录锁、间隙锁、临键锁",
+    "expected_evidences": [
+      {
+        "db_chunk_id": "43e1e0b6-1428-4656-a91c-16d9e9bfce19",
+        "source": "c82dd3a1-1e0f-4b9a-a387-fee4d52138ca"
+      }
+    ]
+  },
+  {
+    "item_id": "case_002",
+    "question": "高可用面试被问到的频率大吗",
+    "ground_truth": "高可用并非常考点，了解即可",
+    "expected_evidences": [
+      {
+        "db_chunk_id": "62744112-c9f1-439e-aef3-9a7212d93673",
+        "source": "c82dd3a1-1e0f-4b9a-a387-fee4d52138ca"
+      }
+    ]
+  },
+  {
+    "item_id": "case_003",
+    "question": "缓存有哪些常见的问题 只说问题不说解决方案",
+    "ground_truth": "有缓存穿透、缓存击穿、缓存雪崩",
+    "expected_evidences": [
+      {
+        "db_chunk_id": "b81b2dce-403b-456e-b562-cbd91a296f88",
+        "source": "c82dd3a1-1e0f-4b9a-a387-fee4d52138ca"
+      }
+    ]
+  },
+  {
+    "item_id": "case_004",
+    "question": "背八股文需要注意哪些",
+    "ground_truth": "背八股切记不要死记硬背, 一定要理解的前提下再记忆.",
+    "expected_evidences": [
+      {
+        "db_chunk_id": "67133eb5-c5d9-4968-8a5f-ac733be22649",
+        "source": "c82dd3a1-1e0f-4b9a-a387-fee4d52138ca"
+      }
+    ]
+  },
+  {
+    "item_id": "case_005",
+    "question": "虚拟内存技术原理是什么",
+    "ground_truth": "从局部性原理开始答",
+    "expected_evidences": [
+      {
+        "db_chunk_id": "77708552-b6ad-43c7-8896-65d050473ae8",
+        "source": "c82dd3a1-1e0f-4b9a-a387-fee4d52138ca"
+      }
+    ]
+  }
+]

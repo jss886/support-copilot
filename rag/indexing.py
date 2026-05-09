@@ -264,6 +264,7 @@ def build_records_for_text(
     prefix = chunk_id_prefix or Path(source).stem or "chunk"
     return [
         ChunkRecord(
+            db_chunk_id="",
             chunk_id=f"{prefix}-chunk-{idx}",
             source=source,
             text=chunk_text,

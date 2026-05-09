@@ -2,32 +2,49 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from pathlib import Path
 
-from rag.eval.dataset import load_eval_dataset
-from rag.eval.generator import DEFAULT_EVAL_DATASET
+from rag.eval.dataset import DEFAULT_EVAL_DATASET, load_eval_dataset
 from rag.eval.models import EvalItem
 from rag.retrieval import retrieve
 
 
 @dataclass(frozen=True)
 class RetrievalMetrics:
+    # 作用：承载检索层评测结果，当前只关注 Recall@5 和 MRR 两个核心指标。
     total: int
-    recall_at_1: float
-    recall_at_3: float
     recall_at_5: float
-    recall_at_10: float
     mrr: float
 
 
-# 作用：判断召回结果是否命中预期文档，并用关键片段兜底校验质量。
-def _match_item(expected_source: str, expected_substrings: list[str], source: str, text: str) -> bool:
-    if source != expected_source:
-        return False
-    if not expected_substrings:
-        return True
-    return any(snippet in text for snippet in expected_substrings)
+@dataclass(frozen=True)
+class RetrievalEvalResult:
+    # 作用：承载单条样本的检索评测结果，便于同时计算 Recall@5 和 MRR。
+    recall_at_5: float
+    first_hit_rank: int | None
 
 
-# 作用：评估单条样本在当前检索链路中的首个命中排名。
+# 作用：抽取单条样本的目标数据库主键集合，统一去重并过滤空值。
+def _build_expected_db_chunk_ids(item: EvalItem) -> list[str]:
+    seen: set[str] = set()
+    chunk_ids: list[str] = []
+    for evidence in item.expected_evidences:
+        chunk_id = evidence.db_chunk_id.strip()
+        if not chunk_id or chunk_id in seen:
+            continue
+        seen.add(chunk_id)
+        chunk_ids.append(chunk_id)
+    return chunk_ids
+
+
+# 作用：校验检索评测样本是否满足新结构要求，避免旧数据集被静默算成 0 分。
+def _validate_retrieval_item(item: EvalItem) -> None:
+    if not item.expected_evidences:
+        raise ValueError(
+            f"Eval item {item.item_id} is missing expected_evidences; "
+            "the new retrieval evaluation requires chunk-level labels."
+        )
+
+
+# 作用：评估单条样本的 Recall@5 和首个命中排名，严格按 chunk_id 做匹配。
 def _evaluate_item(
     item: EvalItem,
     *,
@@ -39,7 +56,13 @@ def _evaluate_item(
     candidate_top_k: int | None,
     use_rerank: bool | None,
     use_query_rewrite: bool | None,
-) -> int | None:
+) -> RetrievalEvalResult:
+    _validate_retrieval_item(item)
+    expected_chunk_ids = _build_expected_db_chunk_ids(item)
+    if not expected_chunk_ids:
+        return RetrievalEvalResult(recall_at_5=0.0, first_hit_rank=None)
+
+    target_chunk_ids = set(expected_chunk_ids)
     results = retrieve(
         query=item.question,
         top_k=max_k,
@@ -52,18 +75,24 @@ def _evaluate_item(
         use_query_rewrite=use_query_rewrite,
     )
 
+    matched_top5: set[str] = set()
+    first_hit_rank: int | None = None
     for rank, (_, record) in enumerate(results, start=1):
-        if _match_item(
-            expected_source=item.expected_source,
-            expected_substrings=item.expected_substrings,
-            source=record.source,
-            text=record.text,
-        ):
-            return rank
-    return None
+        chunk_id = record.db_chunk_id.strip()
+        if not chunk_id or chunk_id not in target_chunk_ids:
+            continue
+        if rank <= 5:
+            matched_top5.add(chunk_id)
+        if first_hit_rank is None:
+            first_hit_rank = rank
+
+    return RetrievalEvalResult(
+        recall_at_5=len(matched_top5) / len(expected_chunk_ids),
+        first_hit_rank=first_hit_rank,
+    )
 
 
-# 作用：评估当前检索链路的 Recall@K 和 MRR，默认复用线上检索逻辑。
+# 作用：评估当前检索链路的 Recall@5 和 MRR，默认复用线上检索逻辑。
 def evaluate_retrieval(
     dataset_path: Path = DEFAULT_EVAL_DATASET,
     jdbc_url: str | None = None,
@@ -77,12 +106,12 @@ def evaluate_retrieval(
 ) -> RetrievalMetrics:
     items = load_eval_dataset(dataset_path)
     max_k = 10
-    hits = {1: 0, 3: 0, 5: 0, 10: 0}
+    recall_at_5_total = 0.0
     reciprocal_rank_total = 0.0
 
     resolved_workers = max(1, workers)
     with ThreadPoolExecutor(max_workers=resolved_workers) as executor:
-        ranks = list(
+        results = list(
             executor.map(
                 lambda item: _evaluate_item(
                     item,
@@ -99,20 +128,16 @@ def evaluate_retrieval(
             )
         )
 
-    for first_hit_rank in ranks:
+    for result in results:
+        recall_at_5_total += result.recall_at_5
+        first_hit_rank = result.first_hit_rank
         if first_hit_rank is None:
             continue
         reciprocal_rank_total += 1.0 / first_hit_rank
-        for k in hits:
-            if first_hit_rank <= k:
-                hits[k] += 1
 
     total = len(items)
     return RetrievalMetrics(
         total=total,
-        recall_at_1=hits[1] / total if total else 0.0,
-        recall_at_3=hits[3] / total if total else 0.0,
-        recall_at_5=hits[5] / total if total else 0.0,
-        recall_at_10=hits[10] / total if total else 0.0,
+        recall_at_5=recall_at_5_total / total if total else 0.0,
         mrr=reciprocal_rank_total / total if total else 0.0,
     )

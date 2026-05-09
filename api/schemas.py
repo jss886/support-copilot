@@ -116,6 +116,7 @@ class IngestionResult(BaseModel):
 
 class RetrievalItem(BaseModel):
     # 作用：描述单条召回结果，便于 Swagger 直接查看结构。
+    db_chunk_id: str = Field(description="数据库中的切片主键 UUID。")
     score: float = Field(description="当前排序分数。")
     source: str = Field(description="切片来源。")
     start: int = Field(description="切片起始位置。")
@@ -146,10 +147,7 @@ class RetrievalEvaluationResult(BaseModel):
     # 作用：统一承载检索评测的聚合指标。
     dataset_path: str = Field(description="本次评测实际使用的数据集路径。")
     total: int = Field(description="参与评测的样本总数。")
-    recall_at_1: float = Field(description="Recall@1 指标。")
-    recall_at_3: float = Field(description="Recall@3 指标。")
     recall_at_5: float = Field(description="Recall@5 指标。")
-    recall_at_10: float = Field(description="Recall@10 指标。")
     mrr: float = Field(description="平均倒数排名 MRR 指标。")
 
 
@@ -161,6 +159,7 @@ class RagasEvaluationResult(BaseModel):
     faithfulness: float = Field(description="回答忠实度指标。")
     response_relevancy: float = Field(description="回答相关性指标。")
     context_recall: float = Field(description="上下文覆盖率指标。")
+    context_precision: float = Field(description="上下文精度指标。")
     output_path: str = Field(description="RAGAS 结果文件落盘路径。")
 
 

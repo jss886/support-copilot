@@ -10,8 +10,8 @@ from api.schemas import (
     RetrievalEvaluationResult,
 )
 from rag.config import PROJECT_ROOT
+from rag.eval.dataset import DEFAULT_EVAL_DATASET
 from rag.eval.evaluator import evaluate_retrieval
-from rag.eval.hard_generator import DEFAULT_HARDER_EVAL_DATASET
 from rag.eval.ragas_evaluator import (
     DEFAULT_RAGAS_OUTPUT,
     evaluate_ragas_metrics,
@@ -19,7 +19,6 @@ from rag.eval.ragas_evaluator import (
 )
 
 router = APIRouter(prefix="/api/v1/evaluation", tags=["评测"])
-DEFAULT_RETRIEVAL_EVAL_DATASET = "resources/eval/feishu_kb_seed_eval_set.json"
 DEFAULT_RETRIEVAL_EVAL_WORKERS = 6
 DEFAULT_RAGAS_EVAL_TOP_K = 5
 DEFAULT_RAGAS_EVAL_LIMIT = 20
@@ -36,7 +35,7 @@ def _resolve_dataset_path(dataset_path: str | Path) -> Path:
     return resolved_path
 
 
-# 作用：执行默认检索离线评测，并返回 Recall@1/3/5/10 与 MRR 聚合结果。
+# 作用：执行默认检索离线评测，并返回 Recall@5 与 MRR 聚合结果。
 @router.get(
     "/retrieval",
     response_model=RetrievalEvaluationResponse,
@@ -44,7 +43,7 @@ def _resolve_dataset_path(dataset_path: str | Path) -> Path:
 )
 def evaluate_retrieval_metrics() -> RetrievalEvaluationResponse:
     try:
-        resolved_dataset_path = _resolve_dataset_path(DEFAULT_RETRIEVAL_EVAL_DATASET)
+        resolved_dataset_path = _resolve_dataset_path(DEFAULT_EVAL_DATASET)
         metrics = evaluate_retrieval(
             dataset_path=resolved_dataset_path,
             workers=DEFAULT_RETRIEVAL_EVAL_WORKERS,
@@ -56,28 +55,25 @@ def evaluate_retrieval_metrics() -> RetrievalEvaluationResponse:
         data=RetrievalEvaluationResult(
             dataset_path=str(resolved_dataset_path),
             total=metrics.total,
-            recall_at_1=metrics.recall_at_1,
-            recall_at_3=metrics.recall_at_3,
             recall_at_5=metrics.recall_at_5,
-            recall_at_10=metrics.recall_at_10,
             mrr=metrics.mrr,
         ),
         message="检索评测完成。",
     )
 
 
-# 作用：执行默认 RAGAS 离线评测，并返回忠实度、相关性与上下文覆盖度三项指标。
+# 作用：执行默认 RAGAS 离线评测，并返回忠实度、相关性和上下文质量指标。
 @router.get(
     "/ragas",
     response_model=RagasEvaluationResponse,
-    summary="评测 RAGAS 三项核心指标",
+    summary="评测 RAGAS 四项核心指标",
 )
 def evaluate_ragas_summary(
     limit: int = Query(default=DEFAULT_RAGAS_EVAL_LIMIT, ge=1, description="本次评测最多处理多少条样本。"),
     top_k: int = Query(default=DEFAULT_RAGAS_EVAL_TOP_K, ge=1, description="每条问题最多带入回答链路的检索片段数。"),
 ) -> RagasEvaluationResponse:
     try:
-        resolved_dataset_path = _resolve_dataset_path(DEFAULT_HARDER_EVAL_DATASET)
+        resolved_dataset_path = _resolve_dataset_path(DEFAULT_EVAL_DATASET)
         resolved_output_path = resolve_ragas_output_path(PROJECT_ROOT / DEFAULT_RAGAS_OUTPUT)
         result = evaluate_ragas_metrics(
             dataset_path=resolved_dataset_path,
@@ -96,6 +92,7 @@ def evaluate_ragas_summary(
             faithfulness=result["faithfulness"],
             response_relevancy=result["response_relevancy"],
             context_recall=result["context_recall"],
+            context_precision=result["context_precision"],
             output_path=result["output_path"],
         ),
         message=f"RAGAS 评测完成，共处理 {result['sample_count']} 条样本。",

@@ -50,17 +50,19 @@ USER_DEFAULTS = {
         "batch_size": 8,
         "retrieval_candidate_top_k": 20,
         "retrieval_final_top_k": 5,
-        "enable_query_rewrite": True,
-        "query_rewrite_mode": "fast",
-        "query_rewrite_normalized_weight": 0.6,
-        "enable_llm_query_rewrite": True,
-        "query_rewrite_model": "deepseek-chat",
-        "query_rewrite_max_queries": 2,
+        "enable_query_enhancement": True,
+        "query_enhancement_mode": "fast",
+        "enable_semantic_query_expansion": True,
+        "query_enhancement_model": "deepseek-chat",
         "enable_contextual_retrieval": True,
         "contextual_retrieval_model": "deepseek-chat",
         "contextual_retrieval_max_document_chars": 4000,
         "contextual_retrieval_max_context_chars": 120,
         "enable_rerank": True,
+        "rerank_mode": "dashscope_api",
+        "rerank_model": "qwen3-rerank",
+        "rerank_api_url": "https://dashscope.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank",
+        "rerank_timeout": 60,
         "reranker_model_path": str(RESOURCES_DIR / "models" / "bge-reranker-v2-m3"),
         "reranker_batch_size": 32,
         "reranker_max_length": 512,
@@ -119,17 +121,19 @@ class RagSettings:
     batch_size: int
     retrieval_candidate_top_k: int
     retrieval_final_top_k: int
-    enable_query_rewrite: bool
-    query_rewrite_mode: str
-    query_rewrite_normalized_weight: float
-    enable_llm_query_rewrite: bool
-    query_rewrite_model: str
-    query_rewrite_max_queries: int
+    enable_query_enhancement: bool
+    query_enhancement_mode: str
+    enable_semantic_query_expansion: bool
+    query_enhancement_model: str
     enable_contextual_retrieval: bool
     contextual_retrieval_model: str
     contextual_retrieval_max_document_chars: int
     contextual_retrieval_max_context_chars: int
     enable_rerank: bool
+    rerank_mode: str
+    rerank_model: str
+    rerank_api_url: str
+    rerank_timeout: int
     reranker_model_path: str
     reranker_batch_size: int
     reranker_max_length: int
@@ -164,13 +168,6 @@ def _prefer_config_int(value: int | None, env_name: str) -> int | None:
     return _read_int_env(env_name, None)
 
 
-def _read_float_env(name: str, default: float | None) -> float | None:
-    value = read_env_var(name)
-    if value is None or value == "":
-        return default
-    return float(value)
-
-
 def _prefer_config_bool(value: bool | None, env_name: str) -> bool | None:
     if value is not None:
         return value
@@ -186,10 +183,38 @@ def _merge_section(section_name: str) -> dict:
     return merged
 
 
-def _prefer_config_float(value: float | None, env_name: str) -> float | None:
-    if value is not None:
-        return value
-    return _read_float_env(env_name, None)
+# 作用：优先读取新配置键，缺失时再兼容旧键，避免现有本地配置立即失效。
+def _prefer_rag_compat_value(rag_defaults: dict, new_key: str, old_key: str) -> object:
+    if new_key in rag_defaults:
+        return rag_defaults[new_key]
+    return rag_defaults.get(old_key)
+
+
+# 作用：环境变量优先读新名字，兼容层再兜底旧名字，便于逐步迁移本地部署配置。
+def _prefer_compat_env(value: str | None, primary_env: str, legacy_env: str) -> str | None:
+    resolved = _prefer_config(value, primary_env)
+    if resolved not in (None, ""):
+        return resolved
+    return read_env_var(legacy_env)
+
+
+# 作用：布尔配置同样优先读新环境变量，缺失时再兼容旧名字。
+def _prefer_compat_bool_env(value: bool | None, primary_env: str, legacy_env: str) -> bool | None:
+    resolved = _prefer_config_bool(value, primary_env)
+    if resolved is not None:
+        return resolved
+    return _prefer_config_bool(None, legacy_env)
+
+
+# 作用：统一解析 rerank 模式；如果显式关闭 rerank，则直接退化为 disabled。
+def _resolve_rerank_mode(rag_defaults: dict, enable_rerank: bool | None) -> str:
+    resolved_mode = _prefer_config(
+        rag_defaults.get("rerank_mode"),
+        "RAG_RERANK_MODE",
+    ) or "dashscope_api"
+    if enable_rerank is False:
+        return "disabled"
+    return resolved_mode
 
 
 def load_settings() -> AppSettings:
@@ -204,11 +229,18 @@ def load_settings() -> AppSettings:
         "RAG_ENABLE_RERANK",
     )
     resolved_enable_query_rewrite = _prefer_config_bool(
-        rag_defaults["enable_query_rewrite"],
-        "RAG_ENABLE_QUERY_REWRITE",
+        _prefer_rag_compat_value(rag_defaults, "enable_query_enhancement", "enable_query_rewrite"),
+        "RAG_ENABLE_QUERY_ENHANCEMENT",
     )
-    resolved_enable_llm_query_rewrite = _prefer_config_bool(
-        rag_defaults["enable_llm_query_rewrite"],
+    if resolved_enable_query_rewrite is None:
+        resolved_enable_query_rewrite = _prefer_config_bool(None, "RAG_ENABLE_QUERY_REWRITE")
+    resolved_enable_llm_query_rewrite = _prefer_compat_bool_env(
+        _prefer_rag_compat_value(
+            rag_defaults,
+            "enable_semantic_query_expansion",
+            "enable_llm_query_rewrite",
+        ),
+        "RAG_ENABLE_SEMANTIC_QUERY_EXPANSION",
         "RAG_ENABLE_LLM_QUERY_REWRITE",
     )
     resolved_enable_contextual_retrieval = _prefer_config_bool(
@@ -287,34 +319,34 @@ def load_settings() -> AppSettings:
                 "RAG_RETRIEVAL_FINAL_TOP_K",
             )
             or 5,
-            enable_query_rewrite=(
+            enable_query_enhancement=(
                 True if resolved_enable_query_rewrite is None else resolved_enable_query_rewrite
             ),
-            query_rewrite_mode=_prefer_config(
-                rag_defaults["query_rewrite_mode"],
-                "RAG_QUERY_REWRITE_MODE",
+            query_enhancement_mode=_prefer_config(
+                _prefer_rag_compat_value(
+                    rag_defaults,
+                    "query_enhancement_mode",
+                    "query_rewrite_mode",
+                ),
+                "RAG_QUERY_ENHANCEMENT_MODE",
             )
+            or read_env_var("RAG_QUERY_REWRITE_MODE")
             or "fast",
-            query_rewrite_normalized_weight=_prefer_config_float(
-                rag_defaults["query_rewrite_normalized_weight"],
-                "RAG_QUERY_REWRITE_NORMALIZED_WEIGHT",
-            )
-            or 0.6,
-            enable_llm_query_rewrite=(
+            enable_semantic_query_expansion=(
                 True
                 if resolved_enable_llm_query_rewrite is None
                 else resolved_enable_llm_query_rewrite
             ),
-            query_rewrite_model=_prefer_config(
-                rag_defaults["query_rewrite_model"],
+            query_enhancement_model=_prefer_compat_env(
+                _prefer_rag_compat_value(
+                    rag_defaults,
+                    "query_enhancement_model",
+                    "query_rewrite_model",
+                ),
+                "RAG_QUERY_ENHANCEMENT_MODEL",
                 "RAG_QUERY_REWRITE_MODEL",
             )
             or "deepseek-chat",
-            query_rewrite_max_queries=_prefer_config_int(
-                rag_defaults["query_rewrite_max_queries"],
-                "RAG_QUERY_REWRITE_MAX_QUERIES",
-            )
-            or 2,
             enable_contextual_retrieval=(
                 True
                 if resolved_enable_contextual_retrieval is None
@@ -336,6 +368,22 @@ def load_settings() -> AppSettings:
             )
             or 120,
             enable_rerank=True if resolved_enable_rerank is None else resolved_enable_rerank,
+            rerank_mode=_resolve_rerank_mode(rag_defaults, resolved_enable_rerank),
+            rerank_model=_prefer_config(
+                rag_defaults.get("rerank_model"),
+                "RAG_RERANK_MODEL",
+            )
+            or "qwen3-rerank",
+            rerank_api_url=_prefer_config(
+                rag_defaults.get("rerank_api_url"),
+                "RAG_RERANK_API_URL",
+            )
+            or "https://dashscope.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank",
+            rerank_timeout=_prefer_config_int(
+                rag_defaults.get("rerank_timeout"),
+                "RAG_RERANK_TIMEOUT",
+            )
+            or 60,
             reranker_model_path=_prefer_config(
                 rag_defaults["reranker_model_path"],
                 "RAG_RERANKER_MODEL_PATH",

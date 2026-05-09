@@ -10,8 +10,7 @@ from langchain_openai import ChatOpenAI
 from ragas import evaluate
 from ragas.embeddings import BaseRagasEmbeddings
 from ragas.llms import LangchainLLMWrapper
-from ragas.metrics import Faithfulness, ResponseRelevancy
-from ragas.metrics.collections import ContextRecall
+from ragas.metrics import ContextPrecision, ContextRecall, Faithfulness, ResponseRelevancy
 
 from rag.answering import answer_question_from_context
 from rag.embeddings import DashScopeEmbeddingClient
@@ -30,20 +29,24 @@ class DashScopeRagasEmbeddings(BaseRagasEmbeddings):
         super().__init__()
         self.client = DashScopeEmbeddingClient()
 
+    # 作用：生成单条查询文本的向量。
     def embed_query(self, text: str) -> list[float]:
         return self.client.embed_texts([text])[0]
 
+    # 作用：批量生成文档文本的向量。
     def embed_documents(self, texts: list[str]) -> list[list[float]]:
         return self.client.embed_texts(texts)
 
+    # 作用：异步包装单条查询向量生成，避免阻塞评测事件循环。
     async def aembed_query(self, text: str) -> list[float]:
         return await asyncio.to_thread(self.embed_query, text)
 
+    # 作用：异步包装批量文档向量生成，复用现有同步客户端。
     async def aembed_documents(self, texts: list[str]) -> list[list[float]]:
         return await asyncio.to_thread(self.embed_documents, texts)
 
 
-# 作用：读取必需的环境变量，缺失时直接报错，避免评测跑到中途才失败。
+# 作用：读取必需的环境变量，缺失时立即报错，避免评测跑到中途才失败。
 def _require_env(name: str) -> str:
     value = os.getenv(name)
     if not value:
@@ -51,7 +54,7 @@ def _require_env(name: str) -> str:
     return value
 
 
-# 作用：构造用于 RAGAS 评测的 DeepSeek judge 模型。
+# 作用：构造供 RAGAS 旧版 evaluate 入口使用的 DeepSeek 评测模型。
 def _build_judge_llm() -> LangchainLLMWrapper:
     model = ChatOpenAI(
         model="deepseek-chat",
@@ -63,20 +66,25 @@ def _build_judge_llm() -> LangchainLLMWrapper:
     return LangchainLLMWrapper(model)
 
 
-# 作用：构造 RAGAS 需要的 embedding 包装器。
+# 作用：构造 RAGAS 评测使用的 embedding 包装器。
 def _build_ragas_embeddings() -> DashScopeRagasEmbeddings:
     _require_env("DASHSCOPE_API_KEY")
     return DashScopeRagasEmbeddings()
 
 
-# 作用：忽略 RAGAS 结果中的空值和 NaN，统一计算聚合均值。
+# 作用：忽略空值和 NaN，统一计算聚合均值。
 def _mean_ignore_nan(values: list[Any]) -> float:
     valid_values = [float(value) for value in values if value is not None and not math.isnan(float(value))]
     return sum(valid_values) / len(valid_values) if valid_values else float("nan")
 
 
-# 作用：把当前项目的问答链路转换成 RAGAS 可消费的单条样本。
+# 作用：把当前评测项转换成 RAGAS 可消费的单条样本。
 def _build_single_turn_sample(item: EvalItem, top_k: int) -> dict[str, Any]:
+    if not item.ground_truth.strip():
+        raise ValueError(
+            f"Eval item {item.item_id} is missing ground_truth; "
+            "RAGAS context metrics require a reference answer."
+        )
     retrieved = retrieve(query=item.question, top_k=top_k)
     retrieved_contexts = [record.text for _, record in retrieved]
 
@@ -86,7 +94,7 @@ def _build_single_turn_sample(item: EvalItem, top_k: int) -> dict[str, Any]:
         "user_input": item.question,
         "retrieved_contexts": retrieved_contexts,
         "response": response,
-        "reference": "\n".join(item.expected_substrings),
+        "reference": item.ground_truth,
     }
 
 
@@ -114,7 +122,7 @@ def build_ragas_dataset(
     return Dataset.from_list(rows)
 
 
-# 作用：构造 RAGAS 评估指标，并显式注入模型依赖，兼容当前安装版本的构造参数要求。
+# 作用：构造与当前 evaluate 入口兼容的 RAGAS 评估指标。
 def _build_ragas_metrics(
     *,
     llm: LangchainLLMWrapper,
@@ -124,10 +132,11 @@ def _build_ragas_metrics(
         Faithfulness(llm=llm),
         ResponseRelevancy(llm=llm, embeddings=embeddings, strictness=1),
         ContextRecall(llm=llm),
+        ContextPrecision(llm=llm),
     ]
 
 
-# 作用：执行 RAGAS 三项核心指标评测，并把结果落盘。
+# 作用：执行 RAGAS 四项核心指标评测，并把结果落盘。
 def evaluate_ragas_metrics(
     *,
     dataset_path: Path,
@@ -156,6 +165,7 @@ def evaluate_ragas_metrics(
     faithfulness_scores = [float(value) for value in result["faithfulness"]]
     response_relevancy_scores = [float(value) for value in result["answer_relevancy"]]
     context_recall_scores = [float(value) for value in result["context_recall"]]
+    context_precision_scores = [float(value) for value in result["context_precision"]]
 
     result_dict = {
         "dataset_path": str(dataset_path.resolve()),
@@ -164,9 +174,11 @@ def evaluate_ragas_metrics(
         "faithfulness": _mean_ignore_nan(faithfulness_scores),
         "response_relevancy": _mean_ignore_nan(response_relevancy_scores),
         "context_recall": _mean_ignore_nan(context_recall_scores),
+        "context_precision": _mean_ignore_nan(context_precision_scores),
         "faithfulness_scores": faithfulness_scores,
         "response_relevancy_scores": response_relevancy_scores,
         "context_recall_scores": context_recall_scores,
+        "context_precision_scores": context_precision_scores,
         "output_path": str(resolved_output_path),
     }
     resolved_output_path.parent.mkdir(parents=True, exist_ok=True)

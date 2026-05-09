@@ -56,6 +56,7 @@ class TaskExecutionResult(TypedDict, total=False):
 
 class RetrievalItem(TypedDict):
     # 作用：描述单条检索命中的最小结构，便于在 graph 内部传递证据。
+    db_chunk_id: str
     score: float
     source: str
     start: int
@@ -69,6 +70,8 @@ class RetrievalPayload(TypedDict, total=False):
     query: str
     rewritten_queries: list[str]
     hyde_document: str
+    raw_item_count: int
+    filtered_item_count: int
     items: list[RetrievalItem]
     context_text: str
 
