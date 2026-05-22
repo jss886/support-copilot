@@ -3,14 +3,16 @@ from typing import Any, Literal, TypedDict
 
 IntentType = Literal["knowledge_qa", "tool_only", "direct_answer", "fallback"]
 ModeType = Literal["auto", "direct", "rag"]
-# 作用：标记检索质量，供 answer 节点判断是走 RAG 还是降级回答。
+# 作用：标记检索质量，便于 answer 节点判断是走 RAG 还是降级回答。
 QualityType = Literal["passed", "degraded_empty", "degraded_low_score"]
 ComplexityType = Literal["simple", "complex"]
 TaskStatusType = Literal["success", "error"]
+ReflectionActionType = Literal["finish", "retry", "replan"]
+FinalStatusType = Literal["resolved", "degraded", "failed"]
 
 
 class SubTask(TypedDict, total=False):
-    """Planner 拆解出的单个子任务。"""
+    """作用：描述 planner 拆出的单个子任务。"""
 
     task_id: int
     sub_query: str
@@ -20,7 +22,7 @@ class SubTask(TypedDict, total=False):
 
 
 class PlanPayload(TypedDict, total=False):
-    """Planner 输出的完整计划。"""
+    """作用：承载 planner 产出的完整计划。"""
 
     original_query: str
     sub_tasks: list[SubTask]
@@ -28,7 +30,7 @@ class PlanPayload(TypedDict, total=False):
 
 
 class TaskEvidence(TypedDict, total=False):
-    """Worker 返回的单条证据。"""
+    """作用：描述 worker 返回的一条结构化证据。"""
 
     kind: str
     source: str
@@ -37,7 +39,7 @@ class TaskEvidence(TypedDict, total=False):
 
 
 class TaskExecutionResult(TypedDict, total=False):
-    """Supervisor 收集的单个子任务执行结果。"""
+    """作用：承载单个子任务的执行结果，供 reflection 和 synthesizer 复用。"""
 
     task_id: int
     sub_query: str
@@ -54,8 +56,19 @@ class TaskExecutionResult(TypedDict, total=False):
     error: str
 
 
+class ReflectionPayload(TypedDict, total=False):
+    """作用：记录计划执行后的反思结论和下一步动作。"""
+
+    is_solved: bool
+    next_action: ReflectionActionType
+    reflection_summary: str
+    gaps: list[str]
+    retryable_task_ids: list[int]
+    followup_sub_tasks: list[SubTask]
+
+
 class RetrievalItem(TypedDict):
-    # 作用：描述单条检索命中的最小结构，便于在 graph 内部传递证据。
+    # 作用：描述单条检索命中的最小结果结构，便于 graph 内部传递证据。
     db_chunk_id: str
     score: float
     source: str
@@ -66,7 +79,7 @@ class RetrievalItem(TypedDict):
 
 
 class RetrievalPayload(TypedDict, total=False):
-    # 作用：承载 retrieval_agent 的输出，既保留原始证据，也保留拼好的上下文文本。
+    # 作用：承载 retrieval_agent 的输出，同时保留原始证据和拼好的上下文文本。
     query: str
     rewritten_queries: list[str]
     hyde_document: str
@@ -77,7 +90,7 @@ class RetrievalPayload(TypedDict, total=False):
 
 
 class ActionPayload(TypedDict, total=False):
-    # 作用：记录单次工具调用的输入、输出和状态，action_agent 每轮追加一条。
+    # 作用：记录一次工具调用的输入、输出和状态，action_agent 每轮追加一条。
     tool_name: str
     tool_input: dict[str, Any]
     tool_output: Any
@@ -86,14 +99,14 @@ class ActionPayload(TypedDict, total=False):
 
 
 class MemoryPayload(TypedDict, total=False):
-    # 作用：承载会话记忆提炼结果，后续可以直接接 sessions 或 task_memory。
+    # 作用：承载会话记忆提炼结果，后续可以直接接 session 或 task_memory。
     session_summary: str
     user_preferences: dict[str, Any]
     saved: bool
 
 
 class SupportAgentState(TypedDict, total=False):
-    # 作用：定义多 Agent 共享状态，作为 graph 节点之间的统一输入输出协议。
+    # 作用：定义多 Agent 共享状态，作为 graph 节点间统一的输入输出协议。
     session_id: str
     user_query: str
     normalized_query: str
@@ -109,12 +122,16 @@ class SupportAgentState(TypedDict, total=False):
     complexity: ComplexityType
     plan: PlanPayload
     plan_results: list[TaskExecutionResult]
+    reflection: ReflectionPayload
+    reflection_count: int
+    max_reflections: int
+    final_status: FinalStatusType
     synthesized_answer: str
     memory: MemoryPayload
     error: str
 
 
-# 作用：创建一份最小初始状态，方便 API、CLI 或 graph 入口统一起点。
+# 作用：创建一份最小初始状态，方便 API、CLI 和 graph 入口统一起点。
 # mode=auto 走现有路由判断，direct 跳过检索直接回答，rag 强制走检索。
 def create_initial_state(
     *,
@@ -128,6 +145,9 @@ def create_initial_state(
         "normalized_query": user_query.strip(),
         "mode": mode,
         "messages": messages or [],
+        "reflection_count": 0,
+        "max_reflections": 2,
+        "final_status": "resolved",
     }
     if session_id:
         state["session_id"] = session_id

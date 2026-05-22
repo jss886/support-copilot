@@ -1,0 +1,38 @@
+{
+  "dataset_path": "E:\\develop\\py\\project\\support-copilot\\rag\\eval\\manual_eval_set.json",
+  "sample_count": 5,
+  "top_k": 5,
+  "faithfulness": 1.0,
+  "response_relevancy": 0.9277170564149928,
+  "context_recall": 1.0,
+  "context_precision": 0.839999999935889,
+  "faithfulness_scores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "response_relevancy_scores": [
+    0.9124056933913276,
+    0.9101322204485783,
+    0.9577008388838864,
+    0.8893494381464904,
+    0.9689970912046811
+  ],
+  "context_recall_scores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "context_precision_scores": [
+    0.9999999999,
+    0.49999999995,
+    0.8333333332916666,
+    0.9999999999,
+    0.8666666666377778
+  ],
+  "output_path": "resources\\eval\\ragas_eval_result.json"
+}

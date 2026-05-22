@@ -29,20 +29,13 @@ def _format_task_result(task_result: TaskExecutionResult) -> str:
     evidence = task_result.get("evidence", [])
     error = task_result.get("error", "")
 
-    if status == "success":
-        outcome = result
-    else:
-        outcome = f"执行失败：{error or 'unknown_error'}"
-
-    evidence_lines = []
-    for item in evidence:
-        source = item.get("source", "")
-        kind = item.get("kind", "")
-        score = item.get("score", 0.0)
-        content = item.get("content", "")
-        evidence_lines.append(f"- [{kind}] {source} score={score:.2f} {content}")
-    missing_text = "；".join(missing_info) if missing_info else "无"
+    outcome = result if status == "success" else f"执行失败：{error or 'unknown_error'}"
+    evidence_lines = [
+        f"- [{item.get('kind', '')}] {item.get('source', '')} score={float(item.get('score', 0.0)):.2f} {item.get('content', '')}"
+        for item in evidence
+    ]
     evidence_text = "\n".join(evidence_lines) if evidence_lines else "- 无"
+    missing_text = "；".join(missing_info) if missing_info else "无"
 
     return (
         f"--- 子任务[{task_id}] ---\n"
@@ -59,10 +52,52 @@ def _format_task_result(task_result: TaskExecutionResult) -> str:
     )
 
 
-# 作用：将各子任务执行结果综合为最终答案，写入 state["synthesized_answer"] 和 state["answer"]。
+# 作用：从已有执行结果里提取仍然可信的结论，供 degraded 模式直接输出。
+def _build_confirmed_points(plan_results: list[TaskExecutionResult]) -> list[str]:
+    confirmed_points: list[str] = []
+    for result in plan_results:
+        if result.get("status") != "success":
+            continue
+        text = (result.get("summary", "") or result.get("result", "")).strip()
+        if text:
+            confirmed_points.append(text)
+    return confirmed_points[:5]
+
+
+# 作用：在 degraded/failed 模式下构造更诚实的降级答案，而不是只给一行免责声明。
+def _build_degraded_answer(state: SupportAgentState) -> str:
+    plan_results = state.get("plan_results") or []
+    reflection = state.get("reflection") or {}
+    final_status = state.get("final_status", "degraded")
+    confirmed_points = _build_confirmed_points(plan_results)
+    gaps = reflection.get("gaps", [])
+
+    if final_status == "failed":
+        missing_text = "；".join(gaps) if gaps else "当前缺少足够有效的执行结果。"
+        return (
+            "当前无法给出可靠答案。\n"
+            f"原因：{reflection.get('reflection_summary', '多轮反思后仍缺少足够证据。')}\n"
+            f"未解决点：{missing_text}\n"
+            "建议下一步：补充更具体的报错信息、日志片段、接口名、SQL 查询结果或相关文档后再继续分析。"
+        )
+
+    confirmed_text = "\n".join(f"- {item}" for item in confirmed_points) if confirmed_points else "- 暂无可确认结论"
+    gaps_text = "\n".join(f"- {item}" for item in gaps) if gaps else "- 当前没有额外缺口说明"
+    return (
+        "当前回答基于已成功完成的子任务结果整理，以下结论可作为排查起点，但仍有部分关键证据缺失。\n"
+        "已确认的部分：\n"
+        f"{confirmed_text}\n"
+        "暂未确认的部分：\n"
+        f"{gaps_text}\n"
+        "建议下一步：优先补充上述缺失信息，或转人工结合日志、数据库状态和调用链继续排查。"
+    )
+
+
+# 作用：把各子任务执行结果综合成最终答案，并在降级态下明确说明可信范围和未解决点。
 def run_synthesizer(state: SupportAgentState) -> SupportAgentState:
     next_state: SupportAgentState = dict(state)
     if next_state.get("error"):
+        next_state["final_status"] = "failed"
         next_state["answer"] = f"Planner 执行失败：{next_state['error']}"
         return next_state
 
@@ -70,15 +105,26 @@ def run_synthesizer(state: SupportAgentState) -> SupportAgentState:
     plan = next_state.get("plan") or {}
     plan_reason = plan.get("plan_reason", "")
     plan_results = next_state.get("plan_results") or []
+    reflection = next_state.get("reflection") or {}
+    final_status = next_state.get("final_status", "resolved")
 
     results_lines = [_format_task_result(task_result) for task_result in plan_results]
     if not results_lines:
         answer = "无法完成综合：所有子任务均未产生结果。"
+        next_state["final_status"] = "failed"
+        next_state["synthesized_answer"] = answer
+        next_state["answer"] = answer
+        return next_state
+
+    if final_status in {"degraded", "failed"}:
+        answer = _build_degraded_answer(next_state)
         next_state["synthesized_answer"] = answer
         next_state["answer"] = answer
         return next_state
 
     results_text = "\n\n".join(results_lines)
+    reflection_summary = reflection.get("reflection_summary", "")
+    gaps = reflection.get("gaps", [])
 
     try:
         llm = _build_synthesizer_llm()
@@ -88,7 +134,9 @@ def run_synthesizer(state: SupportAgentState) -> SupportAgentState:
                 HumanMessage(
                     content=(
                         f"用户原始问题：{query}\n"
-                        f"分解思路：{plan_reason}\n\n"
+                        f"分解思路：{plan_reason}\n"
+                        f"最终 reflection 摘要：{reflection_summary}\n"
+                        f"仍需说明的缺口：{gaps}\n\n"
                         "以下是各子任务的结构化执行结果，请综合为一份完整回答：\n\n"
                         f"{results_text}"
                     )
@@ -97,8 +145,13 @@ def run_synthesizer(state: SupportAgentState) -> SupportAgentState:
         )
         answer = getattr(response, "content", "") or ""
     except Exception:
-        # 这里保留直接拼接兜底，避免综合模型失败时整条复杂链路无结果。
-        answer = f"以下基于各子任务结果汇总：\n\n{results_text}"
+        # 作用：综合模型失败时保留兜底文本，避免整条复杂链路没有结果。
+        answer = (
+            f"以下基于各子任务结果汇总。\n"
+            f"reflection 摘要：{reflection_summary}\n"
+            f"仍有缺口：{gaps}\n\n"
+            f"{results_text}"
+        )
 
     next_state["synthesized_answer"] = answer
     next_state["answer"] = answer
