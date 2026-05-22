@@ -108,11 +108,13 @@ class MemoryPayload(TypedDict, total=False):
 class SupportAgentState(TypedDict, total=False):
     # 作用：定义多 Agent 共享状态，作为 graph 节点间统一的输入输出协议。
     session_id: str
+    user_id: str
     user_query: str
     normalized_query: str
     intent: IntentType
     route_reason: str
     messages: list[dict[str, str]]
+    recent_messages: list[dict[str, str]]
     retrieval: RetrievalPayload
     action_history: list[ActionPayload]
     action_summary: str
@@ -122,6 +124,7 @@ class SupportAgentState(TypedDict, total=False):
     complexity: ComplexityType
     plan: PlanPayload
     plan_results: list[TaskExecutionResult]
+    session_memory: dict[str, Any]
     reflection: ReflectionPayload
     reflection_count: int
     max_reflections: int
@@ -137,6 +140,7 @@ def create_initial_state(
     *,
     user_query: str,
     session_id: str | None = None,
+    user_id: str | None = None,
     messages: list[dict[str, str]] | None = None,
     mode: ModeType = "auto",
 ) -> SupportAgentState:
@@ -145,9 +149,11 @@ def create_initial_state(
         "normalized_query": user_query.strip(),
         "mode": mode,
         "messages": messages or [],
+        "recent_messages": messages or [],
         "reflection_count": 0,
         "max_reflections": 2,
         "final_status": "resolved",
+        "user_id": user_id or session_id or "anonymous",
     }
     if session_id:
         state["session_id"] = session_id

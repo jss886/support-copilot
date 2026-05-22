@@ -2,6 +2,7 @@ import os
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
+from memory import load_user_profile_text
 from supportAgents.agents.prompts import SYNTHESIZER_SYSTEM_PROMPT
 from supportAgents.graph.state import SupportAgentState, TaskExecutionResult
 from supportAgents.llm_clients import create_llm_client
@@ -62,6 +63,33 @@ def _build_confirmed_points(plan_results: list[TaskExecutionResult]) -> list[str
         if text:
             confirmed_points.append(text)
     return confirmed_points[:5]
+
+
+# 作用：在最终回复前拼接可直接消费的会话记忆，帮助回答更贴合当前目标并避免重复。
+def _build_synthesizer_memory_block(state: SupportAgentState) -> str:
+    session_memory = (state.get("session_memory") or {}).get("summary", {})
+    recent_messages = state.get("recent_messages") or state.get("messages", [])
+    try:
+        user_profile_text = load_user_profile_text(state.get("user_id", ""))
+    except Exception:
+        user_profile_text = ""
+
+    lines = [
+        "当前 SessionSummary：",
+        f"- summary: {session_memory.get('summary', '')}",
+        f"- current_goal: {session_memory.get('current_goal', '')}",
+        f"- key_facts: {session_memory.get('key_facts', [])}",
+        "",
+        "最近 20 轮原始对话：",
+    ]
+    for message in recent_messages:
+        role = message.get("role", "user")
+        content = (message.get("content") or "").strip()
+        if content:
+            lines.append(f"{role}: {content}")
+    if user_profile_text:
+        lines.extend(["", user_profile_text])
+    return "\n".join(lines)
 
 
 # 作用：在 degraded/failed 模式下构造更诚实的降级答案，而不是只给一行免责声明。
@@ -125,6 +153,7 @@ def run_synthesizer(state: SupportAgentState) -> SupportAgentState:
     results_text = "\n\n".join(results_lines)
     reflection_summary = reflection.get("reflection_summary", "")
     gaps = reflection.get("gaps", [])
+    memory_block = _build_synthesizer_memory_block(next_state)
 
     try:
         llm = _build_synthesizer_llm()
@@ -135,6 +164,7 @@ def run_synthesizer(state: SupportAgentState) -> SupportAgentState:
                     content=(
                         f"用户原始问题：{query}\n"
                         f"分解思路：{plan_reason}\n"
+                        f"{memory_block}\n"
                         f"最终 reflection 摘要：{reflection_summary}\n"
                         f"仍需说明的缺口：{gaps}\n\n"
                         "以下是各子任务的结构化执行结果，请综合为一份完整回答：\n\n"

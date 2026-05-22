@@ -2,6 +2,7 @@ from fastapi import APIRouter
 
 from api.common import translate_exception
 from api.schemas import ChatRequest, ChatResponse, ChatResult, RetrievalItem
+from memory import build_session_memory, persist_session_memory
 from supportAgents.graph.builder import run_support_graph
 from supportAgents.graph.state import create_initial_state
 
@@ -24,7 +25,9 @@ def respond(request: ChatRequest) -> ChatResponse:
             messages=request.messages,
             mode=normalized_mode,  # type: ignore[arg-type]
         )
+        state = build_session_memory(state)
         result = run_support_graph(state)
+        persist_session_memory(result)
     except Exception as exc:
         raise translate_exception(exc) from exc
 

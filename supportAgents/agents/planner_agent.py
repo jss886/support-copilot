@@ -5,6 +5,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
+from memory import load_user_profile_text, retrieve_task_memories
 from supportAgents.agents.prompts import PLANNER_SYSTEM_PROMPT
 from supportAgents.agents.reflection_prompts import PLANNER_REPLAN_SYSTEM_PROMPT
 from supportAgents.graph.state import (
@@ -23,6 +24,50 @@ from supportAgents.workers.task_workers import (
 
 _VALID_SUB_INTENTS = {"knowledge_qa", "tool_only", "direct_answer"}
 _RETRY_CONFIDENCE_THRESHOLD = 0.35
+
+
+# 作用：把最近原始对话整理成紧凑文本，保留当前会话的最新上下文。
+def _format_recent_messages(messages: list[dict[str, str]]) -> str:
+    if not messages:
+        return "无最近对话。"
+    lines: list[str] = []
+    for message in messages:
+        role = message.get("role", "user")
+        content = (message.get("content") or "").strip()
+        if content:
+            lines.append(f"{role}: {content}")
+    return "\n".join(lines)
+
+
+# 作用：在 planner 前拼接短期记忆、用户画像和 task_memory，避免重复规划已知路径。
+def _build_planner_memory_block(state: SupportAgentState) -> str:
+    session_memory = (state.get("session_memory") or {}).get("summary", {})
+    recent_messages = state.get("recent_messages") or state.get("messages", [])
+    try:
+        user_profile_text = load_user_profile_text(state.get("user_id", ""))
+    except Exception:
+        user_profile_text = ""
+    try:
+        task_memory_text = retrieve_task_memories(state.get("user_query", ""))
+    except Exception:
+        task_memory_text = ""
+
+    blocks = [
+        "当前 SessionSummary：",
+        f"- summary: {session_memory.get('summary', '')}",
+        f"- current_goal: {session_memory.get('current_goal', '')}",
+        f"- key_facts: {session_memory.get('key_facts', [])}",
+        f"- open_issues: {session_memory.get('open_issues', [])}",
+        f"- failed_attempts: {session_memory.get('failed_attempts', [])}",
+        "",
+        "最近 20 轮原始对话：",
+        _format_recent_messages(recent_messages),
+    ]
+    if user_profile_text:
+        blocks.extend(["", user_profile_text])
+    if task_memory_text:
+        blocks.extend(["", task_memory_text])
+    return "\n".join(blocks)
 
 
 # 作用：构造 planner 使用的模型实例，保持任务拆解输出稳定。
@@ -178,6 +223,7 @@ def _build_replan_user_prompt(state: SupportAgentState) -> str:
 
     return (
         f"原始问题：{query}\n\n"
+        f"{_build_planner_memory_block(state)}\n\n"
         f"已有计划：\n{_format_plan_summary(sub_tasks)}\n\n"
         f"执行结果：\n{_format_plan_results_summary(plan_results)}\n\n"
         f"反思摘要：{reflection.get('reflection_summary', '')}\n"
@@ -287,7 +333,12 @@ def run_planner(state: SupportAgentState) -> SupportAgentState:
         user_prompt = (
             _build_replan_user_prompt(next_state)
             if _should_replan(next_state)
-            else f"用户问题：{query}\n整体意图：{intent}\n请将以上问题拆解为子任务。"
+            else (
+                f"用户问题：{query}\n"
+                f"整体意图：{intent}\n\n"
+                f"{_build_planner_memory_block(next_state)}\n\n"
+                "请结合以上记忆拆解为子任务，避免重复已经确认或已经失败的路径。"
+            )
         )
         task_id_offset = len((next_state.get("plan") or {}).get("sub_tasks", [])) if _should_replan(next_state) else 0
         valid_dependency_ids = {
