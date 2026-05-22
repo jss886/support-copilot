@@ -32,6 +32,14 @@
 - **短期记忆**：保留最近 20 轮原始对话；更早的历史会基于旧 `SessionSummary` 和超窗消息压缩成新的结构化摘要，字段包括 `summary / key_facts / open_issues / failed_attempts / current_goal`。
 - **长期记忆**：`user_memory` 存用户长期稳定信息，`task_memory` 存可复用排查经验；planner 前会检索少量高相关 `task_memory` 作为补充上下文。
 
+## 技术亮点
+
+- **多 Agent 闭环编排**：基于 LangGraph 搭建 `orchestrator / planner / retrieval / action / reflection / synthesizer` 协作链路，让复杂问题具备“拆解执行、结果复盘、补规划重试、最终收口”的完整闭环，而不是一次检索后直接回答。
+- **混合检索增强 RAG**：检索链路结合 `BM25 + Vector + RRF + Rerank`，并引入 `Query Rewrite / Contextual Retrieval / HyDE` 等增强策略，兼顾术语精确匹配和语义召回，适合接口说明、故障案例、内部文档等复杂企业知识场景。
+- **可控的反思与降级机制**：为 planner 链路加入 `plan_reflection`，支持 `finish / retry / replan` 三种动作，并通过最大反思轮次、`resolved / degraded / failed` 状态和结构化日志控制复杂链路发散风险。
+- **分层记忆设计**：短期记忆采用“最近 20 轮原始对话 + 结构化 SessionSummary”双层模式，长期记忆拆分为 `user_profile` 与 `task_memory`，分别走直接注入和检索注入两种路径，兼顾连续会话体验与跨会话经验复用。
+- **工程化后端能力**：基于 FastAPI 提供文档入库、检索、问答、对话、评测等完整接口；数据库使用 PostgreSQL + pgvector 持久化知识和记忆；同时保留 CLI 和前端入口，便于本地调试、联调和后续扩展。
+
 ## 快速开始
 
 ### 1. 环境要求
@@ -180,14 +188,3 @@ POST /api/v1/ingestion/feishu/wiki-subtree  # 递归导入飞书 wiki 子树
     └── testdata/            # 测试数据
 ```
 
-## 开发备忘
-
-- **调试 Agent 链路**：`python scripts/debug_graph.py`
-- **调试飞书图片识别**：`python scripts/debug_image_caption.py --doc-id <doc_id>`
-- **CLI 检索测试**：`support-copilot query --question "xxx" --top-k 5`
-- **CLI 问答测试**：`support-copilot answer --question "xxx"`
-- **生成评估数据集**：`python -m rag.eval.main`
-- **短期记忆**：当前版本将 `SessionSummary` 写入 `sessions.state`，不单独新建短期记忆表
-- **长期记忆**：`user_memory` 直接按用户读取，`task_memory` 在 planner 前固定检索一次
-- 数据库迁移文件在 `aatarget/` 下按序号依次执行
-- 本地 Reranker 模型首次运行时会自动从 HuggingFace 下载到 `resources/models/`
