@@ -1,3 +1,5 @@
+<img width="2503" height="1386" alt="image" src="https://github.com/user-attachments/assets/3275db1c-8afd-4a30-a99b-982fdf9d33d5" />
+
 # Support Copilot
 
 面向企业内部支持场景的 Multi-Agent RAG 系统。接入飞书文档 / 导入文件 / 接口说明 / 故障案例，通过混合检索 + LLM 生成基于知识的问答，并为复杂问题提供 `planner -> execute -> reflection -> synthesizer` 闭环，同时将短期会话记忆和可复用经验沉淀到数据库。
