@@ -1,4 +1,4 @@
-<img width="2503" height="1386" alt="image" src="https://github.com/user-attachments/assets/3275db1c-8afd-4a30-a99b-982fdf9d33d5" />
+<img width="2507" height="1394" alt="image" src="https://github.com/user-attachments/assets/a27ba2cc-f676-4c04-8688-e69f9250dea4" />
 
 # Support Copilot
 
